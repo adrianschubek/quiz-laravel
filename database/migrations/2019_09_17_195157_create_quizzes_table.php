@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateQuizzesTable extends Migration
 {
@@ -15,6 +15,12 @@ class CreateQuizzesTable extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('user_id');
+            $table->string('title');
+            $table->longText('description');
+            $table->bigInteger('category_id');
+            $table->bigInteger('play_count')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

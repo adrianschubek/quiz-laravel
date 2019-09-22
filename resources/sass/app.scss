@@ -1,0 +1,115 @@
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+$body-background-color: hsl(0, 0%, 98%);
+$card-shadow: 0;
+$card-header-background-color: hsl(0, 0%, 21%);
+$card-header-shadow: 0;
+$card-header-color: white;
+
+
+
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css);
+
+// Bulma
+@import "bulma";
+
+@import "gradients";
+
+.card,
+.card-content {
+    border-radius: 5px !important;
+    border: 0;
+}
+
+.centerflex {
+    align-items: center !important;
+    display: flex !important;
+}
+
+.card-header {
+    border: 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.noborder {
+    border: 0 !important;
+}
+
+.noboxshadow {
+    box-shadow: none !important;
+}
+
+.shadow {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.rounded-top {
+    border-radius: 5px 5px 0 0;
+}
+
+main {
+    flex-grow: 1;
+    min-height: 100vh;
+}
+
+.label{
+    font-weight: normal;
+}
+
+.accent {
+    height: 5px;
+}
+
+footer {
+    flex-shrink: 0;
+    //min-height: 50px;
+    position: relative;
+    bottom: 0;
+}
+
+$sizeUnit: rem;
+$marginKey: 'm';
+$paddingKey: 'p';
+$separator: '-';
+$sizes: (
+        ('none', 0),
+        ('xxs', 0.125),
+        ('xs', 0.25),
+        ('sm', 0.5),
+        ('md', 1),
+        ('lg', 2),
+        ('xl', 4),
+        ('xxl', 8),
+);
+$positions: (
+        ('t', 'top'),
+        ('r', 'right'),
+        ('b', 'bottom'),
+        ('l', 'left')
+);
+
+@function sizeValue($key, $value) {
+    @return if($key == 'none', 0, $value + $sizeUnit);
+}
+
+@each $size in $sizes {
+    $sizeKey: nth($size, 1);
+    $sizeValue: nth($size, 2);
+    .#{$marginKey}#{$separator}#{$sizeKey} {
+        margin: sizeValue($sizeKey, $sizeValue) !important;
+    }
+    .#{$paddingKey}#{$separator}#{$sizeKey} {
+        padding: sizeValue($sizeKey, $sizeValue) !important;
+    }
+    @each $position in $positions {
+        $posKey: nth($position, 1);
+        $posValue: nth($position, 2);
+        .#{$marginKey}#{$separator}#{$posKey}#{$separator}#{$sizeKey} {
+            margin-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+        }
+        .#{$paddingKey}#{$separator}#{$posKey}#{$separator}#{$sizeKey} {
+            padding-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+        }
+    }
+}
