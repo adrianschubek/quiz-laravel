@@ -935,16 +935,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v0.3.6",
+            "version": "v0.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "76c541dae1d11cb86439de81baacaf635ca5dcc7"
+                "reference": "65a45cea7e8912ce720aea39279b14325cbddffb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/76c541dae1d11cb86439de81baacaf635ca5dcc7",
-                "reference": "76c541dae1d11cb86439de81baacaf635ca5dcc7",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/65a45cea7e8912ce720aea39279b14325cbddffb",
+                "reference": "65a45cea7e8912ce720aea39279b14325cbddffb",
                 "shasum": ""
             },
             "require": {
@@ -984,7 +984,7 @@
                 }
             ],
             "description": "Build and test rich client-side functionality: with only backend code.",
-            "time": "2019-09-19T16:10:58+00:00"
+            "time": "2019-09-22T00:55:37+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -7557,8 +7557,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
