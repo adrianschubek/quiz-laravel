@@ -44,19 +44,19 @@
                 <a href="{{ route('stats') }}" class="button is-info is-outlined m-r-sm"><i
                         class="fas fa-chart-line m-r-sm"></i>
                     Statistiken </a>
-                <a href="{{ route('quiz.create') }}" class="button is-success is-outlined m-r-sm"><i
-                        class="fas fa-plus m-r-sm"></i>
-                    Quiz erstellen</a>
+                <a href="{{ route('quiz.index') }}" class="button is-success is-outlined m-r-sm"><i
+                        class="fas fa-layer-group m-r-sm"></i>
+                    Meine Quizze</a>
             </div>
         </nav>
     @endauth
     @guest
-        <div class="notification">
+        <div class="notification is-dark">
             <button class="delete"></button>
             <i class="fas fa-user-secret"></i> Du bist nicht angemeldet. Klicke <a href="{{ route('login') }}">hier</a>
             um dich anzumelden.
         </div>
-        <div class="level-right m-r-sm">
+        <div class="level-right m-r-sm m-t-md">
             <div class="dropdown m-r-sm is-hoverable is-right">
                 <div class="dropdown-trigger">
                     <button class="button is-outlined is-dark" aria-haspopup="true" aria-controls="dropdown-menu2">
@@ -89,28 +89,7 @@
         <div class="columns is-mobile is-multiline is-centered">
             @foreach($quizzes as $quiz)
                 <div class="column is-narrow">
-                    <a class="box"
-                       href="{{ route('quiz.show', ["quiz" => $quiz->id, "slug" => Str::slug($quiz->title)] ) }}">
-                        <p class="subtitle m-b-none">{{ $quiz->title }}</p>
-                        <div class="level m-b-sm">
-                            <div class="level-left">
-                                <small class="has-text-weight-light">von
-                                    <span class="has-text-weight-medium">
-                                {{ $quiz->user->name }}
-                            </span>
-                                    | {{ \Carbon\Carbon::parse($quiz->created_at)->fromNow() }}
-                                </small>
-                            </div>
-                            <div class="level-right">
-                                <p class="m-r-sm has-text-weight-bold"><i
-                                        class="far fa-user"></i> {{ number_format($quiz->play_count, 0 , ',' , '.' ) }}
-                                </p>
-                                <p class="has-text-weight-bold"><i class="far fa-heart"></i> 74%</p>
-                            </div>
-                        </div>
-                        <hr class="m-t-none">
-                        <p class="has-text-weight-light">{{ Str::limit($quiz->description, 50) }}</p>
-                    </a>
+                    @include('layouts.quiz', $quiz)
                 </div>
             @endforeach
         </div>

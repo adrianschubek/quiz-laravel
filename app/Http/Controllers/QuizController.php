@@ -11,6 +11,7 @@ class QuizController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except('show');
+        $this->authorizeResource(Quiz::class, 'quiz');
     }
 
     /**
@@ -20,8 +21,8 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $quizzes = Quiz::where('user_id', auth()->user()->id)->get();
-        return view('quiz.index', compact('quizzes'));
+        $user = auth()->user();
+        return view('quiz.index', compact('user'));
     }
 
     /**
@@ -95,6 +96,7 @@ class QuizController extends Controller
      */
     public function destroy(Quiz $quiz)
     {
-        //
+        $quiz->delete();
+        return redirect(route('quiz.index'));
     }
 }

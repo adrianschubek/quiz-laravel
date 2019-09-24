@@ -15,6 +15,10 @@ class Quiz extends Model
         "user_id", "title", "description", "category_id"
     ];
 
+    protected $touches = [
+        "questions"
+    ];
+
     public function likes()
     {
         return $this->morphMany(Like::class, "likeable");

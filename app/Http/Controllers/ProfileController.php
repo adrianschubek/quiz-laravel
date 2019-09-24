@@ -11,6 +11,7 @@ class ProfileController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except('show');
+        $this->authorizeResource(User::class, 'profile');
     }
 
     /**
@@ -20,19 +21,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $username = auth()->user()->name;
-        return view('profile.show', compact('username'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-
+//        $username = auth()->user()->name;
+//        return view('profile.show', compact('username'));
+        return User::all();
     }
 
     /**
@@ -43,19 +34,19 @@ class ProfileController extends Controller
      */
     public function show(User $profile)
     {
-        $username = $profile->name;
-        return view('profile.show', compact('username'));
+        $quizzes = $profile->quizzes()->has("questions")->get();
+        return view('profile.show', compact('profile', 'quizzes'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param User $profile
      * @return Response
      */
-    public function edit($id)
+    public function edit(User $profile)
     {
-        //
+        return view('profile.edit', compact('profile'));
     }
 
     /**
@@ -67,7 +58,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

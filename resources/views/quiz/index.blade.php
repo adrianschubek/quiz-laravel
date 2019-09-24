@@ -10,30 +10,30 @@
             </div>
         </div>
     </section>
-    @foreach($quizzes as $quiz)
-        <div class="column is-narrow">
-            <a class="box"
-               href="{{ route('quiz.show', ["quiz" => $quiz->id, "slug" => Str::slug($quiz->title)] ) }}">
-                <p class="subtitle m-b-none">{{ $quiz->title }}</p>
-                <div class="level m-b-sm">
-                    <div class="level-left">
-                        <small class="has-text-weight-light">von
-                            <span class="has-text-weight-medium">
-                                {{ $quiz->user->name }}
-                            </span>
-                            | {{ \Carbon\Carbon::parse($quiz->created_at)->fromNow() }}
-                        </small>
-                    </div>
+    <div class="columns m-t-md m-b-md">
+        <div class="column is-3">
+        </div>
+        <div class="column is-6">
+            <div class="box has-background-white-bis">
+                <div class="level">
+                    <div class="level-left"><h1 class="subtitle">Quizze</h1></div>
                     <div class="level-right">
-                        <p class="m-r-sm has-text-weight-bold"><i
-                                class="far fa-user"></i> {{ number_format($quiz->play_count, 0 , ',' , '.' ) }}
-                        </p>
-                        <p class="has-text-weight-bold"><i class="far fa-heart"></i> 74%</p>
+                        <a href="{{ route('quiz.create') }}" class="button is-success"><i class="fa fa-plus"></i></a>
                     </div>
                 </div>
-                <hr class="m-t-none">
-                <p class="has-text-weight-light">{{ Str::limit($quiz->description, 50) }}</p>
-            </a>
+                @forelse($user->quizzes as $quiz)
+                    @include('layouts.quiz-edit', $quiz)
+                @empty
+                    <div class="box has-text-centered noborder noboxshadow has-background-grey-lighter">
+                        Du hast noch nichts erstellt.<br>
+                        <a href="{{ route('quiz.create') }}" class="button is-success m-t-sm"><i
+                                class="fa fa-plus m-r-sm"></i>
+                            Erstelle dein erstes Quiz</a>
+                    </div>
+                @endforelse
+            </div>
         </div>
-    @endforeach
+        <div class="column is-3">
+        </div>
+    </div>
 @endsection

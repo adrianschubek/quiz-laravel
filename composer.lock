@@ -935,16 +935,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v0.3.6",
+            "version": "v0.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "76c541dae1d11cb86439de81baacaf635ca5dcc7"
+                "reference": "1f1ad2f301732b1e90b5d10ec0ebd5346d1c1662"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/76c541dae1d11cb86439de81baacaf635ca5dcc7",
-                "reference": "76c541dae1d11cb86439de81baacaf635ca5dcc7",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/1f1ad2f301732b1e90b5d10ec0ebd5346d1c1662",
+                "reference": "1f1ad2f301732b1e90b5d10ec0ebd5346d1c1662",
                 "shasum": ""
             },
             "require": {
@@ -984,7 +984,7 @@
                 }
             ],
             "description": "Build and test rich client-side functionality: with only backend code.",
-            "time": "2019-09-19T16:10:58+00:00"
+            "time": "2019-09-23T19:56:57+00:00"
         },
         {
             "name": "monolog/monolog",
