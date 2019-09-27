@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1686276efdaa0fbcbb477b4d9165858",
+    "content-hash": "fc922964faa44cc66a02846e61c7dee1",
     "packages": [
         {
             "name": "cviebrock/eloquent-taggable",
@@ -935,16 +935,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v0.3.8",
+            "version": "v0.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "1f1ad2f301732b1e90b5d10ec0ebd5346d1c1662"
+                "reference": "25834049871918dc07ec91c26dfa6898daf52043"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/1f1ad2f301732b1e90b5d10ec0ebd5346d1c1662",
-                "reference": "1f1ad2f301732b1e90b5d10ec0ebd5346d1c1662",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/25834049871918dc07ec91c26dfa6898daf52043",
+                "reference": "25834049871918dc07ec91c26dfa6898daf52043",
                 "shasum": ""
             },
             "require": {
@@ -984,7 +984,7 @@
                 }
             ],
             "description": "Build and test rich client-side functionality: with only backend code.",
-            "time": "2019-09-23T19:56:57+00:00"
+            "time": "2019-09-25T03:16:30+00:00"
         },
         {
             "name": "monolog/monolog",
