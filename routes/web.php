@@ -18,14 +18,13 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@index')->name('home');
 
-//Route::resource('/users', 'UsersController');
-
-Route::resource('/quiz', 'QuizController');
-Route::get('/quiz/{quiz}/{slug}', 'QuizController@show')->name('quiz.show');
+Route::resource('/quiz', 'QuizController')->except(['show']);
+Route::put('/quiz/restore/{id}', 'QuizController@restore')->name('quiz.restore');
+Route::delete('/quiz/forceDelete/{id}', 'QuizController@forceDelete')->name('quiz.force-delete');
+Route::get('/quiz/{quiz}/{slug?}', 'QuizController@show')->name('quiz.show');
 
 Route::resource('/profiles', 'ProfileController')->except(['create', 'store']);
 Route::get('/profiles/{profile}/{slug?}', 'ProfileController@show')->name('profiles.show');
 
 Route::get('/stats', 'StatsController@index')->name('stats');
-Route::get('/search', function () {
-})->name('quiz.search');
+Route::get('/search', 'SearchController@show')->name('quiz.search');

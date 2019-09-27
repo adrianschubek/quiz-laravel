@@ -27,6 +27,7 @@
         "@fortawesome/fontawesome-free": "^5.10.2",
         "@vizuaalog/bulmajs": "^0.10.0",
         "bulma-divider": "^0.2.0",
+        "bulma-tooltip": "^2.0.2",
         "jquery": "^3.4.1"
     }
 }

@@ -17,7 +17,7 @@ class ProfileController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return User[]|\Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {

@@ -85,7 +85,7 @@ class QuizController extends Controller
      */
     public function update(Request $request, Quiz $quiz)
     {
-        //
+
     }
 
     /**
@@ -93,10 +93,29 @@ class QuizController extends Controller
      *
      * @param Quiz $quiz
      * @return Response
+     * @throws \Exception
      */
     public function destroy(Quiz $quiz)
     {
         $quiz->delete();
+        return redirect(route('quiz.index'));
+    }
+
+    public function forceDelete($id)
+    {
+        $quiz = Quiz::withTrashed()->findOrFail($id);
+        $this->authorize('forceDelete', $quiz);
+
+        $quiz->forceDelete();
+        return redirect(route('quiz.index'));
+    }
+
+    public function restore($id)
+    {
+        $quiz = Quiz::withTrashed()->findOrFail($id);
+        $this->authorize('restore', $quiz);
+
+        $quiz->restore();
         return redirect(route('quiz.index'));
     }
 }

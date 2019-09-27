@@ -42,6 +42,6 @@ class QuizPolicy
 
     public function forceDelete(User $user, Quiz $quiz)
     {
-        return $user->isAdmin();
+        return $user->id === $quiz->user_id;
     }
 }

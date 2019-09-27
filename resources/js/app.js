@@ -55,4 +55,4 @@ require('@vizuaalog/bulmajs/src/plugins/accordion');
 require('@vizuaalog/bulmajs/src/plugins/tabs');
 require('@vizuaalog/bulmajs/src/plugins/dropdown');
 
-// require('./bulma-extensions');
+require('./bulma-extensions');

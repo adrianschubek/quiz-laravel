@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Http\Middleware\Authenticate;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Telescope\TelescopeServiceProvider;
+use Livewire\Livewire;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        Livewire::filterMiddleware(function ($middleware) {
+            return false;
+        });
     }
 }

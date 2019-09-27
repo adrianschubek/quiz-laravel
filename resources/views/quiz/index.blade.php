@@ -32,6 +32,22 @@
                     </div>
                 @endforelse
             </div>
+            @if(!$user->quizzes()->onlyTrashed()->get()->isEmpty())
+                <div class="box has-background-white-bis">
+                    <div class="level">
+                        <div class="level-left"><h1 class="subtitle">Gelöschte Quizze</h1></div>
+                        <div class="level-right">
+                        </div>
+                    </div>
+                    @forelse($user->quizzes()->onlyTrashed()->get() as $quiz)
+                        @include('layouts.quiz-edit', $quiz)
+                    @empty
+                        <div class="box has-text-centered noborder noboxshadow has-background-grey-lighter">
+                            Du hast noch nichts gelöscht.
+                        </div>
+                    @endforelse
+                </div>
+            @endif
         </div>
         <div class="column is-3">
         </div>

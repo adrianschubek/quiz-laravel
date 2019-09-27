@@ -47,36 +47,36 @@ class UserPolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\User  $user
-     * @param  \App\User  $model
+     * @param \App\User $user
+     * @param User $profile
      * @return mixed
      */
     public function delete(User $user, User $profile)
     {
-        return $user->isAdmin();
+        return true;
     }
 
     /**
      * Determine whether the user can restore the model.
      *
-     * @param  \App\User  $user
-     * @param  \App\User  $model
+     * @param \App\User $user
+     * @param User $profile
      * @return mixed
      */
     public function restore(User $user, User $profile)
     {
-        return $user->isAdmin();
+        return true;
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param  \App\User  $user
-     * @param  \App\User  $model
+     * @param \App\User $user
+     * @param User $profile
      * @return mixed
      */
     public function forceDelete(User $user, User $profile)
     {
-        return $user->isAdmin();
+        return true;
     }
 }

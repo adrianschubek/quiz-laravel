@@ -44,7 +44,7 @@
                 <a href="{{ route('stats') }}" class="button is-info is-outlined m-r-sm"><i
                         class="fas fa-chart-line m-r-sm"></i>
                     Statistiken </a>
-                <a href="{{ route('quiz.index') }}" class="button is-success is-outlined m-r-sm"><i
+                <a href="{{ route('quiz.index') }}" class="button is-success is-outlined m-r-sm is-hidden-mobile"><i
                         class="fas fa-layer-group m-r-sm"></i>
                     Meine Quizze</a>
             </div>

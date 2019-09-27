@@ -18,10 +18,10 @@ class CreateQuestionsTable extends Migration
             $table->bigInteger('quiz_id')->unsigned();
             $table->integer('order')->unsigned();
             $table->longText('title');
-            $table->longText('answer_0');
-            $table->longText('answer_1')->nullable();
+            $table->longText('answer_1');
             $table->longText('answer_2')->nullable();
             $table->longText('answer_3')->nullable();
+            $table->longText('answer_4')->nullable();
             $table->integer('correct')->default(0);
             $table->softDeletes();
             $table->timestamps();
