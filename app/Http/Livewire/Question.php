@@ -82,7 +82,6 @@ class Question extends Component
         );
 
         $this->quiz->questions()->save($question);
-
         return redirect()->route('quiz.edit', $this->quiz);
     }
 

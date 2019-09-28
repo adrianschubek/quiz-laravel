@@ -14,13 +14,13 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Auth::routes(['verify' => true]);
+Auth::routes(["verify" => true]);
 
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('/quiz', 'QuizController')->except(['show']);
 Route::put('/quiz/restore/{id}', 'QuizController@restore')->name('quiz.restore');
-Route::delete('/quiz/forceDelete/{id}', 'QuizController@forceDelete')->name('quiz.force-delete');
+Route::delete('/quiz/delete/{id}', 'QuizController@forceDelete')->name('quiz.force-delete');
 Route::get('/quiz/{quiz}/{slug?}', 'QuizController@show')->name('quiz.show');
 
 Route::resource('/profiles', 'ProfileController')->except(['create', 'store']);

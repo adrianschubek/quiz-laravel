@@ -11,7 +11,6 @@ $factory->define(Quiz::class, function (Faker $faker) {
         "user_id" => $faker->numberBetween(1, 500),
         "title" => $faker->text(15),
         "description" => $faker->paragraph,
-        "category_id" => $faker->numberBetween(1,5),
         "play_count" => $faker->numberBetween(0, 50000)
     ];
 });

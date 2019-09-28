@@ -47,21 +47,7 @@
                             @enderror
                         </div>
                         <div class="level">
-                            <div class="level-left">
-                                <div class="field">
-                                    <div class="select">
-                                        <select name="category_id" id="category">
-                                            <option value="" disabled selected>Kategorie wählen</option>
-                                            @foreach(App\Category::all() as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    @error('category_id')
-                                    <p class="help is-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                            </div>
+                            <div class="level-left"></div>
                             <div class="level-right">
                                 <div class="field">
                                     <div class="control">

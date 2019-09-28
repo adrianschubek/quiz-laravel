@@ -18,7 +18,6 @@ class CreateQuizzesTable extends Migration
             $table->bigInteger('user_id');
             $table->string('title');
             $table->longText('description');
-            $table->bigInteger('category_id');
             $table->bigInteger('play_count')->default(0);
             $table->softDeletes();
             $table->timestamps();

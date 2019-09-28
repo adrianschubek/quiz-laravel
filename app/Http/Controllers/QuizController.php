@@ -46,7 +46,6 @@ class QuizController extends Controller
         $data = $request->validate([
             "title" => "required|string|min:10|max:40",
             "description" => "required|string|min:10|max:400",
-            "category_id" => "required|integer"
         ]);
         $data["user_id"] = auth()->user()->id;
 

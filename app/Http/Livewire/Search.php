@@ -4,31 +4,27 @@ namespace App\Http\Livewire;
 
 use App\Quiz;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 class Search extends Component
 {
-    use WithPagination;
-
     public $query;
-    protected $quizzes = [];
+    public $type;
 
     public function mount($query)
     {
         $this->query = $query;
-        $this->quizzes = Quiz::where('title', 'like', '%' . $this->query . '%')->paginate();
+        $this->type = 'title';
     }
 
-    public function updatedQuery()
+    public function updatingType($value)
     {
-        $this->quizzes = Quiz::where('title', 'like', '%' . $this->query . '%')->paginate();
+        $this->validate(["type" => "in:titlex,description"]);
     }
 
     public function render()
     {
-//        dd($this->quizzes);
         return view('livewire.search', [
-            "quizzes" => $this->quizzes
+            "quizzes" => Quiz::with('user')->where($this->type, 'like', '%' . $this->query . '%')->limit(50)->get()
         ]);
     }
 }

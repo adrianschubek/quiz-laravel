@@ -98,7 +98,6 @@
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/vendor/league/flysystem" />
       <path value="$PROJECT_DIR$/vendor/laravel-frontend-presets/bulma" />
-      <path value="$PROJECT_DIR$/vendor/cviebrock/eloquent-taggable" />
       <path value="$PROJECT_DIR$/vendor/genealabs/laravel-model-caching" />
       <path value="$PROJECT_DIR$/vendor/genealabs/laravel-pivot-events" />
       <path value="$PROJECT_DIR$/vendor/laravel/telescope" />

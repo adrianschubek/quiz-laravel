@@ -2,17 +2,16 @@
 
 namespace App;
 
-use Cviebrock\EloquentTaggable\Taggable;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Quiz extends Model
 {
-    use SoftDeletes, Taggable, Cachable;
+    use SoftDeletes, Cachable;
 
     protected $fillable = [
-        "user_id", "title", "description", "category_id"
+        "user_id", "title", "description"
     ];
 
     protected $touches = [
@@ -32,10 +31,5 @@ class Quiz extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
     }
 }

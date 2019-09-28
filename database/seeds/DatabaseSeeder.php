@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(CategorySeeder::class);
         factory(User::class, 500)->create();
         factory(Quiz::class, 1000)->create();
         factory(Question::class, 1700)->create();

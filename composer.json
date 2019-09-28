@@ -1,5 +1,5 @@
 {
-    "name": "laravel/laravel",
+    "name": "adrianschubek/quiz",
     "type": "project",
     "description": "The Laravel Framework.",
     "keywords": [
@@ -10,7 +10,6 @@
     "require": {
         "php": "^7.2",
         "livewire/livewire": "^0.3.8",
-        "cviebrock/eloquent-taggable": "^6.0",
         "fideloper/proxy": "^4.0",
         "genealabs/laravel-model-caching": "*",
         "laravel/framework": "^6.0",
