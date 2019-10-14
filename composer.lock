@@ -876,24 +876,24 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v0.3.15",
+            "version": "v0.3.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "3e91c0fcd41c7bee85be44563376b44033b92d70"
+                "reference": "e363058c7a8c88b62f59b77bb85121e46f3262b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/3e91c0fcd41c7bee85be44563376b44033b92d70",
-                "reference": "3e91c0fcd41c7bee85be44563376b44033b92d70",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/e363058c7a8c88b62f59b77bb85121e46f3262b3",
+                "reference": "e363058c7a8c88b62f59b77bb85121e46f3262b3",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "^5.7|^6.0",
-                "illuminate/validation": "^5.7|^6.0"
+                "illuminate/support": "^5.6|^6.0",
+                "illuminate/validation": "^5.6|^6.0"
             },
             "require-dev": {
-                "laravel/framework": "^5.7|^6.0",
+                "laravel/framework": "^5.6|^6.0",
                 "orchestra/testbench": "~3.0",
                 "phpunit/phpunit": "^7.5",
                 "psy/psysh": "@stable"
@@ -925,7 +925,7 @@
                 }
             ],
             "description": "Build and test rich client-side functionality: with only backend code.",
-            "time": "2019-10-03T21:28:39+00:00"
+            "time": "2019-10-11T16:56:26+00:00"
         },
         {
             "name": "monolog/monolog",
