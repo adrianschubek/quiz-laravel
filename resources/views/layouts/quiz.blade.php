@@ -5,16 +5,16 @@
         <div class="level-left">
             <small class="has-text-weight-light">von
                 <span class="has-text-weight-medium">
-                                {{ $quiz->user->name }}
-                            </span>
-                | erstellt {{ \Carbon\Carbon::parse($quiz->created_at)->fromNow() }}
+                    {{ $quiz->user->name }}
+                </span>
+                | erstellt {{ $quiz->relative_created }}
             </small>
         </div>
         <div class="level-right">
             <p class="m-r-sm has-text-weight-bold"><i
                     class="far fa-user"></i> {{ number_format($quiz->play_count, 0 , ',' , '.' ) }}
             </p>
-            <p class="has-text-weight-bold"><i class="far fa-heart"></i> ? %</p>
+            <p class="has-text-weight-bold"><i class="far fa-heart"></i> {{ number_format($quiz->likes_count, 0 , ',' , '.' ) }}</p>
         </div>
     </div>
     <hr class="m-t-none">

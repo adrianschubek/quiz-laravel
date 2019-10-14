@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', "$profile->name's Profil")
+
 @section('content')
     <section class="hero is-primary is-bold">
         <div class="hero-body">
@@ -17,7 +19,7 @@
         <div class="column is-3">
         </div>
         <div class="column is-6">
-            <div class="box has-background-white">
+            <div class="box has-background-white noboxshadow border">
                 <div class="columns">
                     <div class="column">
                         @if($profile->last_login_at)
@@ -33,13 +35,24 @@
                     </div>
                     <div class="column is-narrow">
                         @can('update', $profile)
-                            <a href="{{ route('profiles.edit', $profile) }}" class="button is-warning"><i class="fas fa-pen"></i></a>
+                            <a href="{{ route('profiles.edit', $profile) }}" class="button is-warning"><i
+                                    class="fas fa-pen"></i></a>
                         @endcan
                     </div>
                 </div>
             </div>
-            <div class="box has-background-white-bis">
-                <h1 class="subtitle">Veröffentlichte Quizze</h1>
+            <div class="box has-background-white-bis noboxshadow">
+                <div class="columns">
+                    <div class="column">
+                        <h1 class="subtitle">Veröffentlichte Quizze</h1>
+                    </div>
+                    <div class="column is-narrow">
+                        @can('update', $profile)
+                            <a href="{{ route('quiz.index') }}" class="button is-warning"><i
+                                    class="fas fa-pen"></i></a>
+                        @endcan
+                    </div>
+                </div>
                 @foreach($quizzes as $quiz)
                     @include('layouts.quiz', $quiz)
                 @endforeach

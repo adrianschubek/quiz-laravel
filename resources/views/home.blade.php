@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', "Startseite")
+
 @section('content')
     @auth
         <nav class="level g2">
@@ -53,8 +55,7 @@
     @guest
         <div class="notification is-dark">
             <button class="delete"></button>
-            <i class="fas fa-user-secret"></i> Du bist nicht angemeldet. Klicke <a href="{{ route('login') }}">hier</a>
-            um dich anzumelden.
+            <i class="fas fa-user-secret"></i> Du bist nicht angemeldet. Melde dich an um Quizze zu erstellen und bewerten.
         </div>
         <div class="level-right m-r-sm m-t-md">
             <div class="dropdown m-r-sm is-hoverable is-right">

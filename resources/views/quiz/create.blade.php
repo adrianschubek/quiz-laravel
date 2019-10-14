@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', "Quiz erstellen")
+
 @section('content')
     <section class="hero is-success is-bold">
         <div class="hero-body">

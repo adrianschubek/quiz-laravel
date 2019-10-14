@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', "Statistiken")
+
 @section('content')
     <section class="hero is-dark is-bold is-fullheight">
         <div class="hero-body">

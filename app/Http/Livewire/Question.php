@@ -65,6 +65,17 @@ class Question extends Component
         $this->validate(["order" => $this->rules["order"]]);
     }
 
+    public function reset()
+    {
+        $this->title = null;
+        $this->answer1 = null;
+        $this->answer2 = null;
+        $this->answer3 = null;
+        $this->answer4 = null;
+        $this->correct = 1;
+        $this->order = 1;
+    }
+
     public function store()
     {
         $this->validate($this->rules);

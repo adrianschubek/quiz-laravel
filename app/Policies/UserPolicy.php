@@ -17,7 +17,7 @@ class UserPolicy
      */
     public function viewAny(User $profile)
     {
-        return true;
+        return false;
     }
 
     /**
@@ -53,7 +53,7 @@ class UserPolicy
      */
     public function delete(User $user, User $profile)
     {
-        return true;
+        return $user->id === $profile->id;
     }
 
     /**
@@ -65,7 +65,7 @@ class UserPolicy
      */
     public function restore(User $user, User $profile)
     {
-        return true;
+        return false;
     }
 
     /**
@@ -77,6 +77,6 @@ class UserPolicy
      */
     public function forceDelete(User $user, User $profile)
     {
-        return true;
+        return false;
     }
 }

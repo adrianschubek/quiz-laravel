@@ -13,7 +13,7 @@ class HomeController extends Controller
         $column = request('type') === 'play'
             ? 'play_count' : 'created_at';
 
-        $quizzes = Quiz::with('user')->orderBy($column, $sort)->has('questions')->paginate();
+        $quizzes = Quiz::withCount('likes')->with('user')->orderBy($column, $sort)->has('questions')->paginate();
 
         return view('home', compact('quizzes'));
     }

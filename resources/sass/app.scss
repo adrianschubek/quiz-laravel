@@ -8,7 +8,6 @@ $card-header-shadow: 0;
 $card-header-color: white;
 
 
-
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css);
 
 // Bulma
@@ -48,17 +47,28 @@ $card-header-color: white;
     border-radius: 5px 5px 0 0;
 }
 
+.border {
+    border-color: #1212121a !important;
+    border-radius: 10px !important;
+    border-style: solid;
+
+}
+
 main {
     flex-grow: 1;
     min-height: 100vh;
 }
 
-.label{
+.label {
     font-weight: normal;
 }
 
 .accent {
     height: 5px;
+}
+
+.is-active-grey {
+    background-color: #fafafa !important;
 }
 
 footer {

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', "Meine Quizze")
+
 @section('content')
     <section class="hero g1">
         <div class="hero-body">
@@ -14,7 +16,7 @@
         <div class="column is-3">
         </div>
         <div class="column is-6">
-            <div class="box has-background-white-bis">
+            <div class="box has-background-white-bis noboxshadow border">
                 <div class="level">
                     <div class="level-left"><h1 class="subtitle">Quizze</h1></div>
                     <div class="level-right">
@@ -33,7 +35,7 @@
                 @endforelse
             </div>
             @if(!$user->quizzes()->onlyTrashed()->get()->isEmpty())
-                <div class="box has-background-white-bis">
+                <div class="box has-background-white-bis noboxshadow border">
                     <div class="level">
                         <div class="level-left"><h1 class="subtitle">Gelöschte Quizze</h1></div>
                         <div class="level-right">

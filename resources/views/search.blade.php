@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', "Suchen")
+
 @push('head')
     @livewireAssets
 @endpush

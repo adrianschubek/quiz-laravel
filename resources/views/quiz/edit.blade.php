@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', "$quiz->title bearbeiten")
+
 @push('head')
     @livewireAssets
 @endpush

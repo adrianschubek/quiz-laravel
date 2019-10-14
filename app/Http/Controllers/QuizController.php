@@ -10,7 +10,7 @@ class QuizController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('show');
+        $this->middleware(['auth', 'verified'])->except('show');
         $this->authorizeResource(Quiz::class, 'quiz');
     }
 
@@ -61,7 +61,7 @@ class QuizController extends Controller
      */
     public function show(Quiz $quiz)
     {
-        return [$quiz, $quiz->questions];
+        return view('quiz.show', compact('quiz'));
     }
 
     /**

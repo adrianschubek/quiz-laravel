@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('show');
+        $this->middleware(['auth', 'verified'])->except('show');
+        $this->middleware('password.confirm')->only('edit');
         $this->authorizeResource(User::class, 'profile');
     }
 
@@ -53,21 +55,44 @@ class ProfileController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param int $id
+     * @param User $profile
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $profile)
     {
+        $data = $request->validate([
+            "name" => "nullable|unique:users,name|min:5|max:255|alpha_dash",
+            "email" => "nullable|unique:users,email|confirmed|email|max:255",
+            "password" => "nullable|confirmed|min:8|max:255",
+            "current_password" => "required|max:255"
+        ]);
 
+        if (!Hash::check($data["current_password"], $profile->getAuthPassword())) {
+            return back()->withInput()->with('error', 'Passwort ist ungültig');
+        }
+
+        $data = array_filter($data); // Alle null Werte entfernen
+
+        if (isset($data["email"])) {
+            $data["email_verified_at"] = null;
+        }
+
+        if (isset($data["password"])) {
+            $data["password"] = Hash::make($data["password"]);
+        }
+
+        $profile->update($data);
+
+        return back()->with('ok', 'Profil wurde aktualisiert.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
-     * @return Response
+     * @param User $profile
+     * @return void
      */
-    public function destroy($id)
+    public function destroy(User $profile)
     {
         //
     }
