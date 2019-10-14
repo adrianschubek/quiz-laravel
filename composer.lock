@@ -382,16 +382,16 @@
         },
         {
             "name": "genealabs/laravel-model-caching",
-            "version": "0.7.1",
+            "version": "0.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GeneaLabs/laravel-model-caching.git",
-                "reference": "1ec407473c58b213d99ea256de1b85b148feba81"
+                "reference": "71208840cf4e8d70bc78f7fc45d548e659f36c5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GeneaLabs/laravel-model-caching/zipball/1ec407473c58b213d99ea256de1b85b148feba81",
-                "reference": "1ec407473c58b213d99ea256de1b85b148feba81",
+                "url": "https://api.github.com/repos/GeneaLabs/laravel-model-caching/zipball/71208840cf4e8d70bc78f7fc45d548e659f36c5b",
+                "reference": "71208840cf4e8d70bc78f7fc45d548e659f36c5b",
                 "shasum": ""
             },
             "require": {
@@ -441,7 +441,7 @@
                 }
             ],
             "description": "Automatic caching for Eloquent models.",
-            "time": "2019-09-16T00:19:20+00:00"
+            "time": "2019-10-13T00:18:22+00:00"
         },
         {
             "name": "genealabs/laravel-pivot-events",
