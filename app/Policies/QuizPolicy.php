@@ -25,6 +25,14 @@ class QuizPolicy
         return true;
     }
 
+    public function like(User $user, Quiz $quiz)
+    {
+        return !$quiz->likes()
+            ->where('user_id', $user->id)
+            ->where('likeable_id', $quiz->id)
+            ->exists();
+    }
+
     public function update(User $user, Quiz $quiz)
     {
         return $user->id === $quiz->user_id;

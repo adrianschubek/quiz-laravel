@@ -7,7 +7,7 @@
                 <a class="has-text-weight-medium" href="{{ route("profiles.show", $quiz->user) }}">
                     {{ $quiz->user->name }}
                 </a>
-                | erstellt {{ \Carbon\Carbon::parse($quiz->created_at)->fromNow() }}
+                | erstellt {{ $quiz->relative_created }}
             </small>
             <div class="tags has-addons m-l-sm">
                 <span class="tag">Status</span>
@@ -24,7 +24,7 @@
         </div>
         <div class="level-right">
             <p class="m-r-sm has-text-weight-bold"><i
-                    class="far fa-user"></i> {{ number_format($quiz->play_count, 0 , ',' , '.' ) }}
+                    class="far fa-user"></i> {{ $quiz->getPlayCount() }}
             </p>
             <p class="has-text-weight-bold"><i class="far fa-heart"></i> ? %</p>
         </div>
@@ -32,7 +32,7 @@
     <hr class="m-t-none">
 
     <div class="level">
-        <div class="level-left"><p class="has-text-weight-light">{{ Str::limit($quiz->description, 50) }}</p></div>
+        <div class="level-left"><p class="has-text-weight-light">{{ $quiz->getShortDescription() }}</p></div>
         <div class="level-right">
             @if(!$quiz->trashed())
                 @can('update', $quiz)

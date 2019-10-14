@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Like;
 use App\Quiz;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -85,6 +86,19 @@ class QuizController extends Controller
     public function update(Request $request, Quiz $quiz)
     {
 
+    }
+
+    public function like(Quiz $quiz)
+    {
+        $this->authorize('like', $quiz);
+
+        $like = new Like([
+            "user_id" => auth()->user()->id
+        ]);
+
+        $quiz->likes()->save($like);
+
+        return back()->with('ok', 'Du magst dieses Quiz.');
     }
 
     /**

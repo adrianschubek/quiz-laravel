@@ -12,11 +12,11 @@
         </div>
         <div class="level-right">
             <p class="m-r-sm has-text-weight-bold"><i
-                    class="far fa-user"></i> {{ number_format($quiz->play_count, 0 , ',' , '.' ) }}
+                    class="far fa-user"></i> {{ $quiz->getPlayCount() }}
             </p>
-            <p class="has-text-weight-bold"><i class="far fa-heart"></i> {{ number_format($quiz->likes_count, 0 , ',' , '.' ) }}</p>
+            <p class="has-text-weight-bold"><i class="far fa-heart"></i> {{ $quiz->getLikesCount() }}</p>
         </div>
     </div>
     <hr class="m-t-none">
-    <p class="has-text-weight-light">{{ Str::limit($quiz->description, 50) }}</p>
+    <p class="has-text-weight-light">{{ $quiz->getShortDescription() }}</p>
 </a>

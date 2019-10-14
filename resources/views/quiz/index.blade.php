@@ -23,7 +23,7 @@
                         <a href="{{ route('quiz.create') }}" class="button is-success"><i class="fa fa-plus"></i></a>
                     </div>
                 </div>
-                @forelse($user->quizzes()->latest()->get() as $quiz)
+                @forelse($quizzes = $user->quizzes()->latest()->paginate(5) as $quiz)
                     @include('layouts.quiz-edit', $quiz)
                 @empty
                     <div class="box has-text-centered noborder noboxshadow has-background-grey-lighter">
@@ -33,6 +33,7 @@
                             Erstelle dein erstes Quiz</a>
                     </div>
                 @endforelse
+                {{ $quizzes->links() }}
             </div>
             @if(!$user->quizzes()->onlyTrashed()->get()->isEmpty())
                 <div class="box has-background-white-bis noboxshadow border">

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Like;
 use App\Quiz;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\URL;
 
 class CommentController extends Controller
 {
@@ -39,14 +41,20 @@ class CommentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Response
+     * @param Quiz $quiz
+     * @return void
      */
-    public function store(Request $request)
+    public function store(Request $request, Quiz $quiz)
     {
         $data = $request->validate([
             "comment" => "min:3|max:300|required"
         ]);
-        dd($data);
+
+        $data["user_id"] = auth()->user()->id;
+        $comment = new Comment($data);
+
+        $quiz->comments()->save($comment);
+        return back()->with('ok', 'Kommentar erstellt');
     }
 
     /**
@@ -58,6 +66,7 @@ class CommentController extends Controller
     public function show(Quiz $quiz)
     {
         $comments = $quiz->comments()
+            ->withCount('likes')
             ->with('user')
             ->latest()
             ->paginate(15);
@@ -86,6 +95,19 @@ class CommentController extends Controller
     public function update(Request $request, Comment $comment)
     {
         //
+    }
+
+    public function like(Quiz $quiz, Comment $comment)
+    {
+        $this->authorize('like', $comment);
+
+        $like = new Like([
+            "user_id" => auth()->user()->id
+        ]);
+
+        $comment->likes()->save($like);
+
+        return redirect(URL::previous() . "#" . $comment->id)->with('ok', 'Du magst diesen Kommentar.');
     }
 
     /**

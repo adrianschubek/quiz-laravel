@@ -8,13 +8,27 @@
 
     <div class="container m-b-lg m-t-lg">
 
+        @if(session('ok'))
+            <article class="message is-success">
+                <div class="message-body">
+                    {{ session('ok') }}
+                </div>
+            </article>
+        @elseif(session('error'))
+            <article class="message is-danger">
+                <div class="message-body">
+                    {{ session('error') }}
+                </div>
+            </article>
+        @endif
+
         @can('create', \App\Comment::class)
             <article class="media">
                 <figure class="media-left">
                     <i class="far fa-user fa-2x"></i>
                 </figure>
                 <div class="media-content">
-                    <form action="{{ route('comments.store') }}" method="post">
+                    <form action="{{ route('comments.store', $quiz) }}" method="post">
                         @csrf
                         <div class="field">
                             <p class="control">
@@ -42,7 +56,7 @@
         @else
             <article class="message">
                 <div class="message-body">
-                    Melde dich an um Kommentare zu schreiben.
+                    Melde dich an, um Kommentare zu schreiben.
                 </div>
             </article>
         @endcan

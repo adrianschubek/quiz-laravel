@@ -56,6 +56,7 @@
                 @foreach($quizzes as $quiz)
                     @include('layouts.quiz', $quiz)
                 @endforeach
+                {{ $quizzes->links() }}
             </div>
         </div>
         <div class="column is-3">
