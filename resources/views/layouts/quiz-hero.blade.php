@@ -22,8 +22,8 @@
                         <div class="field is-grouped is-grouped-multiline">
                             <div class="control">
                                 <div class="tags has-addons are-medium">
-                                    <span class="tag is-dark"><i class="fas fa-user"></i></span>
-                                    <span class="tag is-white-bis">{{ $quiz->getPlayCount() }}</span>
+                                    <span class="tag is-dark"><i class="fas fa-play"></i></span>
+                                    <span class="tag is-white">{{ $quiz->getPlayCount() }}</span>
                                 </div>
                             </div>
 

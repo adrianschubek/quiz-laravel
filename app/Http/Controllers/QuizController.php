@@ -88,19 +88,6 @@ class QuizController extends Controller
 
     }
 
-    public function like(Quiz $quiz)
-    {
-        $this->authorize('like', $quiz);
-
-        $like = new Like([
-            "user_id" => auth()->user()->id
-        ]);
-
-        $quiz->likes()->save($like);
-
-        return back()->with('ok', 'Du magst dieses Quiz.');
-    }
-
     /**
      * Remove the specified resource from storage.
      *

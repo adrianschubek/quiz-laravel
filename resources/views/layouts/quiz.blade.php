@@ -12,7 +12,7 @@
         </div>
         <div class="level-right">
             <p class="m-r-sm has-text-weight-bold"><i
-                    class="far fa-user"></i> {{ $quiz->getPlayCount() }}
+                    class="far fa-play-circle"></i> {{ $quiz->getPlayCount() }}
             </p>
             <p class="has-text-weight-bold"><i class="far fa-heart"></i> {{ $quiz->getLikesCount() }}</p>
         </div>
