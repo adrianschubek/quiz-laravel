@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateProfileRequest;
 use App\User;
-use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,12 +20,10 @@ class ProfileController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return User[]|\Illuminate\Database\Eloquent\Collection
+     * @return User[]|Collection
      */
     public function index()
     {
-//        $username = auth()->user()->name;
-//        return view('profile.show', compact('username'));
         return User::all();
     }
 
@@ -54,18 +53,13 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param UpdateProfileRequest $request
      * @param User $profile
      * @return Response
      */
-    public function update(Request $request, User $profile)
+    public function update(UpdateProfileRequest $request, User $profile)
     {
-        $data = $request->validate([
-            "name" => "nullable|unique:users,name|min:5|max:255|alpha_dash",
-            "email" => "nullable|unique:users,email|confirmed|email|max:255",
-            "password" => "nullable|confirmed|min:8|max:255",
-            "current_password" => "required|max:255"
-        ]);
+        $data = $request->validated();
 
         if (!Hash::check($data["current_password"], $profile->getAuthPassword())) {
             return back()->withInput()->with('error', 'Passwort ist ungültig');
@@ -91,6 +85,7 @@ class ProfileController extends Controller
      *
      * @param User $profile
      * @return void
+     * @throws \Exception
      */
     public function destroy(User $profile)
     {

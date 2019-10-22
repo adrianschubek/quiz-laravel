@@ -18,12 +18,12 @@ class LikeCommentController extends Controller
     {
         $this->authorize('like', $comment);
 
-        $like = new Like([
-            "user_id" => auth()->user()->id
-        ]);
+        $like = new Like();
+        $like->user()->associate(auth()->user());
 
         $comment->likes()->save($like);
 
-        return redirect(URL::previous() . "#" . $comment->id)->with('ok', 'Du magst diesen Kommentar.');
+        return redirect(URL::previous() . "#" . $comment->id)
+            ->with('ok', 'Du magst diesen Kommentar.');
     }
 }

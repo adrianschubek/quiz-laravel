@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Http\Requests\StoreCommentRequest;
 use App\Like;
 use App\Quiz;
 use Illuminate\Http\Request;
@@ -40,18 +41,16 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param StoreCommentRequest $request
      * @param Quiz $quiz
      * @return void
      */
-    public function store(Request $request, Quiz $quiz)
+    public function store(StoreCommentRequest $request, Quiz $quiz)
     {
-        $data = $request->validate([
-            "comment" => "min:3|max:300|required"
-        ]);
+        $data = $request->validated();
 
-        $data["user_id"] = auth()->user()->id;
         $comment = new Comment($data);
+        $comment->user()->associate(auth()->user());
 
         $quiz->comments()->save($comment);
         return back()->with('ok', 'Kommentar erstellt');
@@ -101,9 +100,8 @@ class CommentController extends Controller
     {
         $this->authorize('like', $comment);
 
-        $like = new Like([
-            "user_id" => auth()->user()->id
-        ]);
+        $like = new Like();
+        $like->user()->associate(auth()->user());
 
         $comment->likes()->save($like);
 

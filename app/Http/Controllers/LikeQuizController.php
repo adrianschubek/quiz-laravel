@@ -16,9 +16,8 @@ class LikeQuizController extends Controller
     {
         $this->authorize('like', $quiz);
 
-        $like = new Like([
-            "user_id" => auth()->user()->id
-        ]);
+        $like = new Like();
+        $like->user()->associate(auth()->user());
 
         $quiz->likes()->save($like);
 

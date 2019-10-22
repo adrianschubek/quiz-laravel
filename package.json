@@ -11,23 +11,24 @@
     },
     "devDependencies": {
         "axios": "^0.19",
-        "bulma": "^0.7.5",
+        "bulma": "latest",
         "bulma-extensions": "^6.0.0",
         "cross-env": "^5.1",
         "laravel-mix": "^4.0.14",
-        "laravel-mix-purgecss": "^4.1",
+        "laravel-mix-purgecss": "^4.2.0",
         "laravel-mix-tailwind": "^0.1.0",
         "lodash": "^4.17.13",
         "resolve-url-loader": "^2.3.1",
-        "sass": "^1.15.2",
+        "sass": "^1.23.0",
         "sass-loader": "^7.1.0",
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.10.2",
-        "@vizuaalog/bulmajs": "^0.10.0",
+        "@fortawesome/fontawesome-free": "^5.11.2",
+        "@vizuaalog/bulmajs": "^0.10.1",
         "bulma-divider": "^0.2.0",
         "bulma-tooltip": "^2.0.2",
-        "jquery": "^3.4.1"
+        "jquery": "^3.4.1",
+        "trianglify": "^2.0.0"
     }
 }
