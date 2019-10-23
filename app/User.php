@@ -12,6 +12,8 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable, SoftDeletes, \Illuminate\Auth\MustVerifyEmail;
 
+    public const ADMIN = 10;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -56,7 +58,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function isAdmin()
     {
-        return $this->role === 10;
+        return $this->role === self::ADMIN;
     }
 
     public function sendEmailVerificationNotification()

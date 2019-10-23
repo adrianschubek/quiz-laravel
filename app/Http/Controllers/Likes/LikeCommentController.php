@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Likes;
 
 use App\Comment;
 use App\Like;
 use App\Quiz;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\URL;
 
 class LikeCommentController extends Controller

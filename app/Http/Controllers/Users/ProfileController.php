@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Users;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateProfileRequest;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;

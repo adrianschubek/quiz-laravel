@@ -14,10 +14,10 @@
                 @if($quiz->trashed())
                     <span class="tag is-danger">Gelöscht</span>
                 @else
-                    @if(!$quiz->questions->isEmpty())
+                    @if(!$quiz->isPrivate())
                         <span class="tag is-success">Veröffentlicht</span>
                     @else
-                        <span class="tag is-warning">Unvollständig</span>
+                        <span class="tag is-warning">Privat</span>
                     @endif
                 @endif
             </div>
@@ -26,7 +26,7 @@
             <p class="m-r-sm has-text-weight-bold"><i
                     class="far fa-user"></i> {{ $quiz->getPlayCount() }}
             </p>
-            <p class="has-text-weight-bold"><i class="far fa-heart"></i> ? %</p>
+            <p class="has-text-weight-bold"><i class="far fa-heart"></i> {{ $quiz->getLikesCount() }}</p>
         </div>
     </div>
     <hr class="m-t-none">

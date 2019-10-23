@@ -9,8 +9,8 @@
             </span>
             <progress class="progress is-small is-dark m-t-sm" max="100" wire:dirty wire:target="input"></progress>
             <div class="tags has-addons m-t-sm ">
-                <span class="tag is-medium is-dark is-rounded">{{ $quizzes->count() ?: "Keine" }} Quizze</span>
-                <span class="tag is-medium is-white is-rounded">in {{ number_format(microtime(true) - LARAVEL_START, 3, ',', '.') }} Sekunden</span>
+                <span class="tag is-medium is-dark">{{ $quizzes->count() ?: "Keine" }} Quizze</span>
+                <span class="tag is-medium is-white">in {{ number_format(microtime(true) - LARAVEL_START, 3, ',', '.') }} Sekunden gefunden</span>
             </div>
         </div>
         <div class="select is-large">

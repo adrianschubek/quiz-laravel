@@ -54,6 +54,11 @@ class Quiz extends Model
         return number_format($this->likes_count, 0, ',', '.');
     }
 
+    public function isPrivate()
+    {
+        return $this->questions->isEmpty();
+    }
+
     public function getShortDescription()
     {
         return Str::limit($this->description, 50);

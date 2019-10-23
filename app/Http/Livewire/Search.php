@@ -26,15 +26,10 @@ class Search extends Component
     {
         return view('livewire.search', [
             "quizzes" =>
-                $this->type !== 'user' ?
-                    Quiz::withCount('likes')
-                        ->with('user')
-                        ->where($this->type, 'like', '%' . $this->query . '%')
-                        ->limit(50)
-                        ->get()
-                    :
+                $this->type === 'user' ?
                     $this->getQuizzesForUser()
-
+                    :
+                    $this->getQuizzes()
         ]);
     }
 
@@ -46,5 +41,14 @@ class Search extends Component
             $quizzes = $quizzes->merge($user->quizzes()->withCount('likes')->limit(5)->get());
         }
         return $quizzes;
+    }
+
+    private function getQuizzes()
+    {
+        return Quiz::withCount('likes')
+            ->with('user')
+            ->where($this->type, 'like', '%' . $this->query . '%')
+            ->limit(50)
+            ->get();
     }
 }

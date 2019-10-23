@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function show(Request $request)
+    public function __invoke(Request $request)
     {
         return view('search', [
             "query" => $request->input('q')

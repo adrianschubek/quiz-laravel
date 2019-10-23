@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Comments;
 
 use App\Comment;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCommentRequest;
 use App\Like;
 use App\Quiz;

@@ -119,7 +119,8 @@
                 <div class="field">
                     <div class="control">
                         <label for="order">Position</label>
-                        <input class="input @error('order') is-danger @enderror" type="number" id="tentacles" name="tentacles"
+                        <input class="input @error('order') is-danger @enderror" type="number" id="tentacles"
+                               name="tentacles"
                                min="0" max="100" id="order"
                                wire:model.lazy="order"
                         >
@@ -133,7 +134,9 @@
         <div class="columns">
             <div class="column"></div>
             <div class="column is-narrow">
-                <button wire:click="store" class="button is-success" wire:loading.attr="disabled"><i class="fas fa-paper-plane m-r-sm"></i> Frage hinzufügen</button>
+                <button wire:click="store" wire:loading.attr="disabled" class="button is-success"><i
+                        class="fas fa-paper-plane m-r-sm"></i> Frage hinzufügen
+                </button>
             </div>
         </div>
     </div>

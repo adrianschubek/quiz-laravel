@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Quizzes;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreQuizRequest;
 use App\Quiz;
 use Illuminate\Http\Request;

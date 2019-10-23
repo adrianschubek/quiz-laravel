@@ -2,10 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Question as QuestionModel;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class Question extends Component
 {
+    use AuthorizesRequests;
+
     public $title;
     public $answer1;
     public $answer2;
@@ -16,7 +20,7 @@ class Question extends Component
 
     protected $quiz;
     protected $rules = [
-        "title" => "required|min:10|max:80",
+        "title" => "required|max:80",
         "answer1" => "required|max:80",
         "answer2" => "required_with:answer3,answer4|max:80",
         "answer3" => "required_with:answer4|max:80",
@@ -80,7 +84,7 @@ class Question extends Component
     {
         $this->validate($this->rules);
 
-        $question = new \App\Question(
+        $question = new QuestionModel(
             [
                 "title" => $this->title,
                 "order" => $this->order,

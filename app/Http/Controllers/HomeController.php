@@ -6,7 +6,7 @@ use App\Quiz;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         $sort = request('sort') === 'asc'
             ? 'asc' : 'desc';

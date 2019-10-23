@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Likes;
 
 use App\Like;
 use App\Quiz;
+use App\Http\Controllers\Controller;
 
 class LikeQuizController extends Controller
 {
