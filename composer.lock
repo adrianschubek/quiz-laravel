@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3231c0559842d2df002f1000f6278f69",
+    "content-hash": "bed1bad52267072a73b3c36296846c65",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -877,16 +877,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v0.3.17",
+            "version": "v0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "e363058c7a8c88b62f59b77bb85121e46f3262b3"
+                "reference": "c7d052198efbcf41bc0b8c6e0230b11196b4c69d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/e363058c7a8c88b62f59b77bb85121e46f3262b3",
-                "reference": "e363058c7a8c88b62f59b77bb85121e46f3262b3",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/c7d052198efbcf41bc0b8c6e0230b11196b4c69d",
+                "reference": "c7d052198efbcf41bc0b8c6e0230b11196b4c69d",
                 "shasum": ""
             },
             "require": {
@@ -895,8 +895,8 @@
             },
             "require-dev": {
                 "laravel/framework": "^5.6|^6.0",
-                "orchestra/testbench": "~3.0",
-                "phpunit/phpunit": "^7.5",
+                "orchestra/testbench": "~4.0",
+                "phpunit/phpunit": "^8.3",
                 "psy/psysh": "@stable"
             },
             "type": "library",
@@ -926,7 +926,7 @@
                 }
             ],
             "description": "Build and test rich client-side functionality: with only backend code.",
-            "time": "2019-10-11T16:56:26+00:00"
+            "time": "2019-11-13T01:07:34+00:00"
         },
         {
             "name": "monolog/monolog",
