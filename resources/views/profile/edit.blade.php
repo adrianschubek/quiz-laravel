@@ -34,8 +34,8 @@
                     </div>
                 </article>
             @endif
-            <form action="{{ route('profiles.update', $profile) }}" method="post">
-                <div class="box has-background-white-bis noboxshadow border">
+            <form action="{{ route('profiles.update', $profile) }}" method="post" onsubmit="button.disabled = true;button.classList.add('is-loading')">
+                <div class="box has-background-white-bis border">
                     @csrf
                     @method('PUT')
                     <div class="field">
@@ -56,7 +56,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="box has-background-white-bis noboxshadow border">
+                <div class="box has-background-white-bis border">
                     <div class="field">
                         <label class="label">E-Mail ändern</label>
                         <div class="control has-icons-left">
@@ -88,7 +88,7 @@
                         <p class="help">Du erhälst eine neue Bestätigungsemail.</p>
                     </div>
                 </div>
-                <div class="box has-background-white-bis noboxshadow border">
+                <div class="box has-background-white-bis border">
                     <div class="field">
                         <label class="label">Passwort ändern</label>
                         <div class="control has-icons-left">
@@ -136,7 +136,7 @@
                     <p class="help is-danger">{{ $message }}</p>
                     @enderror
                 </div>
-                <button type="submit" class="button is-info is-fullwidth m-b-md"><i
+                <button type="submit" class="button is-info is-fullwidth m-b-md" name="button"><i
                         class="fas fa-user-edit m-r-sm"></i>Speichern
                 </button>
             </form>

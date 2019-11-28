@@ -1,143 +1,76 @@
-<div>
-    @forelse($questions as $question)
-        @include('layouts.question-edit', $question)
-    @empty
-        <article class="message is-danger">
-            <div class="message-body">
-                Keine Fragen vorhanden.
-            </div>
-        </article>
-    @endforelse
-    <div class="is-divider"></div>
-    <div class="box m-b-md has-background-white-bis">
-        <div class="field">
-            <label class="label">Frage</label>
-            <div class="control has-icons-left" wire:dirty.class="is-loading" wire:target="title-input">
-                <input class="input @error('title') is-danger @enderror"
-                       type="text"
-                       placeholder="Gebe eine Frage ein"
-                       name="title"
-                       wire:ref="title-input"
-                       wire:model.lazy="title"
-                >
-                <span class="icon is-left">
-                    <i class="fa fa-question"></i>
-                </span>
-            </div>
-            @error('title')
-            <p class="help is-danger">{{ $message }}</p>
-            @enderror
+<div class="box m-b-md" wire:init="nextQuestion">
+    @if($position + 1 === $max)
+        <div wire:loading style="width: 100%">
+            <article class="message is-link">
+                <div class="message-body">
+                    <i class="fas fa-circle-notch fa-spin m-r-sm"></i> Deine Antworten werden überprüft...
+                </div>
+            </article>
         </div>
-        <hr>
-        <div class="field">
-            <label class="label">1. Antwort</label>
-            <div class="control" wire:dirty.class="is-loading" wire:target="answer1">
-                <input class="input @error('answer1') is-danger @enderror" type="text"
-                       placeholder="Gebe eine Antwort ein"
-                       name="answer1"
-                       wire:ref="answer1"
-                       wire:model.lazy="answer1"
-                >
-            </div>
-            @error('answer1')
-            <p class="help is-danger">{{ $message }}</p>
-            @enderror
+    @else
+        <div wire:loading style="width: 100%">
+            <article class="message is-info">
+                <div class="message-body">
+                    <i class="fas fa-circle-notch fa-spin m-r-sm"></i> Frage wird geladen...
+                </div>
+            </article>
         </div>
-        <div class="field">
-            <label class="label">2. Antwort</label>
-            <div class="control" wire:dirty.class="is-loading" wire:target="answer2">
-                <input class="input @error('answer2') is-danger @enderror" type="text"
-                       placeholder="Gebe eine Antwort ein (optional)"
-                       name="answer2"
-                       wire:ref="answer2"
-                       wire:model.lazy="answer2"
-                >
-            </div>
-            @error('answer2')
-            <p class="help is-danger">{{ $message }}</p>
-            @enderror
-        </div>
-        <div class="field">
-            <label class="label">3. Antwort</label>
-            <div class="control" wire:dirty.class="is-loading" wire:target="answer3">
-                <input class="input @error('answer3') is-danger @enderror" type="text"
-                       placeholder="Gebe eine Antwort ein (optional)"
-                       name="answer3"
-                       wire:ref="answer3"
-                       wire:model.lazy="answer3">
-            </div>
-            @error('answer3')
-            <p class="help is-danger">{{ $message }}</p>
-            @enderror
-        </div>
-        <div class="field">
-            <label class="label">4. Antwort</label>
-            <div class="control" wire:dirty.class="is-loading" wire:target="answer4">
-                <input class="input @error('answer4') is-danger @enderror" type="text"
-                       placeholder="Gebe eine Antwort ein (optional)"
-                       name="answer4"
-                       wire:ref="answer4"
-                       wire:model.lazy="answer4">
-            </div>
-            @error('answer4')
-            <p class="help is-danger">{{ $message }}</p>
-            @enderror
-        </div>
-        <div class="columns">
-            <div class="column">
-                <div class="field">
-                    <label for="correct-select">
-                        Richtige Antwort
-                    </label>
+    @endif
+    <div wire:loading.class="is-hidden">
+        @if($position === $max)
+            <p class="subtitle">Auswertung</p>
+            <p>
+                Du hast <span>{{ $results['correct'] }}</span> von <span class="has-text-weight-bold">{{ $max }}</span>
+                Fragen richtig beantwortet.
+            </p>
+            {{ ddd($results['answers']['user'], $results['answers']['correct']) }}
+            {{ ddd($results['answers']['correct']) }}
+        @else
+            <p class="has-text-weight-light">Frage {{ $position + 1 }} von {{ $max }}</p>
+            <p class="subtitle">{{ $question['title'] }}</p>
 
-                    <div class="control has-icons-left">
-                        <div class="select">
-                            <select id="correct-select" wire:model="correct" @empty($answer1) disabled @endif>
-                                @empty($answer1)
-                                    <option disabled>Keine Antworten</option>
-                                @else
-                                    <option value="1">1) {{ $answer1 }}</option>
-                                    @if(!empty($answer2))
-                                        <option value="2">2) {{ $answer2 }}</option>
-                                    @endif
-                                    @if(!empty($answer3))
-                                        <option value="3">3) {{ $answer3 }}</option>
-                                    @endif
-                                    @if(!empty($answer4))
-                                        <option value="4">4) {{ $answer4 }}</option>
-                                    @endif
-                                @endif
-                            </select>
-                        </div>
-                        <div class="icon is-left">
-                            <i class="fas fa-check-square"></i>
-                        </div>
-                    </div>
+            <form wire:submit.prevent="addAnswer(Object.fromEntries(new FormData($event.target)))">
+                <div class="inputGroup">
+                    <input id="radio1" name="answer" type="radio" value="0">
+                    <label for="radio1">{{ $question['answer_1'] }}</label>
                 </div>
-            </div>
-            <div class="column">
-                <div class="field">
-                    <div class="control">
-                        <label for="order">Position</label>
-                        <input class="input @error('order') is-danger @enderror" type="number" id="tentacles"
-                               name="tentacles"
-                               min="0" max="100" id="order"
-                               wire:model.lazy="order"
-                        >
-                        @error('order')
-                        <p class="help is-danger">{{ $message }}</p>
-                        @enderror
+                @if(isset($question['answer_2']))
+                    <hr style="margin: 0 !important;">
+                    <div class="inputGroup">
+                        <input id="radio2" name="answer" type="radio" value="1">
+                        <label for="radio2">{{ $question['answer_2'] }}</label>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="columns">
-            <div class="column"></div>
-            <div class="column is-narrow">
-                <button wire:click="store" wire:loading.attr="disabled" class="button is-success"><i
-                        class="fas fa-paper-plane m-r-sm"></i> Frage hinzufügen
-                </button>
-            </div>
-        </div>
+                    @if(isset($question['answer_3']))
+                        <hr style="margin: 0 !important;">
+                        <div class="inputGroup">
+                            <input id="radio3" name="answer" type="radio" value="2">
+                            <label for="radio3">{{ $question['answer_3'] }}</label>
+                        </div>
+                        @if(isset($question['answer_4']))
+                            <hr style="margin: 0 !important;">
+                            <div class="inputGroup">
+                                <input id="radio4" name="answer" type="radio" value="3">
+                                <label for="radio4">{{ $question['answer_4'] }}</label>
+                            </div>
+                        @endif
+                    @endif
+                @endif
+                <button class="button is-fullwidth is-light">Weiter</button>
+            </form>
+        @endif
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        {{--     Alle Checkboxen unchecken   --}}
+        document.addEventListener("livewire:load", function () {
+            window.livewire.afterDomUpdate(() => {
+                let radios = document.getElementsByTagName('input');
+                for (let i = 0; i < radios.length; i++) {
+                    radios[i].checked = false;
+                }
+            });
+        });
+    </script>
+@endpush

@@ -7,36 +7,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCommentRequest;
 use App\Like;
 use App\Quiz;
-use Illuminate\Http\Request;
+use Exception;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\URL;
 
 class CommentController extends Controller
 {
     public function __construct()
     {
         $this->middleware(['auth', 'verified'])->except(['show']);
-        $this->authorizeResource(Comment::class, 'quiz');
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
+        $this->authorizeResource(Comment::class, 'comment', ['except' => ['show']]);
     }
 
     /**
@@ -74,29 +53,6 @@ class CommentController extends Controller
         return view('comments.show', compact('quiz', 'comments'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Comment $comment
-     * @return Response
-     */
-    public function edit(Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param Comment $comment
-     * @return Response
-     */
-    public function update(Request $request, Comment $comment)
-    {
-        //
-    }
-
     public function like(Quiz $quiz, Comment $comment)
     {
         $this->authorize('like', $comment);
@@ -106,17 +62,22 @@ class CommentController extends Controller
 
         $comment->likes()->save($like);
 
-        return redirect(URL::previous() . "#" . $comment->id)->with('ok', 'Du magst diesen Kommentar.');
+        return redirect()
+            ->to(url()->previous() . "#" . $comment->id)
+            ->with('ok', 'Du magst diesen Kommentar.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param Quiz $quiz
      * @param Comment $comment
-     * @return Response
+     * @return void
+     * @throws Exception
      */
-    public function destroy(Comment $comment)
+    public function destroy(Quiz $quiz, Comment $comment)
     {
-        //
+        $comment->delete();
+        return back()->with('ok', 'Kommentar gelöscht');
     }
 }

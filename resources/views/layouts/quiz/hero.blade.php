@@ -4,17 +4,19 @@
             <div class="level">
                 <div class="level-left">
                     <div class="container">
-                        <h1 class="title">
+                        <h1 class="title m-b-none">
                             {{ $quiz->title }}
                         </h1>
-                        <h2 class="subtitle has-text-weight-light">
-                            von <a class="has-text-warning has-text-weight-normal"
-                                   href="{{ route('profiles.show', $quiz->user) }}">{{ $quiz->user->name }}</a>
-                            @if($quiz->user->isAdmin())
-                                <span class="tag is-danger">Administrator</span>
-                            @endif
-                            - {{ $quiz->relative_created }} erstellt
-                        </h2>
+                        <span class="subtitle has-text-weight-light">von</span>
+                        <a class="tag is-link is-light"
+                           href="{{ route('profiles.show', $quiz->user) }}">
+                            {{ $quiz->user->name }}</a>
+                        @if($quiz->user->isAdmin())
+                            <span class="tag is-danger">Administrator</span>
+                        @endif
+                        <span class="has-text-weight-light">
+                        - {{ $quiz->relative_created }} erstellt
+                        </span>
                     </div>
                 </div>
                 <div class="level-right">

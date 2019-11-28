@@ -36,7 +36,7 @@ class ProfileController extends Controller
      */
     public function show(User $profile)
     {
-        $quizzes = $profile->quizzes()->has("questions")->paginate(5);
+        $quizzes = $profile->quizzes()->public()->paginate(5);
         return view('profile.show', compact('profile', 'quizzes'));
     }
 

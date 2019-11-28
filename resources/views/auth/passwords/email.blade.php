@@ -27,7 +27,7 @@
                         </div>
                     @endif
 
-                    <form class="forgot-password-form" method="POST" action="{{ route('password.email') }}">
+                    <form class="forgot-password-form" method="POST" action="{{ route('password.email') }}" onsubmit="button.disabled = true;button.classList.add('is-loading')">
 
                         {{ csrf_field() }}
 
@@ -58,7 +58,7 @@
                             <div class="field-body">
                                 <div class="field is-grouped">
                                     <div class="control">
-                                        <button type="submit" class="button is-dark">Passwort zurücksetzen
+                                        <button type="submit" class="button is-dark" name="button">Passwort zurücksetzen
                                         </button>
                                     </div>
                                 </div>

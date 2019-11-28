@@ -1,7 +1,7 @@
 <article class="media">
     <a class="media-left" href="{{ route('profiles.show', [$comment->user, $comment->user->name]) }}"
        id="{{ $comment->id }}">
-        @if(auth()->user()->id === $comment->user->id)
+        @if((auth()->user()->id ?? false) === $comment->user->id)
             <i class="far fa-user fa-2x has-text-info"></i>
         @else
             <i class="far fa-user fa-2x has-text-grey-light"></i>
@@ -12,7 +12,11 @@
             <p>
                 <a href="{{ route('profiles.show', [$comment->user, $comment->user->name]) }}"
                    class="has-text-dark"><strong>{{ $comment->user->name }}</strong></a>
-                <small><span class="has-text-weight-light">#{{ $comment->id }}</span> {{ $comment->relative_created }}
+                @if($comment->user->isAdmin())
+                    <span class="tag is-danger is-light">Admin</span>
+                @endif
+                <small>
+                    <span class="has-text-weight-light">#{{ $comment->id }}</span> {{ $comment->relative_created }}
                 </small>
                 <br>
                 {{ $comment->comment }}
@@ -25,9 +29,11 @@
                 </a>
                 <div class="level-item">
                     @auth
-                        <form action="{{ route('comments.like', [$comment->quiz, $comment]) }}" method="post">
+                        <form action="{{ route('comments.like', [$comment->quiz, $comment]) }}" method="post"
+                              onsubmit="button.disabled = true;button.classList.add('is-loading')">
                             @csrf
-                            <button class="button is-small @can('like', $comment) is-light @else is-danger @endcan"
+                            <button name="button"
+                                    class="button is-small @can('like', $comment) is-light @else is-danger @endcan"
                                     @cannot('like', $comment) disabled @endcannot>
                                 <span class="icon is-small m-r-sm"><i class="fas fa-heart"></i></span>
                                 {{ $comment->likes_count }}
@@ -40,7 +46,13 @@
             </div>
         </nav>
     </div>
-    <div class="media-right">
-        {{--        <button class="delete"></button>--}}
-    </div>
+    @can('delete', $comment)
+        <div class="media-right">
+            <form action="{{ route('comments.destroy', [$quiz, $comment]) }}" method="post">
+                @csrf
+                @method('delete')
+                <button class="delete"></button>
+            </form>
+        </div>
+    @endcan
 </article>

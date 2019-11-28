@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
@@ -62,6 +63,21 @@ class Quiz extends Model
     public function getShortDescription()
     {
         return Str::limit($this->description, 50);
+    }
+
+    public function scopePublic(Builder $query)
+    {
+        return $query->has('questions');
+    }
+
+    public function scopeMostPlayed(Builder $query)
+    {
+        return $query->orderBy('play_count', 'desc');
+    }
+
+    public function scopeMostLiked(Builder $query)
+    {
+        return $query->orderBy('likes_count', 'desc');
     }
 
     public function getRelativeCreatedAttribute()

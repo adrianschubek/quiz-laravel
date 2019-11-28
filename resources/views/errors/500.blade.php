@@ -7,7 +7,7 @@
         <div class="hero-body">
             <div class="container">
                 <h1 class="title is-family-code">500.</h1>
-                <p class="subtitle">Wartungsarbeiten.</p>
+                <p class="subtitle">Server Fehler.</p>
             </div>
         </div>
     </section>

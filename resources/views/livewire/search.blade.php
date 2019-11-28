@@ -25,7 +25,7 @@
         <div class="columns is-mobile is-multiline is-centered">
             @forelse($quizzes as $quiz)
                 <div class="column is-narrow">
-                    @include('layouts.quiz', $quiz)
+                    @include('layouts.quiz.quiz', $quiz)
                 </div>
             @empty
         </div>

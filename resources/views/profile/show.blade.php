@@ -3,7 +3,7 @@
 @section('title', "$profile->name's Profil")
 
 @section('content')
-    <section class="hero is-primary is-bold">
+    <section class="hero is-info is-bold">
         <div class="hero-body">
             <div class="container">
                 <h1 class="has-text-weight-light title">
@@ -19,17 +19,19 @@
         <div class="column is-3">
         </div>
         <div class="column is-6">
-            <div class="box has-background-white noboxshadow border">
+            <div class="box has-background-white shadow1">
                 <div class="columns">
                     <div class="column">
                         @if($profile->last_login_at)
                             <p>
                                 <span class="has-text-weight-light">Zuletzt online </span>
+                                <i class="fas fa-signal has-text-grey"></i>
                                 {{ \Carbon\Carbon::parse($profile->last_login_at)->fromNow() }}
                             </p>
                         @endif
                         <p>
                             <span class="has-text-weight-light">Mitglied seit </span>
+                            <i class="fas fa-birthday-cake has-text-grey"></i>
                             {{ \Carbon\Carbon::parse($profile->created_at)->format('d.m.Y') }}
                         </p>
                     </div>
@@ -44,7 +46,7 @@
             <div class="box has-background-white-bis noboxshadow">
                 <div class="columns">
                     <div class="column">
-                        <h1 class="subtitle">Veröffentlichte Quizze</h1>
+                        <h1 class="subtitle"><i class="fas fa-layer-group"></i> Quizze ({{ $quizzes->count() }})</h1>
                     </div>
                     <div class="column is-narrow">
                         @can('update', $profile)
@@ -53,9 +55,15 @@
                         @endcan
                     </div>
                 </div>
-                @foreach($quizzes as $quiz)
-                    @include('layouts.quiz', $quiz)
-                @endforeach
+                @forelse($quizzes as $quiz)
+                    @include('layouts.quiz.quiz', $quiz)
+                @empty
+                    <article class="message">
+                        <div class="message-body">
+                            Keine Quizze veröffentlicht.
+                        </div>
+                    </article>
+                @endforelse
                 {{ $quizzes->links() }}
             </div>
         </div>
@@ -63,3 +71,5 @@
         </div>
     </div>
 @endsection
+
+

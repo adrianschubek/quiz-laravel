@@ -3,64 +3,43 @@
 namespace App\Http\Controllers\Quizzes\Questions;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Quiz;
+use App\Http\Requests\StoreQuestionRequest;
+use App\Question;
+use App\Quiz;
+use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class QuestionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
+    public function __construct()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @param Quiz $quiz
-     * @return void
-     */
-    public function create(Quiz $quiz)
-    {
-        //
+        $this->middleware(['auth', 'verified'])->except('show');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     * @return Response
+     * @param StoreQuestionRequest $request
+     * @param Quiz $quiz
+     * @return void
+     * @throws AuthorizationException
      */
-    public function store(Request $request)
+    public function store(StoreQuestionRequest $request, Quiz $quiz)
     {
-        //
-    }
+        $this->authorize('create', $quiz);
+        $data = $request->validated();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        // Falls als richtig markierte Antwort leer ist.
+        if (!isset($data['answer_' . $data['correct']])) {
+            return back()->withInput()->with('correct', 'Als richtig markierte Antwort ist leer');
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
+        $question = new Question($request->validated());
+        $question->quiz()->associate($quiz);
+        $question->save();
+
+        return redirect()->route('quiz.edit', $quiz);
     }
 
     /**
@@ -68,7 +47,7 @@ class QuestionController extends Controller
      *
      * @param Request $request
      * @param int $id
-     * @return Response
+     * @return void
      */
     public function update(Request $request, $id)
     {
@@ -78,11 +57,14 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
-     * @return Response
+     * @param Quiz $quiz
+     * @param Question $question
+     * @return void
+     * @throws Exception
      */
-    public function destroy($id)
+    public function destroy(Quiz $quiz, Question $question)
     {
-        //
+        $question->delete();
+        return back()->with('ok', 'Frage gelöscht');
     }
 }

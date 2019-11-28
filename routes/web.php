@@ -35,3 +35,4 @@ Route::post('/quiz/{quiz}/comments/{comment}/like', LikeCommentController::class
 Route::resource('/profiles', ProfileController::class)->except(['create', 'store']);
 Route::get('/profiles/{profile}/{slug?}', [ProfileController::class, 'show'])->name('profiles.show');
 
+

@@ -10,14 +10,14 @@
                 | erstellt {{ $quiz->relative_created }}
             </small>
             <div class="tags has-addons m-l-sm">
-                <span class="tag">Status</span>
                 @if($quiz->trashed())
-                    <span class="tag is-danger">Gelöscht</span>
+                    <span class="tag is-danger is-light">Gelöscht</span>
                 @else
                     @if(!$quiz->isPrivate())
-                        <span class="tag is-success">Veröffentlicht</span>
+                        <span class="tag is-success is-light">Veröffentlicht</span>
                     @else
-                        <span class="tag is-warning">Privat</span>
+                        <span class="tag is-warning is-light">Privat</span>
+                        <span class="tag is-light">Keine Fragen erstellt</span>
                     @endif
                 @endif
             </div>
@@ -40,29 +40,32 @@
                         <i class="fas fa-pen m-r-sm"></i> Bearbeiten</a>
                 @endcan
                 @can('delete', $quiz)
-                    <form action="{{ route('quiz.destroy', $quiz) }}" method="post">
+                    <form action="{{ route('quiz.destroy', $quiz) }}" method="post"
+                          onsubmit="delbtn.disabled = true;delbtn.classList.add('is-loading')">
                         @csrf
                         @method('delete')
-                        <button class="button has-text-danger is-text">
+                        <button name="delbtn" class="button has-text-danger is-text">
                             <i class="fas fa-trash"></i>
                         </button>
                     </form>
                 @endcan
             @else
                 @can('restore', $quiz)
-                    <form action="{{route('quiz.restore', $quiz->id)}}" method="post">
+                    <form action="{{ route('quiz.restore', $quiz->id) }}" method="post"
+                          onsubmit="resbtn.disabled = true;resbtn.classList.add('is-loading')">
                         @csrf
                         @method('put')
-                        <button class="button is-success m-r-sm">
+                        <button name="resbtn" class="button is-success m-r-sm">
                             <i class="fas fa-undo m-r-sm"></i> Wiederherstellen
                         </button>
                     </form>
                 @endcan
                 @can('forceDelete', $quiz)
-                    <form action="{{ route('quiz.force-delete', $quiz->id) }}" method="post">
+                    <form action="{{ route('quiz.force-delete', $quiz->id) }}" method="post"
+                          onsubmit="fbtn.disabled = true;fbtn.classList.add('is-loading')">
                         @csrf
                         @method('delete')
-                        <button class="button has-text-danger is-text">
+                        <button name="fbtn" class="button has-text-danger is-text">
                             <i class="fas fa-trash"></i>
                         </button>
                     </form>

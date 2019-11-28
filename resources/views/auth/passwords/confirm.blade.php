@@ -19,7 +19,7 @@
                 <div class="accent has-background-dark rounded-top"></div>
 
                 <div class="card-content shadow">
-                    <form class="login-form" method="POST" action="{{ route('password.confirm') }}">
+                    <form class="login-form" method="POST" action="{{ route('password.confirm') }}" onsubmit="button.disabled = true;button.classList.add('is-loading')">
                         @csrf
                         <div class="columns">
                             <div class="column is-3">
@@ -53,7 +53,7 @@
                                         <div class="field is-grouped">
                                             <div class="control ">
                                                 <a href="{{ route('password.request') }}"
-                                                   class="button is-text has-text-grey">
+                                                   class="button is-text has-text-grey" name="button">
                                                     Passwort vergessen
                                                 </a>
                                             </div>
@@ -66,7 +66,7 @@
                                     <div class="field-body">
                                         <div class="field is-grouped">
                                             <div class="control">
-                                                <button type="submit" class="button is-dark"><i
+                                                <button type="submit" class="button is-dark" name="button"><i
                                                         class="fas fa-user-check m-r-sm"></i>Bestätigen
                                                 </button>
                                             </div>

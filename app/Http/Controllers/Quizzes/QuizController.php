@@ -34,7 +34,7 @@ class QuizController extends Controller
         $quiz->user()->associate(auth()->user());
         $quiz->save();
 
-        return redirect(route('quiz.edit', $quiz));
+        return redirect()->route('quiz.edit', $quiz);
     }
 
     public function show(Quiz $quiz)
@@ -55,7 +55,7 @@ class QuizController extends Controller
     public function destroy(Quiz $quiz)
     {
         $quiz->delete();
-        return redirect(route('quiz.index'));
+        return redirect()->route('quiz.index');
     }
 
     public function forceDelete($id)
@@ -64,7 +64,7 @@ class QuizController extends Controller
         $this->authorize('forceDelete', $quiz);
 
         $quiz->forceDelete();
-        return redirect(route('quiz.index'));
+        return redirect()->route('quiz.index');
     }
 
     public function restore($id)
@@ -73,6 +73,6 @@ class QuizController extends Controller
         $this->authorize('restore', $quiz);
 
         $quiz->restore();
-        return redirect(route('quiz.index'));
+        return redirect()->route('quiz.index');
     }
 }

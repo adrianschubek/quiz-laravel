@@ -2,108 +2,67 @@
 
 namespace App\Http\Livewire;
 
-use App\Question as QuestionModel;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use App\Quiz;
+use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class Question extends Component
 {
-    use AuthorizesRequests;
+    public int $position;
+    public array $answers;
+    public int $max;
+    public array $results;
+    protected Collection $questions;
+    protected \App\Question $currentQuestion;
 
-    public $title;
-    public $answer1;
-    public $answer2;
-    public $answer3;
-    public $answer4;
-    public $correct = 1;
-    public $order = 1;
-
-    protected $quiz;
-    protected $rules = [
-        "title" => "required|max:80",
-        "answer1" => "required|max:80",
-        "answer2" => "required_with:answer3,answer4|max:80",
-        "answer3" => "required_with:answer4|max:80",
-        "answer4" => "max:80",
-        "correct" => "integer|between:1,4",
-        "order" => "integer|between:0,100"
-    ];
-
-    public function mount($quiz)
+    public function mount(Quiz $quiz)
     {
-        $this->quiz = $quiz;
+        $this->answers = [];
+        $this->results = [];
+        $this->position = 0;
+        $this->questions = $quiz->questions()->orderBy('order', 'asc')->get();
+        $this->currentQuestion = $this->questions[$this->position];
+        $this->max = count($this->questions);
     }
 
-    public function updatedTitle($value)
+    public function addAnswer($data)
     {
-        $this->validate(["title" => $this->rules["title"]]);
+        if (!isset($data["answer"])) {
+            return;
+        }
+        $this->answers[$this->position] = (int)$data["answer"];
+        $this->nextQuestion();
     }
 
-    public function updatedAnswer1($value)
+    public function nextQuestion()
     {
-        $this->validate(["answer1" => $this->rules["answer1"]]);
+        if ($this->position + 1 === $this->max) {
+            $this->position++;
+            $this->checkResults();
+            return;
+        }
+        $this->currentQuestion = $this->questions[++$this->position];
     }
 
-    public function updatedAnswer2($value)
+    public function checkResults()
     {
-        $this->validate(["answer2" => $this->rules["answer2"]]);
-    }
+        $correctAnswers = $this->questions->pluck('correct');
+        $userAnswers = collect($this->answers);
+        $wrongAnswers = $correctAnswers->diffAssoc($userAnswers);
 
-    public function updatedAnswer3($value)
-    {
-        $this->validate(["answer3" => $this->rules["answer3"]]);
-    }
+        $this->results['correct'] = $this->max - $wrongAnswers->count();
+        $this->results['answers'] = [
+            "user" => $userAnswers,
+            "correct" => $wrongAnswers
+        ];
 
-    public function updatedAnswer4($value)
-    {
-        $this->validate(["answer4" => $this->rules["answer4"]]);
-    }
-
-    public function updatedCorrect($value)
-    {
-        $this->validate(["correct" => $this->rules["correct"]]);
-    }
-
-    public function updatedOrder($value)
-    {
-        $this->validate(["order" => $this->rules["order"]]);
-    }
-
-    public function reset()
-    {
-        $this->title = null;
-        $this->answer1 = null;
-        $this->answer2 = null;
-        $this->answer3 = null;
-        $this->answer4 = null;
-        $this->correct = 1;
-        $this->order = 1;
-    }
-
-    public function store()
-    {
-        $this->validate($this->rules);
-
-        $question = new QuestionModel(
-            [
-                "title" => $this->title,
-                "order" => $this->order,
-                "answer_1" => $this->answer1,
-                "answer_2" => $this->answer2,
-                "answer_3" => $this->answer3,
-                "answer_4" => $this->answer4,
-                "correct" => $this->correct
-            ]
-        );
-
-        $this->quiz->questions()->save($question);
-        return redirect()->route('quiz.edit', $this->quiz);
+        $this->questions[0]->quiz()->increment('play_count');
     }
 
     public function render()
     {
         return view('livewire.question', [
-            "questions" => $this->quiz->questions
+            'question' => $this->currentQuestion ?? null
         ]);
     }
 }

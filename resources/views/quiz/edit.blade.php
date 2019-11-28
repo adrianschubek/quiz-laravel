@@ -2,10 +2,6 @@
 
 @section('title', "$quiz->title bearbeiten")
 
-@push('head')
-    @livewireAssets
-@endpush
-
 @section('content')
     <section class="hero is-primary is-bold">
         <div class="hero-body">
@@ -23,7 +19,16 @@
             <div class="box has-background-white-ter">
                 {{ $quiz->description }}
             </div>
-            @livewire('question', $quiz)
+            @forelse($quiz->questions()->orderBy('order', 'asc')->get() as $question)
+                @include('layouts.quiz.questions.show', $question)
+            @empty
+                <article class="message is-danger">
+                    <div class="message-body">
+                        Keine Fragen vorhanden.
+                    </div>
+                </article>
+            @endforelse
+            @include('layouts.quiz.questions.create')
         </div>
         <div class="column is-3">
         </div>

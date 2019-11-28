@@ -19,7 +19,7 @@
                 <div class="accent has-background-dark rounded-top"></div>
 
                 <div class="card-content shadow">
-                    <form class="register-form" method="POST" action="{{ route('register') }}">
+                    <form class="register-form" method="POST" action="{{ route('register') }}" onsubmit="button.disabled = true;button.classList.add('is-loading')">
 
                         @csrf
 
@@ -135,7 +135,7 @@
                                     <div class="field-body ">
                                         <div class="field is-grouped ">
                                             <div class="control ">
-                                                <button type="submit" class="button is-dark is-fullwidth">Registrieren
+                                                <button type="submit" class="button is-dark is-fullwidth" name="button">Registrieren
                                                 </button>
                                             </div>
                                         </div>

@@ -174,5 +174,10 @@ return [
         'size' => 'Größe',
         'comment' => 'Kommentar',
         'current_password' => 'Aktuelles Passwort',
+        'answer_1' => 'Erste Antwort',
+        'answer_2' => 'Zweite Antwort',
+        'answer_3' => 'Dritte Antwort',
+        'answer_4' => 'Vierte Antwort',
+        'order' => 'Position',
     ],
 ];

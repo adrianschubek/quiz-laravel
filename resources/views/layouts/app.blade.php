@@ -33,14 +33,14 @@
 
             <div class="navbar-end">
                 <div class="flex centerflex">
-                    <form action="{{ route('quiz.search') }}" class="m-r-sm field has-addons">
+                    <form action="{{ route('quiz.search') }}" class="m-r-sm field has-addons" onsubmit="button.disabled = true;button.classList.add('is-loading')">
                         <div class="control">
                             <input class="input m-r-sm has-background-white-ter noborder noboxshadow" type="text"
                                    name="q"
                                    placeholder="Suche...">
                         </div>
                         <div class="control">
-                            <button type="submit" class="button is-link "><i class="fas fa-search"></i></button>
+                            <button type="submit" class="button is-link " name="button"><i class="fas fa-search"></i></button>
                         </div>
                     </form>
                 </div>
@@ -71,8 +71,8 @@
                                 <i class="fas fa-sign-out-alt m-r-sm"></i> Logout
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                  style="display: none;">
-                                {{ csrf_field() }}
+                                  style="display: none;" >
+                                @csrf
                             </form>
                         </div>
                     </div>
@@ -88,12 +88,14 @@
 <footer class="footer has-background-black-bis m-b-none p-b-md p-t-md">
     <div class="has-text-centered has-text-grey-light">
         <p>
-            <strong class="has-text-grey-light">Quiz</strong> programmiert von <i>Adrian Schubek</i> &copy; 2019 mit Laravel in PHP.
+            <strong class="has-text-grey-light">Quiz</strong> programmiert von <i>Adrian Schubek</i> &copy; 2019 mit
+            Laravel in PHP.
         </p>
     </div>
 </footer>
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+@stack('scripts')
 </body>
 </html>

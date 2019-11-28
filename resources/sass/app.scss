@@ -14,6 +14,12 @@ $card-header-color: white;
 @import "bulma";
 
 @import "gradients";
+@import "shadows";
+@import "radio";
+
+::selection {
+    background: $red
+}
 
 .card,
 .card-content {

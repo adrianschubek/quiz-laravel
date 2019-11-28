@@ -38,7 +38,7 @@ class Search extends Component
         $collection = User::where('name', 'like', '%' . $this->query . '%')->limit(10)->get();
         $quizzes = collect();
         foreach ($collection as $user) {
-            $quizzes = $quizzes->merge($user->quizzes()->withCount('likes')->limit(5)->get());
+            $quizzes = $quizzes->merge($user->quizzes()->whereHas('questions')->withCount('likes')->limit(5)->get());
         }
         return $quizzes;
     }
@@ -48,6 +48,7 @@ class Search extends Component
         return Quiz::withCount('likes')
             ->with('user')
             ->where($this->type, 'like', '%' . $this->query . '%')
+            ->whereHas('questions')
             ->limit(50)
             ->get();
     }

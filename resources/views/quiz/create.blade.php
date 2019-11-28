@@ -17,7 +17,7 @@
         </div>
         <div class="column is-6">
             <div class="container">
-                <form action="{{ route('quiz.store') }}" method="post">
+                <form action="{{ route('quiz.store') }}" method="post" onsubmit="button.disabled = true;button.classList.add('is-loading')">
                     @csrf
                     <div class="box">
                         <div class="field">
@@ -53,7 +53,7 @@
                             <div class="level-right">
                                 <div class="field">
                                     <div class="control">
-                                        <button class="button is-info">
+                                        <button class="button is-info" name="button">
                                             <i class="fas fa-plus-circle m-r-sm"></i> Fragen hinzufügen
                                         </button>
                                     </div>
