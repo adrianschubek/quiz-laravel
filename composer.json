@@ -7,7 +7,7 @@
         "fideloper/proxy": "^4.0",
         "genealabs/laravel-model-caching": "*",
         "laravel/framework": "^6.0",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
