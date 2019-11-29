@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "38bd0146194a514e794ff216f5833793",
+    "content-hash": "fc46e4fa763de27142866a8e5aadb5b9",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -877,16 +877,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v0.3.21",
+            "version": "v0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "25a7f946359450f6355210c8925412d8cbee26e4"
+                "reference": "c7d052198efbcf41bc0b8c6e0230b11196b4c69d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/25a7f946359450f6355210c8925412d8cbee26e4",
-                "reference": "25a7f946359450f6355210c8925412d8cbee26e4",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/c7d052198efbcf41bc0b8c6e0230b11196b4c69d",
+                "reference": "c7d052198efbcf41bc0b8c6e0230b11196b4c69d",
                 "shasum": ""
             },
             "require": {
@@ -895,8 +895,8 @@
             },
             "require-dev": {
                 "laravel/framework": "^5.6|^6.0",
-                "orchestra/testbench": "~3.0",
-                "phpunit/phpunit": "^7.5",
+                "orchestra/testbench": "~4.0",
+                "phpunit/phpunit": "^8.3",
                 "psy/psysh": "@stable"
             },
             "type": "library",
@@ -926,7 +926,7 @@
                 }
             ],
             "description": "Build and test rich client-side functionality: with only backend code.",
-            "time": "2019-11-11T23:44:45+00:00"
+            "time": "2019-11-13T01:07:34+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1133,16 +1133,16 @@
         },
         {
             "name": "opis/closure",
-            "version": "3.4.1",
+            "version": "3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opis/closure.git",
-                "reference": "e79f851749c3caa836d7ccc01ede5828feb762c7"
+                "reference": "27fdc275b7963492d0bf0852525da57ff2be67a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opis/closure/zipball/e79f851749c3caa836d7ccc01ede5828feb762c7",
-                "reference": "e79f851749c3caa836d7ccc01ede5828feb762c7",
+                "url": "https://api.github.com/repos/opis/closure/zipball/27fdc275b7963492d0bf0852525da57ff2be67a0",
+                "reference": "27fdc275b7963492d0bf0852525da57ff2be67a0",
                 "shasum": ""
             },
             "require": {
@@ -1155,7 +1155,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3.x-dev"
+                    "dev-master": "3.4.x-dev"
                 }
             },
             "autoload": {
@@ -1190,7 +1190,7 @@
                 "serialization",
                 "serialize"
             ],
-            "time": "2019-10-19T18:38:51+00:00"
+            "time": "2019-11-29T11:33:32+00:00"
         },
         {
             "name": "paragonie/random_compat",

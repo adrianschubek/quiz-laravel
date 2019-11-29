@@ -19,9 +19,9 @@ class Question extends Component
     {
         $this->answers = [];
         $this->results = [];
-        $this->position = 0;
+        $this->position = -1;
         $this->questions = $quiz->questions()->orderBy('order', 'asc')->get();
-        $this->currentQuestion = $this->questions[$this->position];
+        $this->currentQuestion = $this->questions[$this->position + 1];
         $this->max = count($this->questions);
     }
 
@@ -62,7 +62,7 @@ class Question extends Component
     public function render()
     {
         return view('livewire.question', [
-            'question' => $this->currentQuestion ?? null
+            'question' => $this->currentQuestion
         ]);
     }
 }

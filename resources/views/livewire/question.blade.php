@@ -23,8 +23,8 @@
                 Du hast <span>{{ $results['correct'] }}</span> von <span class="has-text-weight-bold">{{ $max }}</span>
                 Fragen richtig beantwortet.
             </p>
-            {{ ddd($results['answers']['user'], $results['answers']['correct']) }}
-            {{ ddd($results['answers']['correct']) }}
+                        {{ ddd($results['answers']['user'], $results['answers']['correct']) }}
+                        {{ ddd($results['answers']['correct']) }}
         @else
             <p class="has-text-weight-light">Frage {{ $position + 1 }} von {{ $max }}</p>
             <p class="subtitle">{{ $question['title'] }}</p>
