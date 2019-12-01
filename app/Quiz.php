@@ -13,15 +13,15 @@ class Quiz extends Model
 {
     use SoftDeletes, Cachable;
 
-    protected $fillable = [
+    protected array $fillable = [
         "user_id", "title", "description"
     ];
 
-    protected $touches = [
+    protected array $touches = [
         "questions"
     ];
 
-    protected $withCount = [
+    protected array $withCount = [
         "likes"
     ];
 

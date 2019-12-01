@@ -13,8 +13,10 @@ class HomeController extends Controller
         switch (request('sort')) {
             case 'plays':
                 $builder->mostPlayed();
+                break;
             case 'likes':
                 $builder->mostLiked();
+                break;
             default:
                 $builder->latest();
         }

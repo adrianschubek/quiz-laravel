@@ -33,7 +33,6 @@ Route::resource('/quiz/{quiz}/comments', CommentController::class)->only(['index
 Route::get('/quiz/{quiz}/comments', [CommentController::class, 'show'])->name('comments.show');
 Route::post('/quiz/{quiz}/comments/{comment}/like', LikeCommentController::class)->name('comments.like');
 
-
 Route::resource('/profiles', ProfileController::class)->except(['create', 'store']);
 Route::get('/profiles/{profile}/{slug?}', [ProfileController::class, 'show'])->name('profiles.show');
 
