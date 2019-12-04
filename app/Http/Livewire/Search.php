@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Search extends Component
 {
-    public string $query;
+    public ?string $query;
     public string $type;
 
     public function mount($query)

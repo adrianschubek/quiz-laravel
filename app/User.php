@@ -19,7 +19,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-    protected $fillable = [
+    protected array $fillable = [
         'name', 'email', 'password', 'last_login_at', 'email_verified_at'
     ];
 
@@ -28,7 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-    protected $hidden = [
+    protected array $hidden = [
         'password', 'remember_token',
     ];
 
@@ -37,7 +37,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-    protected $casts = [
+    protected array $casts = [
         'email_verified_at' => 'datetime',
     ];
 

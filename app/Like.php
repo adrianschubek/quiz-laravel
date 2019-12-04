@@ -9,7 +9,7 @@ class Like extends Model
 {
     use Cachable;
 
-    protected $fillable = ["user_id"];
+    protected array $fillable = ["user_id"];
 
     public function user()
     {
