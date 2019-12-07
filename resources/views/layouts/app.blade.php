@@ -16,7 +16,7 @@
     @stack('head')
 </head>
 <body>
-<nav class="navbar has-shadow">
+<nav class="navbar has-shadow" style="border-top-color: #3273dc;border-top-width: thick;border-top-style: solid;">
     <div class="container">
         <div class="navbar-brand">
             <a href="{{ url('/') }}" class="navbar-item">{{ config('app.name') }}</a>
@@ -33,21 +33,23 @@
 
             <div class="navbar-end">
                 <div class="flex centerflex">
-                    <form action="{{ route('quiz.search') }}" class="m-r-sm field has-addons" onsubmit="button.disabled = true;button.classList.add('is-loading')">
+                    <form action="{{ route('quiz.search') }}" class="m-r-sm field has-addons"
+                          onsubmit="button.disabled = true;button.classList.add('is-loading')">
                         <div class="control">
                             <input class="input m-r-sm has-background-white-ter noborder noboxshadow" type="text"
                                    name="q"
                                    placeholder="Suche...">
                         </div>
                         <div class="control">
-                            <button type="submit" class="button is-link " name="button"><i class="fas fa-search"></i></button>
+                            <button type="submit" class="button is-link " name="button"><i class="fas fa-search"></i>
+                            </button>
                         </div>
                     </form>
                 </div>
                 @guest
                     <div class="buttons">
                         <a class="navbar-item button is-white" href="{{ route('login') }}">Anmelden</a>
-                        <a class="navbar-item button is-dark" href="{{ route('register') }}">Registrieren</a>
+                        <a class="navbar-item button is-light" href="{{ route('register') }}">Registrieren</a>
                     </div>
                 @else
                     <div class="navbar-item has-dropdown is-hoverable">
@@ -59,8 +61,11 @@
                             <a class="navbar-item" href="{{ route('quiz.index') }}">
                                 <i class="fas fa-layer-group m-r-sm"></i> Meine Quizze
                             </a>
-                            <a class="navbar-item" href="{{ 'todo' }}">
+                            <a class="navbar-item" href="{{ route('comments.index') }}">
                                 <i class="fas fa-comments m-r-sm"></i> Meine Kommentare
+                            </a>
+                            <a class="navbar-item" href="{{ route('likes.index') }}">
+                                <i class="fas fa-heart m-r-sm"></i> Lieblingsquizze
                             </a>
                             <a class="navbar-item" href="{{ route('profiles.edit', auth()->user()->id) }}">
                                 <i class="fas fa-cogs m-r-sm"></i> Einstellungen
@@ -71,7 +76,7 @@
                                 <i class="fas fa-sign-out-alt m-r-sm"></i> Logout
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                  style="display: none;" >
+                                  style="display: none;">
                                 @csrf
                             </form>
                         </div>

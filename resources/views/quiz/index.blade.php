@@ -18,12 +18,12 @@
         <div class="column is-6">
             <div class="box has-background-white-bis noboxshadow">
                 <div class="level">
-                    <div class="level-left"><h1 class="subtitle">Quizze</h1></div>
+                    <div class="level-left"><h1 class="subtitle">Quizze ({{ $user->quizzes->count() }})</h1></div>
                     <div class="level-right">
                         <a href="{{ route('quiz.create') }}" class="button is-success"><i class="fa fa-plus"></i></a>
                     </div>
                 </div>
-                @forelse($quizzes = $user->quizzes()->latest()->paginate(5) as $quiz)
+                @forelse($quizzes = $user->quizzes()->with('user')->latest()->paginate(5) as $quiz)
                     @include('layouts.quiz.edit', $quiz)
                 @empty
                     <div class="box has-text-centered noborder noboxshadow has-background-white-ter">

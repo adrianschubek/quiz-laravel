@@ -7,7 +7,6 @@
             <span class="icon is-small is-left">
                 <i class="fas fa-search"></i>
             </span>
-            <progress class="progress is-small is-dark m-t-sm" max="100" wire:dirty wire:target="input"></progress>
             <div class="tags has-addons m-t-sm ">
                 <span class="tag is-medium is-dark">{{ $quizzes->count() ?: "Keine" }} Quizze</span>
                 <span class="tag is-medium is-white">in {{ number_format(microtime(true) - LARAVEL_START, 3, ',', '.') }} Sekunden gefunden</span>
@@ -27,6 +26,13 @@
                 <div class="column is-narrow">
                     @include('layouts.quiz.quiz', $quiz)
                 </div>
+                @if($loop->last && $loop->count === 50)
+                    <article class="message">
+                        <div class="message-body">
+                            Es werden maximal 50 Treffer angezeigt.
+                        </div>
+                    </article>
+                @endif
             @empty
         </div>
         <article class="message is-danger">

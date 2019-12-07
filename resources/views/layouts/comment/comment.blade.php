@@ -46,13 +46,15 @@
             </div>
         </nav>
     </div>
-    @can('delete', $comment)
-        <div class="media-right">
-            <form action="{{ route('comments.destroy', [$quiz, $comment]) }}" method="post">
-                @csrf
-                @method('delete')
-                <button class="delete"></button>
-            </form>
-        </div>
-    @endcan
+    @isset($quiz)
+        @can('delete', $comment)
+            <div class="media-right">
+                <form action="{{ route('comments.destroy', [$quiz, $comment]) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button class="delete"></button>
+                </form>
+            </div>
+        @endcan
+    @endisset
 </article>

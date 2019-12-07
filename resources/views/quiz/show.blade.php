@@ -42,10 +42,38 @@
                 </div>
             </div>
         </div>
-        <div class="columns is-centered">
-            <div class="column is-half">
-                @livewire('question', $quiz)
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    @livewire('question', $quiz)
+                </div>
             </div>
-        </div>
+            <div class="box shadow1 m-b-sm">
+                <nav class="level">
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Erstellt am</p>
+                            <p>{{ $quiz->getCreatedAtDate() }}</p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Aktualisiert am</p>
+                            <p>{{ $quiz->getUpdatedAtDate() }}</p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Gefällt</p>
+                            <p class="is-family-code">{{ $quiz->getLikesCount() }}</p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Gespielt</p>
+                            <p class="is-family-code">{{ $quiz->getPlayCount() }}</p>
+                        </div>
+                    </div>
+                </nav>
+            </div>
     </div>
 @endsection

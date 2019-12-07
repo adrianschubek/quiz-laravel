@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Notifications\VerifyEmail;
+use Illuminate\Auth\MustVerifyEmail as ShouldVerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,7 +11,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, SoftDeletes, \Illuminate\Auth\MustVerifyEmail;
+    use Notifiable, SoftDeletes, ShouldVerifyEmail;
 
     public const ADMIN = 10;
 
@@ -19,7 +20,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-    protected array $fillable = [
+    protected $fillable = [
         'name', 'email', 'password', 'last_login_at', 'email_verified_at'
     ];
 
@@ -28,7 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-    protected array $hidden = [
+    protected $hidden = [
         'password', 'remember_token',
     ];
 
@@ -37,7 +38,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-    protected array $casts = [
+    protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
@@ -58,7 +59,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function isAdmin()
     {
-        return $this->role === self::ADMIN;
+        return $this->role === static::ADMIN;
     }
 
     public function sendEmailVerificationNotification()

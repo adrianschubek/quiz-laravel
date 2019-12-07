@@ -29,7 +29,7 @@
                             <i class="far fa-user fa-2x"></i>
                         </figure>
                         <div class="media-content">
-                            <form action="{{ route('comments.store', $quiz) }}" method="post"
+                            <form action="{{ route('comments.store', [$quiz, $quiz->getSlug()]) }}" method="post"
                                   onsubmit="button.disabled = true;button.classList.add('is-loading')">
                                 @csrf
                                 <div class="field">

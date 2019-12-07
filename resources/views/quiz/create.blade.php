@@ -3,7 +3,7 @@
 @section('title', "Quiz erstellen")
 
 @section('content')
-    <section class="hero is-success is-bold">
+    <section class="hero">
         <div class="hero-body">
             <div class="container">
                 <h1 class="has-text-weight-light title">

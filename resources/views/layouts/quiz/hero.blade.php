@@ -47,13 +47,13 @@
             <div class="container">
                 <ul>
                     <li @if($active === 'quiz') class="is-active" @endif>
-                        <a href="{{ route('quiz.show', ["quiz" => $quiz->id, "slug" => Str::slug($quiz->title)]) }}"
+                        <a href="{{ route('quiz.show', [$quiz->id, $quiz->getSlug()]) }}"
                            @if($active === 'quiz') class="is-active-grey" @endif>
                             <i class="fas fa-play m-r-sm"></i> Quiz
                         </a>
                     </li>
                     <li @if($active === 'comments') class="is-active" @endif>
-                        <a href="{{ route('comments.show', $quiz) }}"
+                        <a href="{{ route('comments.show',[$quiz, $quiz->getSlug()]) }}"
                            @if($active === 'comments') class="is-active-grey" @endif>
                             <i class="fas fa-comments m-r-sm"></i>
                             Kommentare<span class="tag is-white m-l-sm">{{ $quiz->comments->count() }}</span>

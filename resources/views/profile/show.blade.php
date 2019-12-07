@@ -24,7 +24,7 @@
                     <div class="column">
                         @if($profile->last_login_at)
                             <p>
-                                <span class="has-text-weight-light">Zuletzt online </span>
+                                <span class="has-text-weight-light">Zuletzt angemeldet </span>
                                 <i class="fas fa-signal has-text-grey"></i>
                                 {{ \Carbon\Carbon::parse($profile->last_login_at)->fromNow() }}
                             </p>
@@ -43,10 +43,26 @@
                     </div>
                 </div>
             </div>
+            <div class="box shadow1 m-b-sm">
+                <nav class="level">
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Likes</p>
+                            <p class="is-family-code">{{ number_format($likes, 0, ',', '.') }}</p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Aufrufe</p>
+                            <p class="is-family-code">{{ number_format($playcount, 0, ',', '.') }}</p>
+                        </div>
+                    </div>
+                </nav>
+            </div>
             <div class="box has-background-white-bis noboxshadow">
                 <div class="columns">
                     <div class="column">
-                        <h1 class="subtitle"><i class="fas fa-layer-group"></i> Quizze ({{ $quizzes->count() }})</h1>
+                        <h1 class="subtitle"><i class="fas fa-layer-group"></i> Quizze ({{ $quizzes->total() }})</h1>
                     </div>
                     <div class="column is-narrow">
                         @can('update', $profile)

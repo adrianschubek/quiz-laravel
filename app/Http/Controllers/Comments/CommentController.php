@@ -18,6 +18,13 @@ class CommentController extends Controller
         $this->authorizeResource(Comment::class, 'comment', ['except' => ['show']]);
     }
 
+    public function index()
+    {
+        $comments = auth()->user()->comments()->with('quiz')->paginate(15);
+
+        return view('comments.index', compact('comments'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *

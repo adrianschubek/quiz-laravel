@@ -13,15 +13,15 @@ class Quiz extends Model
 {
     use SoftDeletes, Cachable;
 
-    protected array $fillable = [
+    protected $fillable = [
         "user_id", "title", "description"
     ];
 
-    protected array $touches = [
+    protected $touches = [
         "questions"
     ];
 
-    protected array $withCount = [
+    protected $withCount = [
         "likes"
     ];
 
@@ -78,6 +78,21 @@ class Quiz extends Model
     public function scopeMostLiked(Builder $query)
     {
         return $query->orderBy('likes_count', 'desc');
+    }
+
+    public function getCreatedAtDate()
+    {
+        return Carbon::parse($this->created_at)->format('d.m.Y \u\m H:i');
+    }
+
+    public function getUpdatedAtDate()
+    {
+        return Carbon::parse($this->updated_at)->format('d.m.Y \u\m H:i');
+    }
+
+    public function getSlug()
+    {
+        return Str::slug($this->title);
     }
 
     public function getRelativeCreatedAttribute()

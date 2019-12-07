@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateProfileRequest;
+use App\Like;
 use App\User;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Response;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -18,46 +18,32 @@ class ProfileController extends Controller
         $this->authorizeResource(User::class, 'profile');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return User[]|Collection
-     */
     public function index()
     {
         return User::all();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param User $profile
-     * @return Response
-     */
     public function show(User $profile)
     {
         $quizzes = $profile->quizzes()->public()->paginate(5);
-        return view('profile.show', compact('profile', 'quizzes'));
+
+        $likes = Like::whereIn('likeable_id',
+            fn(Builder $builder) => $builder
+                ->select('id')
+                ->from('quizzes')
+                ->where('user_id', $profile->id)
+        )->count();
+
+        $playcount = $profile->quizzes->pluck('play_count')->sum();
+
+        return view('profile.show', compact('profile', 'quizzes', 'playcount', 'likes'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param User $profile
-     * @return Response
-     */
     public function edit(User $profile)
     {
         return view('profile.edit', compact('profile'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param UpdateProfileRequest $request
-     * @param User $profile
-     * @return Response
-     */
     public function update(UpdateProfileRequest $request, User $profile)
     {
         $data = $request->validated();
@@ -81,13 +67,6 @@ class ProfileController extends Controller
         return back()->with('ok', 'Profil wurde aktualisiert.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param User $profile
-     * @return void
-     * @throws \Exception
-     */
     public function destroy(User $profile)
     {
         $profile->delete();

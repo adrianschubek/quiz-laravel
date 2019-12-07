@@ -12,7 +12,7 @@ class UserPolicy
     /**
      * Determine whether the user can view any models.
      *
-     * @param  \App\User  $user
+     * @param User $profile
      * @return mixed
      */
     public function viewAny(User $profile)
@@ -23,7 +23,7 @@ class UserPolicy
     /**
      * Determine whether the user can view the model.
      *
-     * @param \App\User $user
+     * @param User $user
      * @param User $profile
      * @return mixed
      */
@@ -35,7 +35,7 @@ class UserPolicy
     /**
      * Determine whether the user can update the model.
      *
-     * @param \App\User $user
+     * @param User $user
      * @param User $profile
      * @return mixed
      */
@@ -47,7 +47,7 @@ class UserPolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param \App\User $user
+     * @param User $user
      * @param User $profile
      * @return mixed
      */
@@ -59,7 +59,7 @@ class UserPolicy
     /**
      * Determine whether the user can restore the model.
      *
-     * @param \App\User $user
+     * @param User $user
      * @param User $profile
      * @return mixed
      */
@@ -71,7 +71,7 @@ class UserPolicy
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param \App\User $user
+     * @param User $user
      * @param User $profile
      * @return mixed
      */
