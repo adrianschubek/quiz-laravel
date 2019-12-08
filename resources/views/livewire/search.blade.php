@@ -1,9 +1,8 @@
 <div class="container m-t-md">
     <div class="field has-addons">
-        <div class="control is-large has-icons-left is-expanded" wire:target="input" wire:dirty.class="is-loading">
+        <div class="control is-large has-icons-left is-expanded" wire:target="query" wire:dirty.class="is-loading">
             <input class="input is-large @if($quizzes->isEmpty()) is-danger @endif" type="text" placeholder="Suche..."
-                   autofocus wire:model="query"
-                   wire:ref="input">
+                   autofocus wire:model="query">
             <span class="icon is-small is-left">
                 <i class="fas fa-search"></i>
             </span>

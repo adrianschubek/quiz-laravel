@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a836f05e75c23037e87b94083690962",
+    "content-hash": "8f50c978c53f467d621d87d29d0c9812",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -877,16 +877,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v0.4.0",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "c7d052198efbcf41bc0b8c6e0230b11196b4c69d"
+                "reference": "71910a5b97755ed177c97c4a71897815064dd03e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/c7d052198efbcf41bc0b8c6e0230b11196b4c69d",
-                "reference": "c7d052198efbcf41bc0b8c6e0230b11196b4c69d",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/71910a5b97755ed177c97c4a71897815064dd03e",
+                "reference": "71910a5b97755ed177c97c4a71897815064dd03e",
                 "shasum": ""
             },
             "require": {
@@ -926,7 +926,7 @@
                 }
             ],
             "description": "Build and test rich client-side functionality: with only backend code.",
-            "time": "2019-11-13T01:07:34+00:00"
+            "time": "2019-12-06T15:49:30+00:00"
         },
         {
             "name": "monolog/monolog",

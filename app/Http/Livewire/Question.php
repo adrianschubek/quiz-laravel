@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Quiz;
-use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class Question extends Component
@@ -12,17 +11,34 @@ class Question extends Component
     public array $answers;
     public int $max;
     public array $results;
-    protected Collection $questions;
-    protected \App\Question $currentQuestion;
+    public int $quizId;
+
+//    public Collection $questions;
+//    public QuestionModel $currentQuestion;
 
     public function mount(Quiz $quiz)
     {
         $this->answers = [];
         $this->results = [];
-        $this->position = -1;
-        $this->questions = $quiz->questions()->orderBy('order', 'asc')->get();
-        $this->currentQuestion = $this->questions[$this->position + 1];
-        $this->max = count($this->questions);
+        $this->position = 0;
+        $this->quizId = $quiz->id;
+//        $this->questions = $quiz->questions()->orderBy('order', 'asc')->get();
+//        $this->currentQuestion = $this->questions[$this->position + 1];
+        $this->max = $quiz->questions()->count();
+    }
+
+    public function getQuestionProperty()
+    {
+        // FIXME:  Fragen werden 2 Mal aufgerufen beim start.
+//        if ($this->position + 1 === $this->max) {
+//            ddd("ende");
+//            return null;
+//        }
+        //        info(["Position" => $this->position + 1, "Max" => $this->max, "Question" => $q->title, "Results" => $this->results]);
+        return Quiz::find($this->quizId)
+            ->questions()
+            ->orderBy('order', 'asc')
+            ->get()[$this->position];
     }
 
     public function addAnswer($data)
@@ -41,12 +57,14 @@ class Question extends Component
             $this->checkResults();
             return;
         }
-        $this->currentQuestion = $this->questions[++$this->position];
+        //        $this->currentQuestion = $this->questions[++$this->position];
+        $this->position++;
     }
 
     public function checkResults()
     {
-        $correctAnswers = $this->questions->pluck('correct');
+        $quiz = Quiz::find($this->quizId);
+        $correctAnswers = $quiz->questions()->orderBy('order', 'asc')->get()->pluck('correct');
         $userAnswers = collect($this->answers);
         $wrongAnswers = $correctAnswers->diffAssoc($userAnswers);
 
@@ -56,13 +74,12 @@ class Question extends Component
             "correct" => $wrongAnswers
         ];
 
-        $this->questions[0]->quiz()->increment('play_count');
+//        $this->questions[0]->quiz()->increment('play_count');
+        $quiz->increment('play_count');
     }
 
     public function render()
     {
-        return view('livewire.question', [
-            'question' => $this->currentQuestion
-        ]);
+        return view('livewire.question');
     }
 }
