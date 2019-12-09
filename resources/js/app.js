@@ -56,4 +56,4 @@ require('@vizuaalog/bulmajs/src/plugins/dropdown');
 
 require('./bulma-extensions');
 
-require('./jdenticon');
+window.jdenticon = require('./jdenticon');

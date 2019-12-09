@@ -2,6 +2,15 @@
 
 @section('title', "Registrieren")
 
+@push('scripts')
+    <script>
+        document.getElementById('name').addEventListener('input', function () {
+            document.getElementById('pic').setAttribute('data-jdenticon-value', this.value);
+            window.jdenticon()
+        })
+    </script>
+@endpush
+
 @section('content')
     <section class="hero is-info is-bold">
         <div class="hero-body">
@@ -19,10 +28,21 @@
                 <div class="accent has-background-dark rounded-top"></div>
 
                 <div class="card-content shadow">
-                    <form class="register-form" method="POST" action="{{ route('register') }}" onsubmit="button.disabled = true;button.classList.add('is-loading')">
-
+                    <form class="register-form" method="POST" action="{{ route('register') }}"
+                          onsubmit="button.disabled = true;button.classList.add('is-loading')">
                         @csrf
-
+                        <div class="columns">
+                            <div class="column is-3">
+                                <div class="field is-horizontal">
+                                    <div class="field-label">
+                                        <label class="label">Profilbild</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <canvas id="pic" width="50" height="50" data-jdenticon-value></canvas>
+                            </div>
+                        </div>
                         <div class="columns">
                             <div class="column is-3">
                                 <div class="field is-horizontal">
@@ -35,10 +55,12 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <p class="control">
-                                            <input class="input has-background-white-bis noboxshadow @error('name') is-danger @enderror" id="name"
-                                                   type="name" name="name"
-                                                   value="{{ old('name') }}"
-                                                   required autofocus>
+                                            <input
+                                                class="input has-background-white-bis noboxshadow @error('name') is-danger @enderror"
+                                                id="name"
+                                                type="name" name="name"
+                                                value="{{ old('name') }}"
+                                                required autofocus>
                                         </p>
 
                                         @if ($errors->has('name'))
@@ -63,9 +85,11 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <p class="control">
-                                            <input class="input has-background-white-bis noboxshadow @error('email') is-danger @enderror" id="email"
-                                                   type="email" name="email"
-                                                   value="{{ old('email') }}" required autofocus>
+                                            <input
+                                                class="input has-background-white-bis noboxshadow @error('email') is-danger @enderror"
+                                                id="email"
+                                                type="email" name="email"
+                                                value="{{ old('email') }}" required autofocus>
                                         </p>
 
                                         @if ($errors->has('email'))
@@ -90,8 +114,10 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <p class="control">
-                                            <input class="input has-background-white-bis noboxshadow @error('password') is-danger @enderror" id="password"
-                                                   type="password" name="password" required>
+                                            <input
+                                                class="input has-background-white-bis noboxshadow @error('password') is-danger @enderror"
+                                                id="password"
+                                                type="password" name="password" required>
                                         </p>
 
                                         @if ($errors->has('password'))
@@ -117,9 +143,10 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <p class="control">
-                                            <input class="input has-background-white-bis noboxshadow @error('password-confirm') is-danger @enderror"
-                                                   id="password-confirm" type="password"
-                                                   name="password_confirmation" required>
+                                            <input
+                                                class="input has-background-white-bis noboxshadow @error('password-confirm') is-danger @enderror"
+                                                id="password-confirm" type="password"
+                                                name="password_confirmation" required>
                                         </p>
                                     </div>
                                 </div>
@@ -135,7 +162,8 @@
                                     <div class="field-body ">
                                         <div class="field is-grouped ">
                                             <div class="control ">
-                                                <button type="submit" class="button is-dark is-fullwidth" name="button">Registrieren
+                                                <button type="submit" class="button is-dark is-fullwidth" name="button">
+                                                    Registrieren
                                                 </button>
                                             </div>
                                         </div>

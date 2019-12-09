@@ -54,8 +54,10 @@
                 @else
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link"
-                           href="{{ route('profiles.show', [auth()->user()->id, auth()->user()->name]) }}"><i
-                                class="far fa-user-circle m-r-sm"></i> {{ Auth::user()->name }}</a>
+                           href="{{ route('profiles.show', [auth()->user()->id, auth()->user()->name]) }}">
+                            <canvas width="40" height="40" data-jdenticon-value="{{ auth()->user()->name }}"></canvas>
+                            {{ auth()->user()->name }}
+                        </a>
 
                         <div class="navbar-dropdown">
                             <a class="navbar-item" href="{{ route('quiz.index') }}">

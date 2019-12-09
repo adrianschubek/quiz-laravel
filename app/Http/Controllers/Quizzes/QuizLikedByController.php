@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Quizzes;
 
+use App\Http\Controllers\Controller;
 use App\Quiz;
 use App\User;
 use Illuminate\Contracts\View\Factory;
@@ -19,7 +20,8 @@ class QuizLikedByController extends Controller
     public function __invoke(Quiz $quiz)
     {
         $users = User::whereIn('id',
-            fn(Builder $builder) => $builder->select('user_id')
+            fn(Builder $builder) => $builder
+                ->select('user_id')
                 ->from('likes')
                 ->where('likeable_id', $quiz->id)
                 ->where('likeable_type', Quiz::class)

@@ -30,7 +30,7 @@ class CommentController extends Controller
      *
      * @param StoreCommentRequest $request
      * @param Quiz $quiz
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreCommentRequest $request, Quiz $quiz)
     {
@@ -47,7 +47,7 @@ class CommentController extends Controller
      * Display the specified resource.
      *
      * @param Quiz $quiz
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Quiz $quiz)
     {

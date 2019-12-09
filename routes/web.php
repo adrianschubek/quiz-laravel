@@ -2,14 +2,14 @@
 
 use App\Http\Controllers\Comments\CommentController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LikedQuizController;
 use App\Http\Controllers\Likes\LikeCommentController;
 use App\Http\Controllers\Likes\LikeQuizController;
-use App\Http\Controllers\QuizLikedByController;
 use App\Http\Controllers\Quizzes\Questions\QuestionController;
 use App\Http\Controllers\Quizzes\QuizController;
+use App\Http\Controllers\Quizzes\QuizLikedByController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StatsController;
+use App\Http\Controllers\Users\LikedQuizController;
 use App\Http\Controllers\Users\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;

@@ -321,14 +321,6 @@ a.has-text-link:focus, a.has-text-link:hover {
     color: #205bbc !important
 }
 
-.has-text-info {
-    color: #209cee !important
-}
-
-a.has-text-info:focus, a.has-text-info:hover {
-    color: #0f81cc !important
-}
-
 .has-text-danger {
     color: #ff3860 !important
 }
@@ -1412,6 +1404,11 @@ a.box:active {
 
 .image.is-fullwidth {
     width: 100%
+}
+
+.image.is-64x64 {
+    height: 64px;
+    width: 64px
 }
 
 .notification {
