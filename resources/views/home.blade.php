@@ -40,6 +40,10 @@
                         </div>
                     </div>
                 </div>
+                <a href="{{ route('profiles.index') }}" class="button is-light is-outlined noborder m-r-sm">
+                    <i class="fas fa-users m-r-sm"></i>
+                    Mitglieder
+                </a>
                 <a href="{{ route('stats') }}" class="button is-light is-outlined noborder m-r-sm">
                     <i class="fas fa-chart-line m-r-sm"></i>
                     Statistiken
@@ -54,8 +58,8 @@
     @guest
         <div class="notification is-dark">
             <button class="delete"></button>
-            <i class="fas fa-user-secret"></i> Du bist nicht angemeldet. Melde dich an um Quizze zu erstellen und
-            bewerten.
+            <i class="fas fa-user-secret"></i> Du bist nicht angemeldet. Melde dich an um Quizze erstellen und
+            bewerten zu können.
         </div>
         <div class="level-right m-r-sm m-t-md">
             <div class="dropdown m-r-sm is-hoverable is-right">

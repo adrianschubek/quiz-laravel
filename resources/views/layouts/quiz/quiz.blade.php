@@ -1,5 +1,5 @@
 <a class="box"
-   href="{{ route('quiz.show', ["quiz" => $quiz->id, "slug" => Str::slug($quiz->title)] ) }}">
+   href="{{ route('quiz.show', [$quiz, $quiz->getSlug()]) }}">
     <p class="subtitle m-b-none">{{ $quiz->title }}</p>
     <div class="level m-b-sm">
         <div class="level-left">

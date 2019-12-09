@@ -23,6 +23,13 @@
                     </div>
                     <div class="level-item has-text-centered">
                         <div>
+                            <p class="heading has-text-grey">Aufrufe</p>
+                            <p class="title has-text-dark"><i
+                                    class="fas fa-play has-text-grey-light"></i> {{ $plays }}</p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
                             <p class="heading has-text-grey">Likes</p>
                             <p class="title has-text-dark"><i
                                     class="fas fa-thumbs-up has-text-grey-light"></i> {{ $like }}</p>
@@ -30,7 +37,7 @@
                     </div>
                     <div class="level-item has-text-centered">
                         <div>
-                            <p class="heading has-text-grey">Benutzer</p>
+                            <p class="heading has-text-grey">Mitglieder</p>
                             <p class="title has-text-dark"><i
                                     class="fas fa-users has-text-grey-light"></i> {{ $user }}</p>
                         </div>

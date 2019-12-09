@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Like;
+use App\Support\Traits\FormatsNumbers;
 use App\User;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
+    use FormatsNumbers;
+
     public function __construct()
     {
         $this->middleware(['auth', 'verified'])->except('show');
@@ -20,21 +23,24 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return User::all();
+        $users = User::orderBy('name', 'asc')->paginate(16);
+        return view('profile.index', compact('users'));
     }
 
     public function show(User $profile)
     {
         $quizzes = $profile->quizzes()->public()->paginate(5);
 
-        $likes = Like::whereIn('likeable_id',
-            fn(Builder $builder) => $builder
-                ->select('id')
-                ->from('quizzes')
-                ->where('user_id', $profile->id)
-        )->count();
+        $likes = $this->numformat(
+            Like::whereIn('likeable_id',
+                fn(Builder $builder) => $builder
+                    ->select('id')
+                    ->from('quizzes')
+                    ->where('user_id', $profile->id)
+            )->count()
+        );
 
-        $playcount = $profile->quizzes->pluck('play_count')->sum();
+        $playcount = $this->numformat($profile->quizzes->pluck('play_count')->sum());
 
         return view('profile.show', compact('profile', 'quizzes', 'playcount', 'likes'));
     }

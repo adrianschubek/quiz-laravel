@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Support\Traits\FormatsNumbers;
 use Carbon\Carbon;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Builder;
@@ -11,7 +12,7 @@ use Illuminate\Support\Str;
 
 class Quiz extends Model
 {
-    use SoftDeletes, Cachable;
+    use SoftDeletes, Cachable, FormatsNumbers;
 
     protected $fillable = [
         "user_id", "title", "description"
@@ -47,12 +48,12 @@ class Quiz extends Model
 
     public function getPlayCount()
     {
-        return number_format($this->play_count, 0, ',', '.');
+        return $this->numformat($this->play_count);
     }
 
     public function getLikesCount()
     {
-        return number_format($this->likes_count, 0, ',', '.');
+        return $this->numformat($this->likes_count);
     }
 
     public function isPrivate()

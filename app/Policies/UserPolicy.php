@@ -17,7 +17,7 @@ class UserPolicy
      */
     public function viewAny(User $profile)
     {
-        return false;
+        return true;
     }
 
     /**

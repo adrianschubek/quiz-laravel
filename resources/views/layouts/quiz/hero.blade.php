@@ -30,10 +30,11 @@
                             </div>
 
                             <div class="control">
-                                <div class="tags has-addons are-medium">
+                                <a class="tags has-addons are-medium"
+                                   href="{{ route('quiz.likedby', [$quiz, $quiz->getSlug()]) }}">
                                     <span class="tag is-white"><i class="fas fa-heart has-text-danger"></i></span>
                                     <span class="tag is-danger">{{ $quiz->getLikesCount() }}</span>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>

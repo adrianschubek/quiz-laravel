@@ -26,7 +26,7 @@
                 @can('create', \App\Comment::class)
                     <article class="media">
                         <figure class="media-left">
-                            <i class="far fa-user fa-2x"></i>
+                            <canvas width="50" height="50" data-jdenticon-value="{{ auth()->user()->name }}"></canvas>
                         </figure>
                         <div class="media-content">
                             <form action="{{ route('comments.store', [$quiz, $quiz->getSlug()]) }}" method="post"
@@ -34,7 +34,7 @@
                                 @csrf
                                 <div class="field">
                                     <p class="control">
-                            <textarea name="comment" class="textarea @error('comment') is-danger @enderror"
+                            <textarea class="textarea @error('comment') is-danger @enderror" name="comment"
                                       placeholder="Dein Kommentar..."
                                       style="min-height: 5em !important;">{{ old('comment') }}</textarea>
                                     </p>

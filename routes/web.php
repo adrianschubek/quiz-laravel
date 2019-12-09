@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LikedQuizController;
 use App\Http\Controllers\Likes\LikeCommentController;
 use App\Http\Controllers\Likes\LikeQuizController;
+use App\Http\Controllers\QuizLikedByController;
 use App\Http\Controllers\Quizzes\Questions\QuestionController;
 use App\Http\Controllers\Quizzes\QuizController;
 use App\Http\Controllers\SearchController;
@@ -28,13 +29,15 @@ Route::get('/quiz/{quiz}/{slug}/play', [QuizController::class, 'show'])->name('q
 Route::put('/quiz/{id}/restore', [QuizController::class, 'restore'])->name('quiz.restore');
 Route::delete('/quiz/{id}/delete', [QuizController::class, 'forceDelete'])->name('quiz.force-delete');
 Route::post('/quiz/{quiz}/like', LikeQuizController::class)->name('quiz.like');
+Route::get('/quiz/{quiz}/{slug}/likes', QuizLikedByController::class)->name('quiz.likedby');
 Route::resource('/quiz/{quiz}/questions', QuestionController::class)->only(['store', 'update', 'destroy']);
 
 Route::resource('/quiz/{quiz}/comments', CommentController::class)->only(['store', 'destroy']);
 Route::get('/quiz/{quiz}/{slug}/comments', [CommentController::class, 'show'])->name('comments.show');
 Route::post('/quiz/{quiz}/comments/{comment}/like', LikeCommentController::class)->name('comments.like');
 
-Route::resource('/profiles', ProfileController::class)->except(['create', 'store']);
+Route::resource('/profiles', ProfileController::class)->except(['index', 'create', 'store']);
+Route::get('/users', [ProfileController::class, 'index'])->name('profiles.index');
 Route::get('/users/{profile}/{slug?}', [ProfileController::class, 'show'])->name('profiles.show');
 
 

@@ -1,11 +1,7 @@
 <article class="media">
     <a class="media-left" href="{{ route('profiles.show', [$comment->user, $comment->user->name]) }}"
        id="{{ $comment->id }}">
-        @if((auth()->user()->id ?? false) === $comment->user->id)
-            <i class="far fa-user fa-2x has-text-info"></i>
-        @else
-            <i class="far fa-user fa-2x has-text-grey-light"></i>
-        @endif
+        <canvas width="50" height="50" data-jdenticon-value="{{ $comment->user->name }}"></canvas>
     </a>
     <div class="media-content">
         <div class="content">
