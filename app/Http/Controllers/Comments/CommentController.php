@@ -8,7 +8,9 @@ use App\Http\Requests\StoreCommentRequest;
 use App\Like;
 use App\Quiz;
 use Exception;
-use Illuminate\Http\Response;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class CommentController extends Controller
 {
@@ -30,7 +32,7 @@ class CommentController extends Controller
      *
      * @param StoreCommentRequest $request
      * @param Quiz $quiz
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(StoreCommentRequest $request, Quiz $quiz)
     {
@@ -47,7 +49,7 @@ class CommentController extends Controller
      * Display the specified resource.
      *
      * @param Quiz $quiz
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function show(Quiz $quiz)
     {
@@ -79,7 +81,7 @@ class CommentController extends Controller
      *
      * @param Quiz $quiz
      * @param Comment $comment
-     * @return void
+     * @return RedirectResponse
      * @throws Exception
      */
     public function destroy(Quiz $quiz, Comment $comment)

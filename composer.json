@@ -10,6 +10,7 @@
         "laravel/tinker": ">=2.0"
     },
     "require-dev": {
+        "beyondcode/laravel-er-diagram-generator": "^1.4",
         "facade/ignition": "^1.4",
         "fzaninotto/faker": "^1.4",
         "laravel-frontend-presets/bulma": "^3.0",
