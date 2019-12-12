@@ -5,7 +5,7 @@
         "php": "^7.4",
         "livewire/livewire": "^0.5",
         "fideloper/proxy": "^4.0",
-        "genealabs/laravel-model-caching": "*",
+        "genealabs/laravel-model-caching": ">=0.7",
         "laravel/framework": "^6.0",
         "laravel/tinker": ">=2.0"
     },
