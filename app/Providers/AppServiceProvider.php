@@ -1,11 +1,10 @@
-<?php
+<?php /** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 namespace App\Providers;
 
 use App\Http\View\Composers\UserComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Telescope\TelescopeServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         if ($this->app->isLocal()) {
-            $this->app->register(TelescopeServiceProvider::class);
+            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
         }
     }
 
