@@ -877,16 +877,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v0.5.0",
+            "version": "v0.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "71910a5b97755ed177c97c4a71897815064dd03e"
+                "reference": "23f6c0b8158b5d7813ebcd6b6d080faf7c8837b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/71910a5b97755ed177c97c4a71897815064dd03e",
-                "reference": "71910a5b97755ed177c97c4a71897815064dd03e",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/23f6c0b8158b5d7813ebcd6b6d080faf7c8837b5",
+                "reference": "23f6c0b8158b5d7813ebcd6b6d080faf7c8837b5",
                 "shasum": ""
             },
             "require": {
@@ -926,7 +926,7 @@
                 }
             ],
             "description": "Build and test rich client-side functionality: with only backend code.",
-            "time": "2019-12-06T15:49:30+00:00"
+            "time": "2019-12-11T22:08:39+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5832,18 +5832,18 @@
             "authors": [
                 {
                     "name": "Geert Bergman",
-                    "role": "Project Author",
-                    "homepage": "http://www.scrivo.org/"
+                    "homepage": "http://www.scrivo.org/",
+                    "role": "Project Author"
                 },
                 {
                     "name": "Vladimir Jimenez",
-                    "role": "Contributor",
-                    "homepage": "https://allejo.io"
+                    "homepage": "https://allejo.io",
+                    "role": "Contributor"
                 },
                 {
                     "name": "Martin Folkers",
-                    "role": "Contributor",
-                    "homepage": "https://twobrain.io"
+                    "homepage": "https://twobrain.io",
+                    "role": "Contributor"
                 }
             ],
             "description": "Server side syntax highlighter that supports 185 languages. It's a PHP port of highlight.js",
@@ -7112,8 +7112,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
