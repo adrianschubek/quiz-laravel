@@ -12,6 +12,11 @@ class StatsController extends Controller
 {
     use FormatsNumbers;
 
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
+
     public function __invoke()
     {
         return view('stats.index', [

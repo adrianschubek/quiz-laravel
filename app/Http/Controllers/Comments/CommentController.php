@@ -22,8 +22,7 @@ class CommentController extends Controller
 
     public function index()
     {
-        $comments = auth()->user()->comments()->with('quiz')->paginate(15);
-
+        $comments = auth()->user()->comments()->withCount('likes')->paginate(15);
         return view('comments.index', compact('comments'));
     }
 
