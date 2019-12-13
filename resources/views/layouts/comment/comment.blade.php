@@ -1,7 +1,7 @@
 <article class="media">
     <a class="media-left" href="{{ route('profiles.show', [$comment->user, $comment->user->name]) }}"
        id="{{ $comment->id }}">
-        <canvas width="50" height="50" data-jdenticon-value="{{ $comment->user->name }}"></canvas>
+        <canvas width="48" height="48" data-jdenticon-value="{{ $comment->user->name }}"></canvas>
     </a>
     <div class="media-content">
         <div class="content">

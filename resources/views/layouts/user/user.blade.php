@@ -2,7 +2,7 @@
     <article class="media">
         <figure class="media-left">
             <p class="image is-64x64">
-                <canvas width="80" height="80" data-jdenticon-value="{{ $user->name }}"></canvas>
+                <canvas width="64" height="64" data-jdenticon-value="{{ $user->name }}"></canvas>
             </p>
         </figure>
         <div class="media-content">
