@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Quiz;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function __invoke()
+    public function __invoke(Request $request)
     {
         $builder = Quiz::with('user')->public();
 
-        switch (request('sort')) {
+        switch ($request->sort) {
             case 'plays':
                 $builder->mostPlayed();
                 break;
