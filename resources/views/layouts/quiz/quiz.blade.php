@@ -14,13 +14,13 @@
             <div class="m-l-sm field is-grouped is-grouped-multiline">
                 <div class="control">
                     <div class="tags has-addons">
-                        <span class="tag is-info"><i class="fas fa-play"></i></span>
+                        <span class="tag is-info is-light"><i class="fas fa-play"></i></span>
                         <span class="tag is-info is-light">{{ $quiz->getPlayCount() }}</span>
                     </div>
                 </div>
                 <div class="control">
                     <div class="tags has-addons">
-                        <span class="tag is-danger"><i class="fas fa-heart"></i></span>
+                        <span class="tag is-danger is-light"><i class="fas fa-heart"></i></span>
                         <span class="tag is-danger is-light">{{ $quiz->getLikesCount() }}</span>
                     </div>
                 </div>
