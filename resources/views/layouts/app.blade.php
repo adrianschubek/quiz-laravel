@@ -11,7 +11,7 @@
     <title>{{ config('app.name') }} - @yield('title')</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}?v={{ config('app.version') }}" rel="stylesheet">
 
     @stack('head')
 </head>
@@ -102,7 +102,7 @@
 </footer>
 
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/app.js') }}?v={{ config('app.version') }}"></script>
 @stack('scripts')
 </body>
 </html>
