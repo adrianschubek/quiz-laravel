@@ -6089,6 +6089,22 @@ a.dropdown-item.is-active, button.dropdown-item.is-active {
     border-radius: 5px 5px 0 0
 }
 
+.rtl-0 {
+    border-top-left-radius: 0 !important
+}
+
+.rtr-0 {
+    border-top-right-radius: 0 !important
+}
+
+.rbl-0 {
+    border-bottom-left-radius: 0 !important
+}
+
+.rbr-0 {
+    border-bottom-right-radius: 0 !important
+}
+
 .border {
     border-color: rgba(18, 18, 18, .1) !important;
     border-radius: 10px !important;

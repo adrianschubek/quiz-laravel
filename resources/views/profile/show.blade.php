@@ -19,7 +19,7 @@
         <div class="column is-3">
         </div>
         <div class="column is-6">
-            <div class="box has-background-white shadow1">
+            <div class="box has-background-white shadow1 m-b-none rbl-0 rbr-0">
                 <div class="columns">
                     <div class="column is-narrow">
                         <canvas width="50" height="50" data-jdenticon-value="{{ $profile->name }}"></canvas>
@@ -31,13 +31,13 @@
                                     <p>
                                         <span class="has-text-weight-light">Zuletzt angemeldet </span>
                                         <i class="fas fa-signal has-text-grey"></i>
-                                        {{ \Carbon\Carbon::parse($profile->last_login_at)->fromNow() }}
+                                        {{ $profile->last_login_at->fromNow() }}
                                     </p>
                                 @endif
                                 <p>
                                     <span class="has-text-weight-light">Mitglied seit </span>
                                     <i class="fas fa-birthday-cake has-text-grey"></i>
-                                    {{ \Carbon\Carbon::parse($profile->created_at)->format('d.m.Y') }}
+                                    {{ $profile->created_at->format('d.m.Y') }}
                                 </p>
                             </div>
                             <div class="column is-narrow">
@@ -50,7 +50,7 @@
                     </div>
                 </div>
             </div>
-            <div class="box shadow1 m-b-sm">
+            <div class="box shadow1 m-b-sm rtl-0 rtr-0" style="background: hsl(0, 0%, 96%);">
                 <nav class="level">
                     <div class="level-item has-text-centered">
                         <div>
