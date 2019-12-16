@@ -11,10 +11,20 @@
             </small>
         </div>
         <div class="level-right">
-            <p class="m-r-sm has-text-weight-bold"><i
-                    class="far fa-play-circle"></i> {{ $quiz->getPlayCount() }}
-            </p>
-            <p class="has-text-weight-bold"><i class="far fa-heart"></i> {{ $quiz->getLikesCount() }}</p>
+            <div class="m-l-sm field is-grouped is-grouped-multiline">
+                <div class="control">
+                    <div class="tags has-addons">
+                        <span class="tag is-info"><i class="fas fa-play"></i></span>
+                        <span class="tag is-info is-light">{{ $quiz->getPlayCount() }}</span>
+                    </div>
+                </div>
+                <div class="control">
+                    <div class="tags has-addons">
+                        <span class="tag is-danger"><i class="fas fa-heart"></i></span>
+                        <span class="tag is-danger is-light">{{ $quiz->getLikesCount() }}</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <hr class="m-t-none">
