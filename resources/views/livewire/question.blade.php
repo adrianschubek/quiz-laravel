@@ -1,19 +1,42 @@
 <div class="box m-b-md">
     @if($this->position + 1 === $this->max)
         <div wire:loading style="width: 100%">
-            <article class="message is-link">
-                <div class="message-body">
-                    <i class="fas fa-circle-notch fa-spin m-r-sm"></i> Deine Antworten werden überprüft...
-                </div>
-            </article>
+            <div class="notification has-text-centered" style="align-content: center">
+                <i class="fas fa-circle-notch fa-spin fa-3x m-r-sm"></i>
+                <p>Deine Antworten werden überprüft...</p>
+            </div>
         </div>
     @else
-        <div wire:loading style="width: 100%">
-            <article class="message is-info">
-                <div class="message-body">
-                    <i class="fas fa-circle-notch fa-spin m-r-sm"></i> Frage wird geladen...
+        <div class="ph-item noborder" wire:loading style="width: 100%; padding: 2em 0 0;">
+            <div class="ph-col-12">
+                <div class="ph-row">
+                    <div class="ph-col-4"></div>
+                    <div class="ph-col-8 empty"></div>
+
+                    <div class="ph-col-12"></div>
+                    <div class="ph-col-2 empty"></div>
                 </div>
-            </article>
+                <div class="ph-row">
+                    <div class="ph-col-8 big"></div>
+                    <div class="ph-col-2 empty big"></div>
+                    <div class="ph-col-2 big"></div>
+                </div>
+                <div class="ph-row">
+                    <div class="ph-col-8 big"></div>
+                    <div class="ph-col-2 empty big"></div>
+                    <div class="ph-col-2 big"></div>
+                </div>
+                <div class="ph-row">
+                    <div class="ph-col-8 big"></div>
+                    <div class="ph-col-2 empty big"></div>
+                    <div class="ph-col-2 big"></div>
+                </div>
+                <div class="ph-row">
+                    <div class="ph-col-8 big"></div>
+                    <div class="ph-col-2 empty big"></div>
+                    <div class="ph-col-2 big"></div>
+                </div>
+            </div>
         </div>
     @endif
     <div wire:loading.class="is-hidden">
