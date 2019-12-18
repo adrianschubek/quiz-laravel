@@ -1,5 +1,4 @@
 <div class="box m-b-md">
-    {{--    wire:init="nextQuestion"--}}
     @if($this->position + 1 === $this->max)
         <div wire:loading style="width: 100%">
             <article class="message is-link">
