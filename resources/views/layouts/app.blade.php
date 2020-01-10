@@ -101,7 +101,7 @@
 <footer class="footer m-b-none p-b-md p-t-md" style="background-color: #273036">
     <div class="has-text-centered has-text-grey-light">
         <p>
-            <strong class="has-text-grey-light">Quiz</strong> programmiert von <i>Adrian Schubek</i> &copy; 2019 mit
+            <strong class="has-text-grey-light">Quiz</strong> programmiert von <i>Adrian Schubek</i> &copy; 2020 mit
             Laravel in PHP.
         </p>
     </div>
