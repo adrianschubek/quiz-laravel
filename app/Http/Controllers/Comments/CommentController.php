@@ -22,7 +22,10 @@ class CommentController extends Controller
 
     public function index()
     {
-        $comments = auth()->user()->comments()->withCount('likes')->paginate(15);
+        $comments = auth()->user()->comments()
+            ->with(["user", "quiz"])
+            ->withCount('likes')
+            ->paginate(15);
         return view('comments.index', compact('comments'));
     }
 
@@ -53,6 +56,7 @@ class CommentController extends Controller
     public function show(Quiz $quiz)
     {
         $comments = $quiz->comments()
+            ->has('user')
             ->withCount('likes')
             ->with('user')
             ->latest()

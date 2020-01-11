@@ -22,10 +22,15 @@
                             @include('layouts.comment.comment',compact('comment'))
                         </div>
                         <div class="column is-narrow">
-                            <a class="button is-light"
-                               href="{{ route('comments.show',[$comment->quiz, $comment->quiz->getSlug(), '#'.$comment->id ]) }}">
-                                <i class="far fa-eye m-r-sm"></i> Anzeigen
-                            </a>
+                            {{-- Existiert das Quiz? --}}
+                            @isset($comment->quiz)
+                                <a class="button is-light"
+                                   href="{{ route('comments.show',[$comment->quiz, $comment->quiz->getSlug(), '#'.$comment->id ]) }}">
+                                    <i class="far fa-eye m-r-sm"></i> Anzeigen
+                                </a>
+                            @else
+                                <span class="tag is-danger is-light">Quiz gelöscht</span>
+                            @endisset
                         </div>
                     </div>
                 </div>

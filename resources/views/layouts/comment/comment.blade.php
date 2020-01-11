@@ -25,16 +25,18 @@
                 </a>
                 <div class="level-item">
                     @auth
-                        <form action="{{ route('comments.like', [$comment->quiz, $comment]) }}" method="post"
-                              onsubmit="button.disabled = true;button.classList.add('is-loading')">
-                            @csrf
-                            <button name="button"
-                                    class="button is-small @can('like', $comment) is-light @else is-danger @endcan"
-                                    @cannot('like', $comment) disabled @endcannot>
-                                <span class="icon is-small m-r-sm"><i class="fas fa-heart"></i></span>
-                                {{ $comment->likes_count }}
-                            </button>
-                        </form>
+                        @isset($comment->quiz)
+                            <form action="{{ route('comments.like', [$comment->quiz, $comment]) }}" method="post"
+                                  onsubmit="button.disabled = true;button.classList.add('is-loading')">
+                                @csrf
+                                <button name="button"
+                                        class="button is-small @can('like', $comment) is-light @else is-danger @endcan"
+                                        @cannot('like', $comment) disabled @endcannot>
+                                    <span class="icon is-small m-r-sm"><i class="fas fa-heart"></i></span>
+                                    {{ $comment->likes_count }}
+                                </button>
+                            </form>
+                        @endisset
                     @elseguest
                         <i class="fas fa-heart m-r-sm has-text-link"></i> {{ $comment->likes_count }}
                     @endauth
