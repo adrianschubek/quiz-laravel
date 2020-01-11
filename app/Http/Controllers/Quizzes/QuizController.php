@@ -28,9 +28,7 @@ class QuizController extends Controller
 
     public function store(StoreQuizRequest $request)
     {
-        $data = $request->validated();
-
-        $quiz = new Quiz($data);
+        $quiz = new Quiz($request->validated());
         $quiz->user()->associate(auth()->user());
         $quiz->save();
 
@@ -39,6 +37,7 @@ class QuizController extends Controller
 
     public function show(Quiz $quiz)
     {
+        if (!isset($quiz->user)) return abort(404);
         return view('quiz.show', compact('quiz'));
     }
 

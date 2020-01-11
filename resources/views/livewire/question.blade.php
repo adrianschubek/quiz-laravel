@@ -41,19 +41,15 @@
     @endif
     <div wire:loading.class="is-hidden">
         @if($this->position === $this->max)
-            <p class="subtitle">Auswertung</p>
+            <p class="subtitle">Ergebnis</p>
             <p>
                 Du hast <span>{{ $this->results['correct'] }}</span> von
                 <span class="has-text-weight-bold">{{ $this->max }}</span>
                 Fragen richtig beantwortet.
             </p>
-            {{ ddd($this->position, $this->max, $this->results) }}
-            {{--            {{ ddd($this->results['answers']['user'], $this->results['answers']['correct']) }}--}}
-            {{--            {{ ddd($this->results['answers']['correct']) }}--}}
-        @else
-            {{--            {{ info([$this->position, $this->max, $this->results]) }}--}}
             {{--            {{ ddd($this->position, $this->max, $this->results) }}--}}
 
+        @else
             <p class="has-text-weight-light">Frage {{ $this->position + 1 }} von {{ $this->max }}</p>
             <p class="subtitle">{{ $this->question['title'] }}</p>
 

@@ -68,7 +68,6 @@ class Question extends Component
             "correct" => $wrongAnswers
         ];
 
-//        $this->questions[0]->quiz()->increment('play_count');
         $quiz->increment('play_count');
     }
 
