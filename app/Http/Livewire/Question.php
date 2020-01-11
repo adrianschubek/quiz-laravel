@@ -29,12 +29,6 @@ class Question extends Component
 
     public function getQuestionProperty()
     {
-        // FIXME:  Fragen werden 2 Mal aufgerufen beim start.
-//        if ($this->position + 1 === $this->max) {
-//            ddd("ende");
-//            return null;
-//        }
-        //        info(["Position" => $this->position + 1, "Max" => $this->max, "Question" => $q->title, "Results" => $this->results]);
         return Quiz::find($this->quizId)
             ->questions()
             ->orderBy('order', 'asc')

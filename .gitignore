@@ -2,6 +2,8 @@
 /node_modules
 /public/hot
 /public/storage
+/public/vendor
+/config/erd-generator.php
 /storage/*.key
 /vendor
 .env
