@@ -57,3 +57,5 @@ require('@vizuaalog/bulmajs/src/plugins/dropdown');
 require('./bulma-extensions');
 
 window.jdenticon = require('./jdenticon');
+
+import Alpine from "alpinejs/src";

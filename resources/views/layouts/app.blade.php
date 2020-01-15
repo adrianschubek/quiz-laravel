@@ -75,7 +75,7 @@
                             <hr class="dropdown-divider">
                             <a class="navbar-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt m-r-sm"></i> Logout
+                                <i class="fas fa-sign-out-alt m-r-sm"></i> Abmelden
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                   style="display: none;">

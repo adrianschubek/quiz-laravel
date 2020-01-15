@@ -7,7 +7,7 @@
         <div class="hero-body">
             <div class="container">
                 <h1 class="has-text-weight-light title">
-                    <i class="fas fa-heart m-r-sm "></i> Gefällt
+                    <i class="fas fa-heart m-r-sm "></i> Gefällt ({{ $users->total() }})
                 </h1>
             </div>
         </div>

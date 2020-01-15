@@ -35,17 +35,17 @@
                     <form action="{{ route('quiz.like', $quiz) }}" method="post"
                           onsubmit="button.disabled = true;button.classList.add('is-loading')">
                         @csrf
-                        <button name="button" class="button is-danger" @cannot('like', $quiz) disabled @endcannot>
+                        <button name="button" class="button is-danger grow" @cannot('like', $quiz) disabled @endcannot>
                             <i class="fas fa-heart m-r-sm"></i>Mag ich
                         </button>
                     </form>
                 </div>
             </div>
         </div>
-            <div class="columns is-centered">
-                <div class="column is-half">
-                    @livewire('question', $quiz)
-                </div>
+        <div class="columns is-centered">
+            <div class="column is-half">
+                @livewire('question', $quiz)
+            </div>
             </div>
             <div class="box shadow1 m-b-sm">
                 <nav class="level">

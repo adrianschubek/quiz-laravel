@@ -13,17 +13,12 @@ class Question extends Component
     public array $results;
     public int $quizId;
 
-//    public Collection $questions;
-//    public QuestionModel $currentQuestion;
-
     public function mount(Quiz $quiz)
     {
         $this->answers = [];
         $this->results = [];
         $this->position = 0;
         $this->quizId = $quiz->id;
-//        $this->questions = $quiz->questions()->orderBy('order', 'asc')->get();
-//        $this->currentQuestion = $this->questions[$this->position + 1];
         $this->max = $quiz->questions()->count();
     }
 
@@ -51,7 +46,6 @@ class Question extends Component
             $this->checkResults();
             return;
         }
-        //        $this->currentQuestion = $this->questions[++$this->position];
         $this->position++;
     }
 
