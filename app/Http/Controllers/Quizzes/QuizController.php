@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Quizzes;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreQuizRequest;
+use App\Http\Requests\UpdateQuestionRequest;
 use App\Quiz;
-use Illuminate\Http\Request;
 
 class QuizController extends Controller
 {
@@ -46,9 +46,9 @@ class QuizController extends Controller
         return view('quiz.edit', compact('quiz'));
     }
 
-    public function update(Request $request, Quiz $quiz)
+    public function update(StoreQuizRequest $request, Quiz $quiz)
     {
-
+        //..
     }
 
     public function destroy(Quiz $quiz)

@@ -7,7 +7,7 @@
                 <span class="has-text-weight-medium">
                     {{ $quiz->user->name }}
                 </span>
-                | erstellt {{ $quiz->relative_created }}
+                | {{ $quiz->relative_created }}
             </small>
         </div>
         <div class="level-right">

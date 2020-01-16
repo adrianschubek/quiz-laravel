@@ -8,7 +8,7 @@ use App\Question;
 use App\Quiz;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class QuestionController extends Controller
 {
@@ -22,7 +22,7 @@ class QuestionController extends Controller
      *
      * @param StoreQuestionRequest $request
      * @param Quiz $quiz
-     * @return void
+     * @return RedirectResponse
      * @throws AuthorizationException
      */
     public function store(StoreQuestionRequest $request, Quiz $quiz)
@@ -42,16 +42,10 @@ class QuestionController extends Controller
         return redirect()->route('quiz.edit', $quiz);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param int $id
-     * @return void
-     */
-    public function update(Request $request, $id)
+    public function update(StoreQuestionRequest $request, Quiz $quiz)
     {
-        //
+        ddd($request);
+        return back()->with('ok', 'Frage aktualisiert');
     }
 
     /**
@@ -59,7 +53,7 @@ class QuestionController extends Controller
      *
      * @param Quiz $quiz
      * @param Question $question
-     * @return void
+     * @return RedirectResponse
      * @throws Exception
      */
     public function destroy(Quiz $quiz, Question $question)

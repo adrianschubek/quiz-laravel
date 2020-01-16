@@ -57,5 +57,13 @@ require('@vizuaalog/bulmajs/src/plugins/dropdown');
 require('./bulma-extensions');
 
 window.jdenticon = require('./jdenticon');
-
+// noinspection ES6UnusedImports
 import Alpine from "alpinejs/src";
+
+// Login Profilbild
+if (document.getElementById('profilepicname') !== null) {
+    document.getElementById('profilepicname').addEventListener('input', function () {
+        document.getElementById('pic').setAttribute('data-jdenticon-value', this.value);
+        window.jdenticon()
+    })
+}

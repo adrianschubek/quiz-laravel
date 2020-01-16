@@ -41,31 +41,35 @@
             </ul>
         </div>
         <div class="column is-narrow" x-data="{ open: false }">
-            {{--            <form action="{{ route('questions.destroy', [$quiz, $question]) }}"--}}
-            {{--                  method="post"--}}
-            {{--                  onsubmit="button.disabled = true;button.classList.add('is-loading')">--}}
-            {{--                @csrf--}}
-            {{--                @method('delete')--}}
-            {{--                <span class="has-text-weight-light">Position: {{ $question->order }}</span>--}}
-            {{--                <button name="button" class="button tag is-delete is-light"></button>--}}
-            {{--            </form>--}}
-            <button class="button is-warning" @click="open = true"><i class="fas fa-pen m-r-sm"></i>Bearbeiten</button>
+            <button class="button is-warning" @click="open = true">
+                <i class="fas fa-pen"></i>
+            </button>
             <div class="modal" x-bind:class="{ 'is-active': open }">
                 <div class="modal-background" @click="open = false"></div>
-                <div class="modal-card">
-                    <header class="modal-card-head">
-                        <p class="modal-card-title">Modal title</p>
-                    </header>
-                    <section class="modal-card-body">
-                        {{ $question->title  }}
-                        <input type="X">
-                    </section>
-                    <footer class="modal-card-foot">
-                        <button class="button is-info"><i class="fas fa-save m-r-sm"
-                                                          @click="fetch('https://google.de')"></i>Speichern
-                        </button>
-                        <button class="button is-light" @click="open = false">Abbrechen</button>
-                    </footer>
+                <div class="modal-content">
+                    <div class="box">
+                        <p class="modal-card-title">{{ $question->title }}</p>
+                        <form action="{{ route('questions.update', [$quiz, $question]) }}" method="post">
+                            @method('put')
+                            @csrf
+                            <button class="button is-info">
+                                <i class="fas fa-save m-r-sm"></i>Speichern
+                            </button>
+                        </form>
+                        {{--                    <footer class="modal-card-foot" style="justify-content: flex-end;">--}}
+                        <div class="control m-r-sm">
+                            <form action="{{ route('questions.destroy', [$quiz, $question]) }}"
+                                  class="is-inline"
+                                  method="post"
+                                  onsubmit="button.disabled = true;button.classList.add('is-loading')">
+                                @csrf
+                                @method('delete')
+                                <button name="button" class="button is-danger noborder is-outlined"><i
+                                        class="fas fa-trash"></i></button>
+                            </form>
+                        </div>
+                        {{--                    </footer>--}}
+                    </div>
                 </div>
                 <button class="modal-close is-large" aria-label="close" @click="open = false"></button>
             </div>

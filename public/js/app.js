@@ -29558,8 +29558,16 @@
 
         __webpack_require__(/*! ./bulma-extensions */ "./resources/js/bulma-extensions.js");
 
-        window.jdenticon = __webpack_require__(/*! ./jdenticon */ "./resources/js/jdenticon.js");
+        window.jdenticon = __webpack_require__(/*! ./jdenticon */ "./resources/js/jdenticon.js"); // noinspection ES6UnusedImports
 
+        // Login Profilbild
+
+        if (document.getElementById('profilepicname') !== null) {
+            document.getElementById('profilepicname').addEventListener('input', function () {
+                document.getElementById('pic').setAttribute('data-jdenticon-value', this.value);
+                window.jdenticon();
+            });
+        }
 
         /***/
     }),

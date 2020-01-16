@@ -16,6 +16,13 @@
         <div class="column is-3">
         </div>
         <div class="column is-6">
+            @if(session('ok'))
+                <article class="message is-success">
+                    <div class="message-body">
+                        {{ session('ok') }}
+                    </div>
+                </article>
+            @endif
             <div class="box has-background-white-ter">
                 {{ $quiz->description }}
             </div>

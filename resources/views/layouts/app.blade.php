@@ -47,44 +47,76 @@
                     </form>
                 </div>
                 @guest
-                    <div class="buttons">
-                        <a class="navbar-item button is-white" href="{{ route('login') }}">Anmelden</a>
-                        <a class="navbar-item button is-light" href="{{ route('register') }}">Registrieren</a>
+                    <div class="buttons" x-data="{ open: false, page: 1 }">
+                        <button class="navbar-item button is-white" @click="open = true;page = 1">Anmelden</button>
+                        <div class="modal" x-bind:class="{ 'is-active': open && page === 1 }">
+                            <div class="modal-background" @click="open = false"></div>
+                            <div class="modal-content">
+                                <div class="box">
+                                    <div class="tabs is-centered">
+                                        <ul>
+                                            <li class="is-active"><a>Anmelden</a></li>
+                                            <li><a @click="page=2">Registrieren</a></li>
+                                        </ul>
+                                    </div>
+                                    @include('layouts.forms.login')
+                                </div>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close" @click="open = false"></button>
+                        </div>
+                        <div class="modal" x-bind:class="{ 'is-active': open && page === 2 }">
+                            <div class="modal-background" @click="open = false"></div>
+                            <div class="modal-content">
+                                <div class="box">
+                                    <div class="tabs is-centered">
+                                        <ul>
+                                            <li><a @click="page=1">Anmelden</a></li>
+                                            <li class="is-active"><a>Registrieren</a></li>
+                                        </ul>
+                                    </div>
+                                    @include('layouts.forms.register')
+                                </div>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close" @click="open = false"></button>
+                        </div>
                     </div>
-                @else
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link"
-                           href="{{ route('profiles.show', [auth()->user()->id, auth()->user()->name]) }}">
-                            <canvas width="40" height="40" data-jdenticon-value="{{ auth()->user()->name }}"></canvas>
-                            {{ auth()->user()->name }}
-                        </a>
+            </div>
+            @else
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link"
+                       href="{{ route('profiles.show', [auth()->user()->id, auth()->user()->name]) }}">
+                        <canvas width="40" height="40"
+                                data-jdenticon-value="{{ auth()->user()->name }}"></canvas>
+                        {{ auth()->user()->name }}
+                    </a>
 
-                        <div class="navbar-dropdown">
+                    <div class="navbar-dropdown">
+                        @auth
                             <a class="navbar-item" href="{{ route('quiz.index') }}">
                                 <i class="fas fa-layer-group m-r-sm"></i> Meine Quizze
                             </a>
-                            <a class="navbar-item" href="{{ route('comments.index') }}">
-                                <i class="fas fa-comments m-r-sm"></i> Meine Kommentare
-                            </a>
-                            <a class="navbar-item" href="{{ route('likes.index') }}">
-                                <i class="fas fa-heart m-r-sm"></i> Lieblingsquizze
-                            </a>
-                            <a class="navbar-item" href="{{ route('profiles.edit', auth()->user()->id) }}">
-                                <i class="fas fa-cogs m-r-sm"></i> Einstellungen
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a class="navbar-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt m-r-sm"></i> Abmelden
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                  style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
+                        @endauth
+                        <a class="navbar-item" href="{{ route('comments.index') }}">
+                            <i class="fas fa-comments m-r-sm"></i> Meine Kommentare
+                        </a>
+                        <a class="navbar-item" href="{{ route('likes.index') }}">
+                            <i class="fas fa-heart m-r-sm"></i> Lieblingsquizze
+                        </a>
+                        <a class="navbar-item" href="{{ route('profiles.edit', auth()->user()->id) }}">
+                            <i class="fas fa-cogs m-r-sm"></i> Einstellungen
+                        </a>
+                        <hr class="dropdown-divider">
+                        <a class="navbar-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt m-r-sm"></i> Abmelden
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                              style="display: none;">
+                            @csrf
+                        </form>
                     </div>
-                @endguest
-            </div>
+                </div>
+            @endguest
         </div>
     </div>
 </nav>

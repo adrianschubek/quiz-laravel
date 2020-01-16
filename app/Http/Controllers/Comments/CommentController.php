@@ -56,7 +56,6 @@ class CommentController extends Controller
     public function show(Quiz $quiz)
     {
         $comments = $quiz->comments()
-            ->has('user')
             ->withCount('likes')
             ->with('user')
             ->latest()

@@ -43,7 +43,10 @@ class Quiz extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withDefault([
+            'name' => "(Gelöscht)",
+            'id' => -1
+        ]);
     }
 
     public function getPlayCount()
