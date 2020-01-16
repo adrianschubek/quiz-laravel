@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d25dfe4b77d983f34942bd5f0509b1b7",
+    "content-hash": "9cd3a11764e5c763dc5cfe44a9ab1307",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -967,16 +967,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v0.5.3",
+            "version": "v0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "a41da65de735c2d51bb28c0497711a622dec09d6"
+                "reference": "c60b2ebbed97304f7fc21e37d9da0508c14198fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/a41da65de735c2d51bb28c0497711a622dec09d6",
-                "reference": "a41da65de735c2d51bb28c0497711a622dec09d6",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/c60b2ebbed97304f7fc21e37d9da0508c14198fb",
+                "reference": "c60b2ebbed97304f7fc21e37d9da0508c14198fb",
                 "shasum": ""
             },
             "require": {
@@ -1018,7 +1018,7 @@
                 }
             ],
             "description": "Build and test rich client-side functionality: with only backend code.",
-            "time": "2019-12-27T21:43:30+00:00"
+            "time": "2020-01-14T20:29:42+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -7357,8 +7357,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
