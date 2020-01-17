@@ -44,5 +44,11 @@ class LoginController extends Controller
         $user->update([
             'last_login_at' => Carbon::now()->toDateTimeString()
         ]);
+        return back();
+    }
+
+    protected function loggedOut(Request $request)
+    {
+        return back();
     }
 }

@@ -9,6 +9,7 @@ use App\Support\Traits\FormatsNumbers;
 use App\User;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Hash;
+use function request;
 
 class ProfileController extends Controller
 {
@@ -70,7 +71,7 @@ class ProfileController extends Controller
 
         $profile->update($data);
 
-        return back()->with('ok', 'Profil wurde aktualisiert.');
+        return back()->with(['ok' => 'Profil wurde aktualisiert.', 'page' => request('page') ?? 'status']);
     }
 
     public function destroy(User $profile)
