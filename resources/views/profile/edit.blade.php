@@ -52,19 +52,23 @@
                             </p>
                             <ul class="menu-list">
                                 <li><a @click="open = 'status'"
-                                       x-bind:class="{ 'is-active': open === 'status' }">Status</a></li>
-                                <li><a @click="open = 'stats'" x-bind:class="{ 'is-active': open === 'stats' }">Statistiken</a>
+                                       x-bind:class="{ 'is-active': open === 'status' }">Übersicht</a></li>
+                                <li><a @click="open = 'stats'"
+                                       x-bind:class="{ 'is-active': open === 'stats' }">Statistiken</a>
                                 </li>
                             </ul>
                             <p class="menu-label">
                                 Account
                             </p>
                             <ul class="menu-list">
-                                <li><a @click="open = 'name'" x-bind:class="{ 'is-active': open === 'name' }">Benutzername
+                                <li><a @click="open = 'name'"
+                                       x-bind:class="{ 'is-active': open === 'name' }">Benutzername
                                         ändern</a></li>
-                                <li><a @click="open = 'email'" x-bind:class="{ 'is-active': open === 'email' }">Email
+                                <li><a @click="open = 'email'"
+                                       x-bind:class="{ 'is-active': open === 'email' }">Email
                                         ändern</a></li>
-                                <li><a @click="open = 'pw'" x-bind:class="{ 'is-active': open === 'pw' }">Passwort
+                                <li><a @click="open = 'pw'"
+                                       x-bind:class="{ 'is-active': open === 'pw' }">Passwort
                                         ändern</a></li>
                                 <li><a class="has-text-grey-light" @click="open = 'acc'"
                                        x-bind:class="{ 'is-active': open === 'acc' }">Account löschen</a></li>
@@ -92,6 +96,7 @@
                                                placeholder="{{ $profile->name }}"
                                                onkeydown="return event.key !== 'Enter';"
                                                value="{{ old('name') }}"
+                                               autocomplete="off"
                                         >
                                         <span class="icon is-small is-left">
                                             <i class="fas fa-user"></i>
@@ -103,6 +108,7 @@
                                 </div>
                                 <hr class="is-divider m-b-sm m-t-sm">
                                 <div class="field">
+                                    <label class="label">Passwort bestätigen</label>
                                     <div class="control has-icons-left">
                                         <input name="current_password"
                                                class="input @error('current_password') is-danger @enderror"

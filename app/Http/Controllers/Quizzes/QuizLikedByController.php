@@ -11,6 +11,12 @@ use Illuminate\View\View;
 
 class QuizLikedByController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
+
     /**
      * Handle the incoming request.
      *
