@@ -7,7 +7,7 @@
         <div class="hero-body">
             <div class="container">
                 <h1 class="title is-family-code">404.</h1>
-                <p class="subtitle">Nichts gefunden.</p>
+                <p class="subtitle">Nicht gefunden.</p>
             </div>
         </div>
     </section>

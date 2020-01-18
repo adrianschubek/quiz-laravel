@@ -25,55 +25,61 @@
                 </div>
             </article>
         @endif
-
-        <div class="box shadow1">
-            <div class="columns">
-                <div class="column">
-                    {{ $quiz->description }}
-                </div>
-                <div class="column is-narrow">
-                    <form action="{{ route('quiz.like', $quiz) }}" method="post"
-                          onsubmit="button.disabled = true;button.classList.add('is-loading')">
-                        @csrf
-                        <button name="button" class="button is-danger grow" @cannot('like', $quiz) disabled @endcannot>
-                            <i class="fas fa-heart m-r-sm"></i>Mag ich
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="columns is-centered">
+        <div class="columns is-centered is-desktop">
             <div class="column is-half">
                 @livewire('question', $quiz)
             </div>
+            <div class="column is-one-quarter">
+                <div class="box shadow1 m-b-none rbl-0 rbr-0" style="background: hsl(0, 0%, 96%);">
+                    <form action="{{ route('quiz.like', $quiz) }}" method="post"
+                          onsubmit="button.disabled = true;button.classList.add('is-loading')">
+                        @csrf
+                        @can('like', $quiz)
+                            <button name="button" class="button is-danger grow">
+                                <i class="fas fa-heart m-r-sm"></i>Mag ich
+                            </button>
+                        @endcan
+                        @auth
+                            @cannot('like', $quiz)
+                                <button name="button" class="button is-danger skew-forward" disabled>
+                                    <i class="fas fa-check m-r-sm"></i>Dir gefällt dieses Quiz
+                                </button>
+                            @endcannot
+                        @endauth
+                    </form>
+                </div>
+                <div class="box rtl-0 rtr-0 noboxshadow">
+                    {{ $quiz->description }}
+                </div>
             </div>
-            <div class="box shadow1 m-b-sm">
-                <nav class="level">
-                    <div class="level-item has-text-centered">
-                        <div>
-                            <p class="heading">Erstellt am</p>
-                            <p>{{ $quiz->getCreatedAtDate() }}</p>
-                        </div>
+        </div>
+        <div class="box shadow1 m-b-sm">
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">Erstellt am</p>
+                        <p>{{ $quiz->getCreatedAtDate() }}</p>
                     </div>
-                    <div class="level-item has-text-centered">
-                        <div>
-                            <p class="heading">Aktualisiert am</p>
-                            <p>{{ $quiz->getUpdatedAtDate() }}</p>
-                        </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">Aktualisiert am</p>
+                        <p>{{ $quiz->getUpdatedAtDate() }}</p>
                     </div>
-                    <div class="level-item has-text-centered">
-                        <div>
-                            <p class="heading">Gefällt</p>
-                            <p class="is-family-code">{{ $quiz->getLikesCount() }}</p>
-                        </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">Gefällt</p>
+                        <p class="is-family-code">{{ $quiz->getLikesCount() }}</p>
                     </div>
-                    <div class="level-item has-text-centered">
-                        <div>
-                            <p class="heading">Gespielt</p>
-                            <p class="is-family-code">{{ $quiz->getPlayCount() }}</p>
-                        </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">Gespielt</p>
+                        <p class="is-family-code">{{ $quiz->getPlayCount() }}</p>
                     </div>
-                </nav>
-            </div>
+                </div>
+            </nav>
+        </div>
     </div>
 @endsection
