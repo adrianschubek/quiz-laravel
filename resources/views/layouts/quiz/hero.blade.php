@@ -57,7 +57,9 @@
                         <a href="{{ route('comments.show',[$quiz, $quiz->getSlug()]) }}"
                            @if($active === 'comments') class="is-active-grey" @endif>
                             <i class="fas fa-comments m-r-sm"></i>
-                            Kommentare<span class="tag is-white m-l-sm">{{ $quiz->comments->count() }}</span>
+                            Kommentare
+                            @if($quiz->comments->count() !== 0)<span
+                                class="tag is-white m-l-sm">{{ $quiz->comments->count() }}</span>@endifU
                         </a>
                     </li>
                     <li>

@@ -34,21 +34,23 @@
                     <form action="{{ route('quiz.like', $quiz) }}" method="post"
                           onsubmit="button.disabled = true;button.classList.add('is-loading')">
                         @csrf
-                        @can('like', $quiz)
-                            <button name="button" class="button is-danger grow">
-                                <i class="fas fa-heart m-r-sm"></i>Mag ich
-                            </button>
-                        @endcan
                         @auth
-                            @cannot('like', $quiz)
+                            @can('like', $quiz)
+                                <button name="button" class="button is-danger grow">
+                                    <i class="fas fa-heart m-r-sm"></i>Mag ich
+                                </button>
+                            @else
                                 <button name="button" class="button is-danger skew-forward" disabled>
                                     <i class="fas fa-check m-r-sm"></i>Dir gefällt dieses Quiz
                                 </button>
                             @endcannot
+                        @elseguest
+                            <p>Melde dich an um zu bewerten</p>
                         @endauth
                     </form>
                 </div>
                 <div class="box rtl-0 rtr-0 noboxshadow">
+                    <small class="has-text-weight-light">Beschreibung</small><br>
                     {{ $quiz->description }}
                 </div>
             </div>
