@@ -59,7 +59,8 @@
                             <i class="fas fa-comments m-r-sm"></i>
                             Kommentare
                             @if($quiz->comments->count() !== 0)<span
-                                class="tag is-white m-l-sm">{{ $quiz->comments->count() }}</span>@endifU
+                                class="tag is-white m-l-sm">{{ $quiz->comments->count() }}</span>
+                            @endif
                         </a>
                     </li>
                     <li>

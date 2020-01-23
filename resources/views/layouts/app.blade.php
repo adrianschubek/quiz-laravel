@@ -37,7 +37,7 @@
                           onsubmit="button.disabled = true;button.classList.add('is-loading')">
                         <div class="control">
                             <input class="input m-r-sm has-background-white-ter noborder noboxshadow" type="text"
-                                   name="q"
+                                   name="query"
                                    placeholder="Suche...">
                         </div>
                         <div class="control">

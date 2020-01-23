@@ -2,8 +2,12 @@
 
 @section('title', "$quiz->title")
 
+@push('head')
+    @livewireStyles
+@endpush
+
 @push('scripts')
-    @livewireAssets
+    @livewireScripts
 @endpush
 
 @section('content')

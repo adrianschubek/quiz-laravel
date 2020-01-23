@@ -3,7 +3,11 @@
 @section('title', "Suchen")
 
 @push('head')
-    @livewireAssets
+    @livewireStyles
+@endpush
+
+@push('scripts')
+    @livewireScripts
 @endpush
 
 @section('content')
