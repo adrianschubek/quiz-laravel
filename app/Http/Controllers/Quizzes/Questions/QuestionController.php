@@ -44,6 +44,7 @@ class QuestionController extends Controller
 
     public function update(StoreQuestionRequest $request, Quiz $quiz)
     {
+        // TODO:
         ddd($request);
         return back()->with('ok', 'Frage aktualisiert');
     }
