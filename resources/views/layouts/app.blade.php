@@ -36,12 +36,15 @@
                     <form action="{{ route('quiz.search') }}" class="m-r-sm field has-addons"
                           onsubmit="button.disabled = true;button.classList.add('is-loading')">
                         <div class="control">
-                            <input class="input m-r-sm has-background-white-ter noborder noboxshadow" type="text"
+                            <input class="input m-r-sm has-background-white-ter noborder noboxshadow" type="search"
                                    name="query"
-                                   placeholder="Suche...">
+                                   placeholder="Suche..."
+                                   autocomplete="off"
+                            >
                         </div>
                         <div class="control">
-                            <button type="submit" class="button is-link " name="button"><i class="fas fa-search"></i>
+                            <button type="submit" class="button is-link " name="button">
+                                <i class="fas fa-search"></i>
                             </button>
                         </div>
                     </form>
