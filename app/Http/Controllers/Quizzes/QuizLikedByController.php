@@ -11,18 +11,11 @@ use Illuminate\View\View;
 
 class QuizLikedByController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware(['auth', 'verified']);
     }
 
-    /**
-     * Handle the incoming request.
-     *
-     * @param Quiz $quiz
-     * @return Factory|View
-     */
     public function __invoke(Quiz $quiz)
     {
         $users = User::whereIn('id',
