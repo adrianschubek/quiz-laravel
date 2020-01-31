@@ -87,12 +87,11 @@
                                   onsubmit="button.disabled = true;button.classList.add('is-loading')">
                                 @csrf
                                 @method('PUT')
-                                <input type="hidden" name="page" value="name">
                                 <div class="field">
                                     <label class="label">Benutzername ändern</label>
                                     <div class="control has-icons-left">
                                         <input name="name" class="input @error('name') is-danger @enderror"
-                                               type="text"
+                                               type="search"
                                                placeholder="{{ $profile->name }}"
                                                onkeydown="return event.key !== 'Enter';"
                                                value="{{ old('name') }}"
@@ -130,10 +129,122 @@
                             </form>
                         </div>
                         <div class="box" x-show="open === 'email'">
-
+                            <form action="{{ route('profiles.update', $profile) }}" method="post"
+                                  onsubmit="button.disabled = true;button.classList.add('is-loading')">
+                                @csrf
+                                @method('PUT')
+                                <div class="field">
+                                    <label class="label">E-Mail ändern</label>
+                                    <div class="control has-icons-left">
+                                        <input name="email" class="input @error('email') is-danger @enderror"
+                                               type="email"
+                                               placeholder="{{ $profile->email }}"
+                                               onkeydown="return event.key !== 'Enter';"
+                                               value="{{ old('email') }}"
+                                        >
+                                        <span class="icon is-small is-left">
+                                                                <i class="fas fa-envelope"></i>
+                                                            </span>
+                                    </div>
+                                    @error('email')
+                                    <p class="help is-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="field">
+                                    <div class="control has-icons-left">
+                                        <input name="email_confirmation"
+                                               class="input @error('email') is-danger @enderror"
+                                               type="email"
+                                               placeholder="{{ $profile->email }} (wiederholen)"
+                                               onkeydown="return event.key !== 'Enter';"
+                                        >
+                                        <span class="icon is-small is-left">
+                                                                <i class="fas fa-envelope"></i>
+                                                            </span>
+                                    </div>
+                                    <p class="help">Du erhälst eine neue Bestätigungsemail.</p>
+                                </div>
+                                <hr class="is-divider m-b-sm m-t-sm">
+                                <div class="field">
+                                    <label class="label">Passwort bestätigen</label>
+                                    <div class="control has-icons-left">
+                                        <input name="current_password"
+                                               class="input @error('current_password') is-danger @enderror"
+                                               type="password"
+                                               placeholder="Aktuelles Passwort eingeben"
+                                               onkeydown="return event.key !== 'Enter';"
+                                        >
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-user-lock"></i>
+                                        </span>
+                                    </div>
+                                    @error('current_password')
+                                    <p class="help is-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <button type="submit" class="button is-info is-fullwidth m-b-md" name="button">
+                                    <i class="fas fa-user-edit m-r-sm"></i>Speichern
+                                </button>
+                            </form>
                         </div>
                         <div class="box" x-show="open === 'pw'">
-
+                            <form action="{{ route('profiles.update', $profile) }}" method="post"
+                                  onsubmit="button.disabled = true;button.classList.add('is-loading')">
+                                @csrf
+                                @method('PUT')
+                                <div class="field">
+                                    <label class="label">Passwort ändern</label>
+                                    <div class="control has-icons-left">
+                                        <input name="password" class="input @error('password') is-danger @enderror"
+                                               type="password"
+                                               placeholder="Neues Passwort"
+                                               onkeydown="return event.key !== 'Enter';"
+                                               autocomplete="new-password"
+                                        >
+                                        <span class="icon is-small is-left">
+                                                                <i class="fas fa-lock"></i>
+                                                            </span>
+                                    </div>
+                                    @error('password')
+                                    <p class="help is-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="field">
+                                    <div class="control has-icons-left">
+                                        <input name="password_confirmation"
+                                               class="input @error('password') is-danger @enderror"
+                                               type="password"
+                                               placeholder="Neues Passwort wiederholen"
+                                               onkeydown="return event.key !== 'Enter';"
+                                               autocomplete="new-password"
+                                        >
+                                        <span class="icon is-small is-left">
+                                                                <i class="fas fa-lock"></i>
+                                                            </span>
+                                    </div>
+                                </div>
+                                <hr class="is-divider m-b-sm m-t-sm">
+                                <div class="field">
+                                    <label class="label">Passwort bestätigen</label>
+                                    <div class="control has-icons-left">
+                                        <input name="current_password"
+                                               class="input @error('current_password') is-danger @enderror"
+                                               type="password"
+                                               placeholder="Aktuelles Passwort eingeben"
+                                               onkeydown="return event.key !== 'Enter';"
+                                        >
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-user-lock"></i>
+                                        </span>
+                                    </div>
+                                    @error('current_password')
+                                    <p class="help is-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <button type="submit" class="button is-info is-fullwidth m-b-md" name="button">
+                                    <i class="fas fa-user-edit m-r-sm"></i>Speichern
+                                </button>
+                            </form>
                         </div>
                         <div class="box" x-show="open === 'acc'">
                             ...
@@ -141,95 +252,7 @@
                     </div>
                 </div>
 
-                {{--                <form action="{{ route('profiles.update', $profile) }}" method="post"--}}
-                {{--                      onsubmit="button.disabled = true;button.classList.add('is-loading')">--}}
-                {{--                    <div class="box">--}}
-                {{--                        @csrf--}}
-                {{--                        @method('PUT')--}}
 
-                {{--                    </div>--}}
-                {{--                    <div class="box ">--}}
-                {{--                        <div class="field">--}}
-                {{--                            <label class="label">E-Mail ändern</label>--}}
-                {{--                            <div class="control has-icons-left">--}}
-                {{--                                <input name="email" class="input @error('email') is-danger @enderror"--}}
-                {{--                                       type="email"--}}
-                {{--                                       placeholder="{{ $profile->email }}"--}}
-                {{--                                       onkeydown="return event.key !== 'Enter';"--}}
-                {{--                                       value="{{ old('email') }}"--}}
-                {{--                                >--}}
-                {{--                                <span class="icon is-small is-left">--}}
-                {{--                                                <i class="fas fa-envelope"></i>--}}
-                {{--                                            </span>--}}
-                {{--                            </div>--}}
-                {{--                            @error('email')--}}
-                {{--                            <p class="help is-danger">{{ $message }}</p>--}}
-                {{--                            @enderror--}}
-                {{--                        </div>--}}
-                {{--                        <div class="field">--}}
-                {{--                            <div class="control has-icons-left">--}}
-                {{--                                <input name="email_confirmation" class="input @error('email') is-danger @enderror"--}}
-                {{--                                       type="email"--}}
-                {{--                                       placeholder="{{ $profile->email }} (wiederholen)"--}}
-                {{--                                       onkeydown="return event.key !== 'Enter';"--}}
-                {{--                                >--}}
-                {{--                                <span class="icon is-small is-left">--}}
-                {{--                                                <i class="fas fa-envelope"></i>--}}
-                {{--                                            </span>--}}
-                {{--                            </div>--}}
-                {{--                            <p class="help">Du erhälst eine neue Bestätigungsemail.</p>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                    <div class="box ">--}}
-                {{--                        <div class="field">--}}
-                {{--                            <label class="label">Passwort ändern</label>--}}
-                {{--                            <div class="control has-icons-left">--}}
-                {{--                                <input name="password" class="input @error('password') is-danger @enderror"--}}
-                {{--                                       type="text"--}}
-                {{--                                       placeholder="Neues Passwort"--}}
-                {{--                                       onkeydown="return event.key !== 'Enter';"--}}
-                {{--                                       autocomplete="new-password"--}}
-                {{--                                >--}}
-                {{--                                <span class="icon is-small is-left">--}}
-                {{--                                                <i class="fas fa-lock"></i>--}}
-                {{--                                            </span>--}}
-                {{--                            </div>--}}
-                {{--                            @error('password')--}}
-                {{--                            <p class="help is-danger">{{ $message }}</p>--}}
-                {{--                            @enderror--}}
-                {{--                        </div>--}}
-                {{--                        <div class="field">--}}
-                {{--                            <div class="control has-icons-left">--}}
-                {{--                                <input name="password_confirmation" class="input @error('password') is-danger @enderror"--}}
-                {{--                                       type="text"--}}
-                {{--                                       placeholder="Neues Passwort wiederholen"--}}
-                {{--                                       onkeydown="return event.key !== 'Enter';"--}}
-                {{--                                       autocomplete="new-password"--}}
-                {{--                                >--}}
-                {{--                                <span class="icon is-small is-left">--}}
-                {{--                                                <i class="fas fa-lock"></i>--}}
-                {{--                                            </span>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                    <hr class="is-divider m-b-sm m-t-sm">--}}
-                {{--                    <div class="field">--}}
-                {{--                        <div class="control has-icons-left">--}}
-                {{--                            <input name="current_password" class="input @error('current_password') is-danger @enderror"--}}
-                {{--                                   type="password"--}}
-                {{--                                   placeholder="Aktuelles Passwort eingeben"--}}
-                {{--                                   onkeydown="return event.key !== 'Enter';"--}}
-                {{--                            >--}}
-                {{--                            <span class="icon is-small is-left">--}}
-                {{--                                                <i class="fas fa-user-lock"></i>--}}
-                {{--                                            </span>--}}
-                {{--                        </div>--}}
-                {{--                        @error('current_password')--}}
-                {{--                        <p class="help is-danger">{{ $message }}</p>--}}
-                {{--                        @enderror--}}
-                {{--                    </div>--}}
-
-                {{--                </form>--}}
             </div>
         </div>
         <div class="column is-2">

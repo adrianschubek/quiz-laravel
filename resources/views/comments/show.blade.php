@@ -24,7 +24,7 @@
                 @endif
 
                 @can('create', \App\Comment::class)
-                    <article class="media">
+                    <article class="media" x-data="{ show: false }">
                         <figure class="media-left">
                             <canvas width="50" height="50" data-jdenticon-value="{{ auth()->user()->name }}"></canvas>
                         </figure>
@@ -36,16 +36,18 @@
                                     <p class="control">
                             <textarea class="textarea @error('comment') is-danger @enderror" name="comment"
                                       placeholder="Dein Kommentar..."
-                                      style="min-height: 5em !important;">{{ old('comment') }}</textarea>
+                                      style="min-height: 5em !important;"
+                                      x-on:input="show = $event.target.value.length > 0"
+                            >{{ old('comment') }}</textarea>
                                     </p>
                                 </div>
-                                <nav class="level">
+                                <nav class="level" x-show="show">
                                     <div class="level-left"></div>
                                     <div class="level-right">
                                         <div class="level-item">
                                             <button name="button" class="button is-info"><i
                                                     class="fas fa-paper-plane m-r-sm"></i>
-                                                Kommentieren
+                                                Senden
                                             </button>
                                         </div>
                                     </div>
