@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}" class="has-navbar-fixed-top">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,11 +12,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}?v={{ config('app.version') }}" rel="stylesheet">
+    @livewireStyles
 
     @stack('head')
 </head>
 <body>
-<nav class="navbar has-shadow" style="border-top-color: #3273dc;border-top-width: thick;border-top-style: solid;">
+<nav class="navbar has-shadow is-fixed-top"
+     style="border-top-color: #3273dc;border-top-width: thick;border-top-style: solid;">
     <div class="container">
         <div class="navbar-brand">
             <a href="{{ url('/') }}" class="navbar-item">{{ config('app.name') }}</a>
@@ -85,6 +87,7 @@
                     </div>
             </div>
             @else
+                @livewire('notifications')
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link"
                        href="{{ route('profiles.show', [auth()->user()->id, auth()->user()->name]) }}">
@@ -92,7 +95,6 @@
                                 data-jdenticon-value="{{ auth()->user()->name }}"></canvas>
                         {{ auth()->user()->name }}
                     </a>
-
                     <div class="navbar-dropdown">
                         @auth
                             <a class="navbar-item" href="{{ route('quiz.index') }}">
@@ -143,7 +145,8 @@
 </footer>
 
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}?v={{ config('app.version') }}"></script>
+<script src="{{ asset('js/app.js') }}?v={{ config('app.version') }}" defer></script>
+@livewireScripts
 @stack('scripts')
 </body>
 </html>

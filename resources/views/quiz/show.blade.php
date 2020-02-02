@@ -2,14 +2,6 @@
 
 @section('title', "$quiz->title")
 
-@push('head')
-    @livewireStyles
-@endpush
-
-@push('scripts')
-    @livewireScripts
-@endpush
-
 @section('content')
 
     @include('layouts.quiz.hero', ['active' => 'quiz'])

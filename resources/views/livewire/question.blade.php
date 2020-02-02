@@ -85,7 +85,7 @@
     </div>
 </div>
 
-@push('scripts')
+{{--@push('scripts')
     <script>
         // Alle        Checkboxen        unchecken
         document.addEventListener("livewire:load", function () {
@@ -97,4 +97,4 @@
             });
         });
     </script>
-@endpush
+@endpush--}}

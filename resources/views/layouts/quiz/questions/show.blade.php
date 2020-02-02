@@ -49,13 +49,13 @@
                 <div class="modal-content">
                     <div class="box">
                         <p class="modal-card-title">{{ $question->title }}</p>
-                        <form action="{{ route('questions.update', [$quiz, $question]) }}" method="post">
-                            @method('put')
-                            @csrf
-                            <button class="button is-info">
-                                <i class="fas fa-save m-r-sm"></i>Speichern
-                            </button>
-                        </form>
+                        {{--                        <form action="{{ route('questions.update', [$quiz, $question]) }}" method="post">--}}
+                        {{--                            @method('put')--}}
+                        {{--                            @csrf--}}
+                        {{--                            <button class="button is-info">--}}
+                        {{--                                <i class="fas fa-save m-r-sm"></i>Speichern--}}
+                        {{--                            </button>--}}
+                        {{--                        </form>--}}
                         {{--                    <footer class="modal-card-foot" style="justify-content: flex-end;">--}}
                         <div class="control m-r-sm">
                             <form action="{{ route('questions.destroy', [$quiz, $question]) }}"
