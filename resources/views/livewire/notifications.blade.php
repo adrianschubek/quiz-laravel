@@ -7,7 +7,7 @@
             <i class="fas fa-bell has-text-danger"></i>
             <span class="tag is-grey m-l-sm">{{ count($notifications) }}</span>
         @else
-            <i class="fas fa-bell has-text-grey-light"></i>
+            <i class="far fa-bell has-text-grey-light"></i>
         @endif
     </a>
     <div class="navbar-dropdown is-right">
@@ -22,10 +22,12 @@
                 <i class="fas fa-ghost m-r-sm"></i>Nichts vorhanden
             </div>
         @endforelse
-        <hr class="navbar-divider">
-        <a class="navbar-item" disabled wire:click="markAllAsRead">
-            <i class="fas fa-check m-r-sm"></i> Alles als gelesen markieren
-        </a>
+        @if(count($notifications) !== 0)
+            <hr class="navbar-divider">
+            <a class="navbar-item" disabled wire:click="markAllAsRead">
+                <i class="fas fa-check m-r-sm"></i> Alles als gelesen markieren
+            </a>
+        @endif
         {{--        <hr class="navbar-divider">--}}
         {{--        <a class="navbar-item">--}}
         {{--            <i class="far fa-bell m-r-sm"></i> Alle Benachrichtigungen anzeigen--}}
