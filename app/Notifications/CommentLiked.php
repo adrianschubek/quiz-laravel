@@ -2,23 +2,23 @@
 
 namespace App\Notifications;
 
-use App\Quiz;
+use App\Comment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Auth\Authenticatable as User;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Str;
 
-class QuizLiked extends Notification implements ShouldQueue
+class CommentLiked extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    private Quiz $quiz;
+    private Comment $comment;
     private User $user;
 
-    public function __construct(Quiz $quiz, User $user)
+    public function __construct(Comment $comment, User $user)
     {
-        $this->quiz = $quiz;
+        $this->comment = $comment;
         $this->user = $user;
     }
 
@@ -33,18 +33,12 @@ class QuizLiked extends Notification implements ShouldQueue
         return ['database'];
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param mixed $notifiable
-     * @return array
-     */
     public function toArray($notifiable)
     {
         return [
-            "desc" => sprintf("'%s' gefällt dein Quiz '%s'", $this->user->name, Str::limit($this->quiz->title, 10)),
-            "link" => route("quiz.likedby", [$this->quiz, Str::slug($this->quiz->title)]),
-            "quiz_id" => $this->quiz->id,
+            "desc" => sprintf("'%s' gefällt dein Kommentar '%s'", $this->user->name, Str::limit($this->comment->comment, 10)),
+            "link" => route("comments.show", [$this->comment->quiz, Str::slug($this->comment->quiz->title)]),
+            "comment_id" => $this->comment->id,
             "user_id" => $this->user->id,
         ];
     }

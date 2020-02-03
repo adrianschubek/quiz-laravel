@@ -2,11 +2,12 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css);
 
 /**
- * placeholder-loading v0.2.4
+ * placeholder-loading v0.2.5
  * Author: Zalog (https://www.zalog.ro/)
  * License: MIT
  **/
 .ph-item {
+    direction: ltr;
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -132,6 +133,11 @@
 }
 
 @charset "UTF-8";
+
+.turbolinks-progress-bar {
+    height: 5px;
+    background-color: dodgerblue;
+}
 
 .grow {
     display: inline-block;

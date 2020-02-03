@@ -31,6 +31,7 @@
         "bulma-tooltip": "^2.0.2",
         "jquery": "^3.4.1",
         "placeholder-loading": "^0.2.5",
-        "trianglify": "^2.0.0"
+        "trianglify": "^2.0.0",
+        "turbolinks": "^5.2.0"
     }
 }

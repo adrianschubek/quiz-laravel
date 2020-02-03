@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Likes;
 
 use App\Comment;
 use App\Like;
+use App\Notifications\CommentLiked;
 use App\Quiz;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\URL;
@@ -23,6 +24,8 @@ class LikeCommentController extends Controller
         $like->user()->associate(auth()->user());
 
         $comment->likes()->save($like);
+
+        $comment->user->notify(new CommentLiked($comment, auth()->user()));
 
         return redirect(URL::previous() . "#" . $comment->id)
             ->with('ok', 'Du magst diesen Kommentar.');

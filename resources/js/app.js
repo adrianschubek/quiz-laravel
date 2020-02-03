@@ -60,10 +60,19 @@ window.jdenticon = require('./jdenticon');
 // noinspection ES6UnusedImports
 import Alpine from "alpinejs/src";
 
-// Login Profilbild
-if (document.getElementById('profilepicname') !== null) {
-    document.getElementById('profilepicname').addEventListener('input', function () {
-        document.getElementById('pic').setAttribute('data-jdenticon-value', this.value);
-        window.jdenticon()
-    })
-}
+let Turbolinks = require("turbolinks");
+Turbolinks.start();
+Turbolinks.setProgressBarDelay(50);
+
+document.addEventListener('turbolinks:load', () => {
+    // Login Profilbild
+    if (document.getElementById('profilepicname') !== null) {
+        document.getElementById('profilepicname').addEventListener('input', function () {
+            document.getElementById('pic').setAttribute('data-jdenticon-value', this.value);
+            window.jdenticon()
+        })
+    }
+
+    window.livewire.rescan();
+    window.jdenticon();
+});

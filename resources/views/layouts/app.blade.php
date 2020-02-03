@@ -11,14 +11,19 @@
     <title>{{ config('app.name') }} - @yield('title')</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}?v={{ config('app.version') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}?v={{ config('app.version') }}" rel="stylesheet"
+          data-turbolinks-track="reload">
     @livewireStyles
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}?v={{ config('app.version') }}" defer data-turbolinks-track="reload"></script>
+    @livewireScripts
 
     @stack('head')
 </head>
 <body>
 <nav class="navbar has-shadow is-fixed-top"
-     style="border-top-color: #3273dc;border-top-width: thick;border-top-style: solid;">
+     style="border-top-color: #3f51b5;border-top-width: thick;border-top-style: solid;">
     <div class="container">
         <div class="navbar-brand">
             <a href="{{ url('/') }}" class="navbar-item">{{ config('app.name') }}</a>
@@ -88,7 +93,7 @@
             </div>
             @else
                 @livewire('notifications')
-                <div class="navbar-item has-dropdown is-hoverable">
+                <div class="navbar-item has-dropdown is-hoverable" id="nav-user-dropdown" data-turbolinks-permanent>
                     <a class="navbar-link"
                        href="{{ route('profiles.show', [auth()->user()->id, auth()->user()->name]) }}">
                         <canvas width="40" height="40"
@@ -145,8 +150,6 @@
 </footer>
 
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}?v={{ config('app.version') }}" defer></script>
-@livewireScripts
 @stack('scripts')
 </body>
 </html>

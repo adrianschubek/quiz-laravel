@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Likes;
 
 use App\Like;
+use App\Notifications\QuizLiked;
 use App\Quiz;
 use App\Http\Controllers\Controller;
 
@@ -21,6 +22,8 @@ class LikeQuizController extends Controller
         $like->user()->associate(auth()->user());
 
         $quiz->likes()->save($like);
+
+        $quiz->user->notify(new QuizLiked($quiz, auth()->user()));
 
         return back()->with('ok', 'Du magst dieses Quiz.');
     }
