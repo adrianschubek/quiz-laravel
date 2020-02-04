@@ -28,9 +28,9 @@
                 <i class="fas fa-check m-r-sm"></i> Alles als gelesen markieren
             </a>
         @endif
-        {{--        <hr class="navbar-divider">--}}
-        {{--        <a class="navbar-item">--}}
-        {{--            <i class="far fa-bell m-r-sm"></i> Alle Benachrichtigungen anzeigen--}}
-        {{--        </a>--}}
+        <hr class="navbar-divider">
+        <a class="navbar-item" href="{{ route('notifications') }}">
+            <i class="far fa-bell m-r-sm"></i> Alle Benachrichtigungen anzeigen
+        </a>
     </div>
 </div>

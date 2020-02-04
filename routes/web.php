@@ -4,6 +4,7 @@ use App\Http\Controllers\Comments\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Likes\LikeCommentController;
 use App\Http\Controllers\Likes\LikeQuizController;
+use App\Http\Controllers\Notifications\NotificationController;
 use App\Http\Controllers\Quizzes\Questions\QuestionController;
 use App\Http\Controllers\Quizzes\QuizController;
 use App\Http\Controllers\Quizzes\QuizLikedByController;
@@ -40,4 +41,5 @@ Route::resource('/profiles', ProfileController::class)->except(['index', 'create
 Route::get('/users', [ProfileController::class, 'index'])->name('profiles.index');
 Route::get('/users/{profile}/{slug?}', [ProfileController::class, 'show'])->name('profiles.show');
 
+Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications');
 
