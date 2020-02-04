@@ -15,7 +15,7 @@
 
     <div class="columns is-marginless is-centered">
         <div class="column is-5">
-            <div class="card">
+            <div class="card animated shake">
                 <div class="accent has-background-dark rounded-top"></div>
 
                 <div class="card-content shadow">

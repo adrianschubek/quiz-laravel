@@ -4,7 +4,7 @@
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="24">
+          <list size="27">
             <item index="0" class="java.lang.String" itemvalue="wire:" />
             <item index="1" class="java.lang.String" itemvalue="wire:model.lazy" />
             <item index="2" class="java.lang.String" itemvalue="wire:dirty.class" />
@@ -29,6 +29,9 @@
             <item index="21" class="java.lang.String" itemvalue="x-on:input" />
             <item index="22" class="java.lang.String" itemvalue="@click.away" />
             <item index="23" class="java.lang.String" itemvalue="wire:poll.20s" />
+            <item index="24" class="java.lang.String" itemvalue=":class" />
+            <item index="25" class="java.lang.String" itemvalue="@touchstart" />
+            <item index="26" class="java.lang.String" itemvalue="@input" />
           </list>
         </value>
       </option>

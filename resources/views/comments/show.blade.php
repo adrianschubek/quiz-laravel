@@ -37,7 +37,7 @@
                             <textarea class="textarea @error('comment') is-danger @enderror" name="comment"
                                       placeholder="Dein Kommentar..."
                                       style="min-height: 5em !important;"
-                                      x-on:input="show = $event.target.value.length > 0"
+                                      @input="show = $event.target.value.length > 0"
                             >{{ old('comment') }}</textarea>
                                     </p>
                                 </div>

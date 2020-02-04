@@ -11,31 +11,31 @@
     <title>{{ config('app.name') }} - @yield('title')</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}?v={{ config('app.version') }}" rel="stylesheet"
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet"
           data-turbolinks-track="reload">
     @livewireStyles
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}?v={{ config('app.version') }}" defer data-turbolinks-track="reload"></script>
+    <script src="{{ mix('js/app.js') }}" defer data-turbolinks-track="reload"></script>
     @livewireScripts
 
     @stack('head')
 </head>
 <body>
 <nav class="navbar has-shadow is-fixed-top"
-     style="border-top-color: #3f51b5;border-top-width: thick;border-top-style: solid;">
+     style="border-top-color: #3f51b5;border-top-width: thick;border-top-style: solid;" x-data="{ navopen: false }">
     <div class="container">
         <div class="navbar-brand">
             <a href="{{ url('/') }}" class="navbar-item">{{ config('app.name') }}</a>
 
-            <div class="navbar-burger burger" data-target="navMenu">
+            <div class="navbar-burger burger" data-target="navMenu" @touchstart="navopen = !navopen">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
 
-        <div class="navbar-menu" id="navMenu">
+        <div class="navbar-menu" id="navMenu" :class="{ 'is-active': navopen }">
             <div class="navbar-start"></div>
 
             <div class="navbar-end">
@@ -59,9 +59,9 @@
                 @guest
                     <div class="buttons" x-data="{ open: false, page: 1 }">
                         <button class="navbar-item button is-white" @click="open = true;page = 1">Anmelden</button>
-                        <div class="modal" x-bind:class="{ 'is-active': open && page === 1 }">
+                        <div class="modal" :class="{ 'is-active': open && page === 1 }">
                             <div class="modal-background" @click="open = false"></div>
-                            <div class="modal-content">
+                            <div class="modal-content animated fadeIn">
                                 <div class="box">
                                     <div class="tabs is-centered">
                                         <ul>
@@ -74,7 +74,7 @@
                             </div>
                             <button class="modal-close is-large" aria-label="close" @click="open = false"></button>
                         </div>
-                        <div class="modal" x-bind:class="{ 'is-active': open && page === 2 }">
+                        <div class="modal" :class="{ 'is-active': open && page === 2 }">
                             <div class="modal-background" @click="open = false"></div>
                             <div class="modal-content">
                                 <div class="box">
@@ -143,8 +143,8 @@
 <footer class="footer m-b-none p-b-md p-t-md" style="background-color: #273036">
     <div class="has-text-centered has-text-grey-light">
         <p>
-            <strong class="has-text-grey-light">Quiz</strong> programmiert von <i>Adrian Schubek</i> &copy; 2020 mit
-            Laravel in PHP.
+            <strong class="has-text-grey-light">Quiz</strong> programmiert von <i>Adrian Schubek</i> &copy; 2020.
+            <small>Laravel 6 + PHP 7.4</small>
         </p>
     </div>
 </footer>
