@@ -36,7 +36,7 @@ class CommentLiked extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "desc" => sprintf("'%s' gefällt dein Kommentar '%s'", $this->user->name, Str::limit($this->comment->comment, 10)),
+            "desc" => sprintf("'%s' gefällt dein Kommentar", $this->user->name),
             "link" => route("comments.show", [$this->comment->quiz, Str::slug($this->comment->quiz->title)]),
             "comment_id" => $this->comment->id,
             "user_id" => $this->user->id,

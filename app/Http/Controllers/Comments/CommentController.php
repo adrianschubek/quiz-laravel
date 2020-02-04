@@ -6,6 +6,7 @@ use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCommentRequest;
 use App\Like;
+use App\Notifications\QuizCommented;
 use App\Quiz;
 use Exception;
 use Illuminate\Contracts\View\Factory;
@@ -44,6 +45,9 @@ class CommentController extends Controller
         $comment->user()->associate(auth()->user());
 
         $quiz->comments()->save($comment);
+
+        $quiz->user->notify(new QuizCommented($quiz, auth()->user()));
+
         return back()->with('ok', 'Kommentar erstellt');
     }
 
