@@ -3925,16 +3925,16 @@
         },
         {
             "name": "laravel-frontend-presets/bulma",
-            "version": "v3.0.1",
+            "version": "v3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-frontend-presets/bulma.git",
-                "reference": "4d5c0909ea978d65501b531467d7bddf6a35b687"
+                "reference": "94580b9f6ddffe3b1565a6c6d3bcdf97b0fef35d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-frontend-presets/bulma/zipball/4d5c0909ea978d65501b531467d7bddf6a35b687",
-                "reference": "4d5c0909ea978d65501b531467d7bddf6a35b687",
+                "url": "https://api.github.com/repos/laravel-frontend-presets/bulma/zipball/94580b9f6ddffe3b1565a6c6d3bcdf97b0fef35d",
+                "reference": "94580b9f6ddffe3b1565a6c6d3bcdf97b0fef35d",
                 "shasum": ""
             },
             "require": {
@@ -3963,7 +3963,7 @@
                 "laravel",
                 "preset"
             ],
-            "time": "2019-12-10T08:10:14+00:00"
+            "time": "2020-02-06T04:09:48+00:00"
         },
         {
             "name": "laravel/telescope",
