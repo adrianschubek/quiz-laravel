@@ -49,38 +49,85 @@
             </p>
             {{--            {{ ddd($this->position, $this->max, $this->results) }}--}}
 
+            <div class="m-t-sm" x-data="{erg: false}">
+                <template x-if="!erg">
+                    <button class="button is-light is-fullwidth" @click="erg = !erg">Lösung anzeigen
+                    </button>
+                </template>
+                <template x-if="erg">
+
+                    @foreach($this->results["questions"] as $q)
+                        <div class="box">
+                            <b>{{$q->title}}</b><br>
+                            <span class="tag is-success is-light">Richtige Antwort</span>
+                            {{ $q["answer_" . ($q->correct + 1)] }}
+                            <hr>
+                            <span class="tag is-info is-light">Deine Antwort</span>
+                            {{ $q["answer_" . ($this->results["user"][$loop->index] + 1)] }}
+                        </div>
+                    @endforeach
+
+                </template>
+            </div>
+
         @else
             <p class="has-text-weight-light">Frage {{ $this->position + 1 }} von {{ $this->max }}</p>
             <p class="subtitle">{{ $this->question['title'] }}</p>
 
-            <form wire:submit.prevent="addAnswer(Object.fromEntries(new FormData($event.target)))">
-                <div class="inputGroup">
-                    <input id="radio1" name="answer" type="radio" value="0">
-                    <label for="radio1">{{ $this->question['answer_1'] }}</label>
-                </div>
+            <div class="control">
+                <a class="box noboxshadow has-background-white-ter shrink-sm quizbtn m-b-sm" wire:click="addAnswer(0)">
+                    {{ $this->question['answer_1'] }}
+                </a>
                 @if(isset($this->question['answer_2']))
-                    <hr style="margin: 0 !important;">
-                    <div class="inputGroup">
-                        <input id="radio2" name="answer" type="radio" value="1">
-                        <label for="radio2">{{ $this->question['answer_2'] }}</label>
-                    </div>
+                    <a class="box noboxshadow has-background-white-ter shrink-sm quizbtn m-b-sm"
+                       wire:click="addAnswer(1)">
+                        {{ $this->question['answer_2'] }}
+                    </a>
                     @if(isset($this->question['answer_3']))
-                        <hr style="margin: 0 !important;">
-                        <div class="inputGroup">
-                            <input id="radio3" name="answer" type="radio" value="2">
-                            <label for="radio3">{{ $this->question['answer_3'] }}</label>
-                        </div>
+                        <a class="box noboxshadow has-background-white-ter shrink-sm quizbtn m-b-sm"
+                           wire:click="addAnswer(2)">
+                            {{ $this->question['answer_3'] }}
+                        </a>
                         @if(isset($this->question['answer_4']))
-                            <hr style="margin: 0 !important;">
-                            <div class="inputGroup">
-                                <input id="radio4" name="answer" type="radio" value="3">
-                                <label for="radio4">{{ $this->question['answer_4'] }}</label>
-                            </div>
+                            <a class="box noboxshadow has-background-white-ter shrink-sm quizbtn m-b-sm"
+                               wire:click="addAnswer(3)">
+                                {{ $this->question['answer_4'] }}
+                            </a>
                         @endif
                     @endif
                 @endif
-                <button class="button is-fullwidth is-light">Weiter</button>
-            </form>
+            </div>
+
+            {{--            <form wire:submit.prevent="addAnswer(Object.fromEntries(new FormData($event.target)))">--}}
+            {{--                <div class="inputGroup">--}}
+            {{--                    <input id="radio1" name="answer" type="radio" value="0">--}}
+            {{--                    <label for="radio1">{{ $this->question['answer_1'] }}</label>--}}
+            {{--                </div>--}}
+            {{--                @if(isset($this->question['answer_2']))--}}
+            {{--                    <hr style="margin: 0 !important;">--}}
+            {{--                    <div class="inputGroup">--}}
+            {{--                        <input id="radio2" name="answer" type="radio" value="1">--}}
+            {{--                        <label for="radio2">{{ $this->question['answer_2'] }}</label>--}}
+            {{--                    </div>--}}
+            {{--                    @if(isset($this->question['answer_3']))--}}
+            {{--                        <hr style="margin: 0 !important;">--}}
+            {{--                        <div class="inputGroup">--}}
+            {{--                            <input id="radio3" name="answer" type="radio" value="2">--}}
+            {{--                            <label for="radio3">{{ $this->question['answer_3'] }}</label>--}}
+            {{--                        </div>--}}
+            {{--                        @if(isset($this->question['answer_4']))--}}
+            {{--                            <hr style="margin: 0 !important;">--}}
+            {{--                            <div class="inputGroup">--}}
+            {{--                                <input id="radio4" name="answer" type="radio" value="3">--}}
+            {{--                                <label for="radio4">{{ $this->question['answer_4'] }}</label>--}}
+            {{--                            </div>--}}
+            {{--                        @endif--}}
+            {{--                    @endif--}}
+            {{--                @endif--}}
+            {{--                <button class="button is-fullwidth is-light">Weiter</button>--}}
+            {{--            </form>--}}
+
+
         @endif
     </div>
 </div>

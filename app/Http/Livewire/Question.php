@@ -30,12 +30,12 @@ class Question extends Component
             ->get()[$this->position];
     }
 
-    public function addAnswer($data)
+    public function addAnswer($answer)
     {
-        if (!isset($data["answer"])) {
+        if (!isset($answer)) {
             return;
         }
-        $this->answers[$this->position] = (int)$data["answer"];
+        $this->answers[$this->position] = (int)$answer;
         $this->nextQuestion();
     }
 
@@ -52,18 +52,23 @@ class Question extends Component
     public function checkResults()
     {
         $quiz = Quiz::find($this->quizId);
-        $correctAnswers = $quiz->questions()->orderBy('order', 'asc')->get()->pluck('correct');
+
+        $questions = $quiz->questions()->orderBy('order', 'asc')->get();
+        $correctAnswers = $questions->pluck('correct');
         $userAnswers = collect($this->answers);
         $wrongAnswers = $correctAnswers->diffAssoc($userAnswers);
 
         $this->results['correct'] = $this->max - $wrongAnswers->count();
-        $this->results['answers'] = [
-            "user" => $userAnswers,
-            "correct" => $wrongAnswers
-        ];
+//        $this->results['answers'] = [
+//            "user" => $userAnswers,
+//            "correct" => $wrongAnswers
+//        ];
+        $this->results['user'] = $userAnswers;
+        $this->results['questions'] = $questions;
 
         $quiz->increment('play_count');
     }
+
 
     public function render()
     {

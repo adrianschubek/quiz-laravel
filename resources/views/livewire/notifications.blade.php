@@ -12,6 +12,9 @@
     </a>
     <div class="navbar-dropdown is-right">
         @forelse($notifications as $notification)
+            @if($loop->iteration === 10)
+                @break
+            @endif
             <a class="navbar-item has-background-warning" wire:click="readNotification('{{ $notification->id }}')"
                disabled>
                 <p>{{ $notification->data["desc"] }}</p>

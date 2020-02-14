@@ -16,6 +16,8 @@ $card-header-color: white;
 
 @import "~placeholder-loading/dist/css/placeholder-loading.min.css";
 @import "animations";
+
+@import "theme";
 // Bulma
 @import "bulma";
 
@@ -25,6 +27,14 @@ $card-header-color: white;
 
 ::selection {
     background: $red
+}
+
+.quizbtn:hover {
+    transition: 0.3s;
+    border-width: 1px !important;
+    border-color: #0e72b4 !important;
+    background: $link !important;
+    color: white;
 }
 
 .card,

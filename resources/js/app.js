@@ -77,3 +77,9 @@ document.addEventListener('turbolinks:load', () => {
     window.livewire.rescan();
     window.jdenticon();
 });
+
+document.addEventListener('livewire:load', () => {
+    window.livewire.hook('afterDomUpdate', () => {
+        Alpine.start()
+    })
+});
