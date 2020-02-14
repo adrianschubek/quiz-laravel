@@ -56,12 +56,13 @@ require('./bootstrap');
 //
 // require('./bulma-extensions');
 
-window.jdenticon = require('./jdenticon');
 // noinspection ES6UnusedImports
 import Alpine from "alpinejs/src";
 
+window.jdenticon = require('./jdenticon');
 let Turbolinks = require("turbolinks");
 Turbolinks.start();
+
 Turbolinks.setProgressBarDelay(50);
 
 document.addEventListener('turbolinks:load', () => {

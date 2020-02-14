@@ -3,7 +3,6 @@
 @section('title', "Startseite")
 
 @section('content')
-
     <nav class="level" style="background: #3f51b5; margin-bottom: 0" xmlns="http://www.w3.org/2000/svg">
         <div class="level-left m-l-md">
             <section class="hero ">

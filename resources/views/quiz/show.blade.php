@@ -36,8 +36,9 @@
                                     <i class="fas fa-heart m-r-sm"></i>Mag ich
                                 </button>
                             @else
-                                <button name="button" class="button is-danger skew-forward" disabled>
-                                    <i class="fas fa-check m-r-sm"></i>Dir gefällt dieses Quiz
+                                <button name="button" class="button is-disabled is-light is-danger skew-forward"
+                                        disabled>
+                                    <i class="fas fa-check m-r-sm"></i>Mag ich
                                 </button>
                             @endcannot
                         @elseguest
