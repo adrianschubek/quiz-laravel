@@ -30,7 +30,7 @@ class ProfileController extends Controller
 
     public function show(User $profile)
     {
-        $quizzes = $profile->quizzes()->public()->paginate(5);
+        $quizzes = $profile->quizzes()->public()->latest()->paginate(5);
 
         $likes = $this->numformat(
             Like::whereIn('likeable_id',

@@ -20,7 +20,7 @@
                         </span>
                     @endif
                     @if($likes > 0)
-                        <span class="tag is-light is-info">
+                        <span class="tag is-light is-danger">
                             <i class="fas fa-heart m-r-sm"></i> {{ $likes }}
                         </span>
                     @endif

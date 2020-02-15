@@ -61,7 +61,7 @@
                         <button class="navbar-item button is-white" @click="open = true;page = 1">Anmelden</button>
                         <div class="modal" :class="{ 'is-active': open && page === 1 }">
                             <div class="modal-background" @click="open = false"></div>
-                            <div class="modal-content animated fadeIn">
+                            <div class="modal-content">
                                 <div class="box">
                                     <div class="tabs is-centered">
                                         <ul>

@@ -5,7 +5,7 @@
 @section('content')
     <nav class="level" style="background: #3f51b5; margin-bottom: 0" xmlns="http://www.w3.org/2000/svg">
         <div class="level-left m-l-md">
-            <section class="hero ">
+            <section class="hero">
                 <div class="hero-body">
                     <div class="container">
                         <h1 class="has-text-white has-text-weight-light title is-unselectable">

@@ -41,14 +41,23 @@
     @endif
     <div wire:loading.class="is-hidden">
         @if($this->position === $this->max)
-            <p class="subtitle">Ergebnis</p>
-            <p>
-                Du hast <span>{{ $this->results['correct'] }}</span> von
-                <span class="has-text-weight-bold">{{ $this->max }}</span>
-                Fragen richtig beantwortet.
+            <p class="subtitle">Ergebnis <span class="tag is-light is-info is-medium">
+                {{ ($this->results['correct'] / $this->max) * 100 }}%
+                </span>
             </p>
-            {{--            {{ ddd($this->position, $this->max, $this->results) }}--}}
-
+            <p>
+                Du hast
+                <span class="tag is-light is-medium">
+                    <span class="m-r-sm">
+                        {{ $this->results['correct'] }}
+                    </span>von
+                    <span class="has-text-weight-bold m-l-sm">
+                        {{ $this->max }}
+                    </span>
+                </span>
+                Fragen
+                richtig beantwortet.
+            </p>
             <div class="m-t-sm" x-data="{erg: false}">
                 <template x-if="!erg">
                     <button class="button is-light is-fullwidth" @click="erg = !erg">Lösung anzeigen
@@ -57,14 +66,25 @@
                 <template x-if="erg">
 
                     @foreach($this->results["questions"] as $q)
-                        <div class="box">
-                            <b>{{$q->title}}</b><br>
-                            <span class="tag is-success is-light">Richtige Antwort</span>
-                            {{ $q["answer_" . ($q->correct + 1)] }}
-                            <hr>
-                            <span class="tag is-info is-light">Deine Antwort</span>
-                            {{ $q["answer_" . ($this->results["user"][$loop->index] + 1)] }}
-                        </div>
+                        @if(($q->correct + 1) === ($this->results["user"][$loop->index] + 1))
+                            <div class="box">
+                                <b>{{ $loop->index + 1 }}. {{$q->title}}</b><br>
+                                <span class="tag is-success is-light">Deine Antwort <span
+                                        class="fas fa-check m-l-sm"></span></span>
+                                {{ $q["answer_" . ($this->results["user"][$loop->index] + 1)] }}
+                            </div>
+                        @else
+                            <div class="box">
+                                <b>{{ $loop->index + 1 }}. {{$q->title}}</b><br>
+                                <span class="tag is-success is-light">Richtige Antwort <span
+                                        class="fas fa-check m-l-sm"></span></span>
+                                {{ $q["answer_" . ($q->correct + 1)] }}
+                                <hr>
+                                <span class="tag is-danger is-light">Deine Antwort <span
+                                        class="fas fa-times m-l-sm"></span></span>
+                                {{ $q["answer_" . ($this->results["user"][$loop->index] + 1)] }}
+                            </div>
+                        @endif
                     @endforeach
 
                 </template>
