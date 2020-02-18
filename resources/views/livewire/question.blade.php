@@ -1,7 +1,7 @@
 <div class="box m-b-md">
     @if($this->position + 1 === $this->max)
         <div wire:loading style="width: 100%">
-            <div class="notification has-text-centered" style="align-content: center">
+            <div class="notification has-background-white has-text-centered" style="align-content: center">
                 <i class="fas fa-circle-notch fa-spin fa-3x m-r-sm"></i>
                 <p>Deine Antworten werden überprüft...</p>
             </div>
@@ -60,21 +60,20 @@
             </p>
             <div class="m-t-sm" x-data="{erg: false}">
                 <template x-if="!erg">
-                    <button class="button is-light is-fullwidth" @click="erg = !erg">Lösung anzeigen
+                    <button class="button is-light is-fullwidth" @click="erg = !erg">Mehr anzeigen
                     </button>
                 </template>
                 <template x-if="erg">
-
                     @foreach($this->results["questions"] as $q)
                         @if(($q->correct + 1) === ($this->results["user"][$loop->index] + 1))
-                            <div class="box">
+                            <div class="box noboxshadow">
                                 <b>{{ $loop->index + 1 }}. {{$q->title}}</b><br>
                                 <span class="tag is-success is-light">Deine Antwort <span
                                         class="fas fa-check m-l-sm"></span></span>
                                 {{ $q["answer_" . ($this->results["user"][$loop->index] + 1)] }}
                             </div>
                         @else
-                            <div class="box">
+                            <div class="box noboxshadow">
                                 <b>{{ $loop->index + 1 }}. {{$q->title}}</b><br>
                                 <span class="tag is-success is-light">Richtige Antwort <span
                                         class="fas fa-check m-l-sm"></span></span>

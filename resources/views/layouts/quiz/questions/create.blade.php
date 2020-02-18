@@ -1,9 +1,9 @@
 <div x-data="{ show: false }">
     <button class="button is-info m-b-sm is-fullwidth" @click="show = !show">Neue Frage erstellen</button>
-    <form x-show="show" action="{{ route('questions.store', $quiz) }}" method="post"
+    <form x-show.transition="show" action="{{ route('questions.store', $quiz) }}" method="post"
           onsubmit="button.disabled = true;button.classList.add('is-loading')">
         @csrf
-        <div class="box m-b-md has-background-white-bis">
+        <div class="box m-b-md has-background-white">
             <div class="field">
                 <label class="label">Frage</label>
                 <div class="control has-icons-left">

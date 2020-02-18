@@ -10,6 +10,7 @@ class Notifications extends Component
 
     public function getNotifications()
     {
+        if (!auth()->user()) return;
         $this->notifications = auth()->user()->unreadNotifications;
     }
 

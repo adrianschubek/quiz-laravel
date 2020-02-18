@@ -43,20 +43,20 @@
                     </div>
                 </article>
             @endif
-            <div x-data="{ open: '{{ session('page') ?? 'status' }}' }">
+            <div x-data="{ open: '{{ session('page') ?? 'name' }}' }">
                 <div class="columns">
                     <div class="column is-one-quarter-desktop">
                         <aside class="menu">
-                            <p class="menu-label">
-                                Profil
-                            </p>
-                            <ul class="menu-list">
-                                <li><a @click="open = 'status'"
-                                       x-bind:class="{ 'is-active': open === 'status' }">Übersicht</a></li>
-                                <li><a @click="open = 'stats'"
-                                       x-bind:class="{ 'is-active': open === 'stats' }">Statistiken</a>
-                                </li>
-                            </ul>
+                            {{--                            <p class="menu-label">--}}
+                            {{--                                Profil--}}
+                            {{--                            </p>--}}
+                            {{--                            <ul class="menu-list">--}}
+                            {{--                                <li><a @click="open = 'status'"--}}
+                            {{--                                       x-bind:class="{ 'is-active': open === 'status' }">Übersicht</a></li>--}}
+                            {{--                                <li><a @click="open = 'stats'"--}}
+                            {{--                                       x-bind:class="{ 'is-active': open === 'stats' }">Statistiken</a>--}}
+                            {{--                                </li>--}}
+                            {{--                            </ul>--}}
                             <p class="menu-label">
                                 Account
                             </p>
@@ -82,7 +82,7 @@
                         <div class="box" x-show="open === 'stats'">
                             ...
                         </div>
-                        <div class="box" x-show="open === 'name'">
+                        <div class="box" x-show.transition.in="open === 'name'">
                             <form action="{{ route('profiles.update', $profile) }}" method="post"
                                   onsubmit="button.disabled = true;button.classList.add('is-loading')">
                                 @csrf
@@ -128,7 +128,7 @@
                                 </button>
                             </form>
                         </div>
-                        <div class="box" x-show="open === 'email'">
+                        <div class="box" x-show.transition.in="open === 'email'">
                             <form action="{{ route('profiles.update', $profile) }}" method="post"
                                   onsubmit="button.disabled = true;button.classList.add('is-loading')">
                                 @csrf
@@ -187,7 +187,7 @@
                                 </button>
                             </form>
                         </div>
-                        <div class="box" x-show="open === 'pw'">
+                        <div class="box" x-show.transition.in="open === 'pw'">
                             <form action="{{ route('profiles.update', $profile) }}" method="post"
                                   onsubmit="button.disabled = true;button.classList.add('is-loading')">
                                 @csrf
@@ -246,7 +246,7 @@
                                 </button>
                             </form>
                         </div>
-                        <div class="box" x-show="open === 'acc'">
+                        <div class="box" x-show.transition.in="open === 'acc'">
                             ...
                         </div>
                     </div>

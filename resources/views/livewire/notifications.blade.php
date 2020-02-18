@@ -1,6 +1,6 @@
 <div wire:init="getNotifications" wire:poll.20s="getNotifications" x-data="{ open: false }"
      class="navbar-item has-dropdown"
-     x-bind:class="{ 'is-active': open }"
+     :class="{ 'is-active': open }"
      style="align-items: center!important;">
     <a class="navbar-link is-arrowless" @click="open = !open" @click.away="open = false">
         @if(count($notifications) !== 0)
@@ -26,11 +26,11 @@
             </div>
         @endforelse
         @if(count($notifications) !== 0)
-            <hr class="navbar-divider">
-            <a class="navbar-item" disabled wire:click="markAllAsRead">
-                <i class="fas fa-check m-r-sm"></i> Alles als gelesen markieren
-            </a>
-        @endif
+                <hr class="navbar-divider">
+                <a class="navbar-item" wire:click="markAllAsRead">
+                    <i class="fas fa-check m-r-sm"></i> Alles als gelesen markieren
+                </a>
+            @endif
         <hr class="navbar-divider">
         <a class="navbar-item" href="{{ route('notifications') }}">
             <i class="far fa-bell m-r-sm"></i> Alle Benachrichtigungen anzeigen

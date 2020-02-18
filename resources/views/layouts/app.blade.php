@@ -22,7 +22,7 @@
     @stack('head')
 </head>
 <body>
-<nav class="navbar has-shadow is-fixed-top"
+<nav class="navbar is-fixed-top"
      style="border-top-color: #3f51b5;border-top-width: thick;border-top-style: solid;" x-data="{ navopen: false }">
     <div class="container">
         <div class="navbar-brand">
