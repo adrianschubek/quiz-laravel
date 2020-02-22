@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Likes;
 
+use App\Http\Controllers\Controller;
 use App\Like;
 use App\Notifications\QuizLiked;
 use App\Quiz;
-use App\Http\Controllers\Controller;
 
 class LikeQuizController extends Controller
 {

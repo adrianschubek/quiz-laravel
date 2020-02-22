@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "Meine Lieblingsquizze")
+@section('title', "Benachrichtigungen")
 
 @section('content')
     <section class="hero is-light">
