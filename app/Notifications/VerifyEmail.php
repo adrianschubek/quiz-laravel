@@ -57,11 +57,13 @@ class VerifyEmail extends Notification implements ShouldQueue
         }
 
         return (new MailMessage)
+            ->markdown('mail.email')
             ->subject('Email bestätigen')
             ->line('Bitte klicke auf den Button um deinen Account zu verifizieren')
             ->action('Account verifizieren', $verificationUrl)
             ->line('Falls du keinen Account erstellen möchtest, ignoriere diese E-Mail.');
     }
+
 
     /**
      * Get the verification URL for the given notifiable.
