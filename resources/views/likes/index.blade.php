@@ -20,7 +20,7 @@
             @empty
                 <article class="message">
                     <div class="message-body">
-                        Du hast noch nichts kommentiert.
+                        Du hast noch nichts geliked.
                     </div>
                 </article>
             @endforelse

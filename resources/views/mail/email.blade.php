@@ -51,12 +51,12 @@
     @isset($actionText)
         @slot('subcopy')
             @lang(
-                "Solltest du Probleme haben den Button zu drücken, benutze den Link unten\n".
-                '[:actionURL](:actionURL)',
-                [
-                    'actionText' => $actionText,
-                    'actionURL' => $actionUrl,
-                ]
+            "Solltest du Probleme haben den Button zu drücken, benutze den Link unten\n".
+            '[:actionURL](:actionURL)',
+            [
+            'actionText' => $actionText,
+            'actionURL' => $actionUrl,
+            ]
             )
         @endslot
     @endisset

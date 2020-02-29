@@ -66,7 +66,8 @@
                                     <div class="tabs is-centered">
                                         <ul>
                                             <li class="is-active"><a>Anmelden</a></li>
-                                            <li><a @click="page=2">Registrieren</a></li>
+                                            <li><a @click="window.location='{{ route("register") }}'">Registrieren</a>
+                                            </li>
                                         </ul>
                                     </div>
                                     @include('layouts.forms.login')

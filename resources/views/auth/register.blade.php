@@ -12,7 +12,7 @@
 @endpush
 
 @section('content')
-    <section class="hero is-info is-bold">
+    <section class="hero is-link is-bold">
         <div class="hero-body">
             <div class="container">
                 <h1 class="subtitle">
