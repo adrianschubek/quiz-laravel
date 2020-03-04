@@ -23,7 +23,7 @@
         @endif
         <div class="columns is-centered is-desktop">
             <div class="column is-half">
-                @livewire('question', $quiz)
+                @livewire('question', ['quiz' => $quiz])
             </div>
             <div class="column is-one-quarter">
                 <div class="box shadow1 m-b-none rbl-0 rbr-0" style="background: hsl(0, 0%, 96%);">

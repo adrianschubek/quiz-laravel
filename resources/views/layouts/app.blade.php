@@ -145,7 +145,7 @@
     <div class="has-text-centered has-text-grey-light">
         <p>
             <strong class="has-text-grey-light">Quiz</strong> programmiert von <i>Adrian Schubek</i> &copy; 2020.
-            <small>Laravel 6 + PHP 7.4</small>
+            <small>Laravel 7 + PHP 7.4</small>
         </p>
     </div>
 </footer>
