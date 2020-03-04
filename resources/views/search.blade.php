@@ -3,5 +3,5 @@
 @section('title', "Suchen")
 
 @section('content')
-    @livewire('search', ['query' => $query])
+    <livewire:search :query="$query"/>
 @endsection

@@ -13,14 +13,14 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet"
           data-turbolinks-track="reload">
-    @livewireStyles
+    <livewire:styles>
 
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer data-turbolinks-track="reload"></script>
-    @livewireScripts
+        <!-- Scripts -->
+        <script src="{{ mix('js/app.js') }}" defer data-turbolinks-track="reload"></script>
+        <livewire:scripts>
 
-    @stack('head')
-</head>
+            @stack('head')
+            </head>
 <body>
 <nav class="navbar is-fixed-top"
      style="border-top-color: #3f51b5;border-top-width: thick;border-top-style: solid;" x-data="{ navopen: false }">
@@ -93,7 +93,7 @@
                     </div>
             </div>
             @else
-                @livewire('notifications')
+                <livewire:notifications/>
                 <div class="navbar-item has-dropdown is-hoverable" id="nav-user-dropdown" data-turbolinks-permanent>
                     <a class="navbar-link"
                        href="{{ route('profiles.show', [auth()->user()->id, auth()->user()->name]) }}">
