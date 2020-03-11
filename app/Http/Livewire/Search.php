@@ -10,12 +10,12 @@ class Search extends Component
 {
     public ?string $query;
     public string $type;
-    protected $updatesQueryString = ["query"];
+    protected $updatesQueryString = ["query", "type"];
 
-    public function mount($query)
+    public function mount()
     {
         $this->query = request("query");
-        $this->type = 'title';
+        $this->type = request("type") ?? "title";
     }
 
     public function updatingType($value)

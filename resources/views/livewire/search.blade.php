@@ -13,9 +13,10 @@
         </div>
         <div class="select is-large">
             <select wire:change="$set('type', $event.target.value)">
-                <option value="title">in Titel</option>
-                <option value="description">in Beschreibung</option>
-                <option value="user">von</option>
+                <option value="title" @if(request("type") === "title") selected @endif>in Titel</option>
+                <option value="description" @if(request("type") === "description") selected @endif>in Beschreibung
+                </option>
+                <option value="user" @if(request("type") === "user") selected @endif>von</option>
             </select>
         </div>
     </div>

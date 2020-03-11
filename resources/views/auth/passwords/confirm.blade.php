@@ -22,6 +22,7 @@
             <div class="modal-background"></div>
             <div class="modal-content">
                 <div class="box">
+                    <h1 class="subtitle has-text-weight-bold">Bestätigung erforderlich</h1>
                     <form class="login-form" method="POST" action="{{ route('password.confirm') }}"
                           onsubmit="button.disabled = true;button.classList.add('is-loading')">
                         @csrf
@@ -39,7 +40,7 @@
                                         <p class="control">
                                             <input
                                                 class="input has-background-white-bis noboxshadow @error('password') is-danger @enderror"
-                                                id="password" type="password" name="password" required>
+                                                id="password" type="password" name="password" placeholder="*****" required>
                                         </p>
                                         @error('password')
                                         <p class="help is-danger">

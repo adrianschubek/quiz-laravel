@@ -13,14 +13,14 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet"
           data-turbolinks-track="reload">
-    <livewire:styles>
+    <livewire:styles/>
 
-        <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer data-turbolinks-track="reload"></script>
-        <livewire:scripts>
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer data-turbolinks-track="reload"></script>
+    <livewire:scripts/>
 
-            @stack('head')
-            </head>
+    @stack('head')
+</head>
 <body>
 <nav class="navbar is-fixed-top"
      style="border-top-color: #3f51b5;border-top-width: thick;border-top-style: solid;" x-data="{ navopen: false }">
@@ -39,16 +39,28 @@
             <div class="navbar-start"></div>
 
             <div class="navbar-end">
+                {{-- Suche--}}
                 <div class="flex centerflex">
                     <form action="{{ route('quiz.search') }}" class="m-r-sm field has-addons"
-                          onsubmit="button.disabled = true;button.classList.add('is-loading')">
+                          onsubmit="button.disabled = true;button.classList.add('is-loading')"
+                          x-data="{ query: '', type: '' }">
                         <div class="control">
                             <input class="input m-r-sm has-background-white-ter noborder noboxshadow" type="search"
                                    name="query"
                                    placeholder="Suche..."
                                    autocomplete="off"
+                                   x-model="query"
                             >
                         </div>
+{{--                        <template x-if="query">--}}
+{{--                            <div class="dropdown-menu" style="left: initial; display: block; padding-top: 0px">--}}
+{{--                                <div class="dropdown-content">--}}
+{{--                                    <a class="dropdown-item" href='{{ route('quiz.search') }}?title=""'>--}}
+{{--                                        Suche "<span x-text="query"></span>" in Titel--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </template>--}}
                         <div class="control">
                             <button type="submit" class="button is-link " name="button">
                                 <i class="fas fa-search"></i>
@@ -144,7 +156,8 @@
 <footer class="footer m-b-none p-b-md p-t-md" style="background-color: #273036">
     <div class="has-text-centered has-text-grey-light">
         <p>
-            <strong class="has-text-grey-light">Quiz</strong> programmiert von <i>Adrian Schubek</i> &copy; 2020.
+            <strong class="has-text-grey-light is-family-code">Quiz</strong> programmiert von <i>Adrian Schubek</i>
+            &copy; 2020.
             <small>Laravel 7 + PHP 7.4</small>
         </p>
     </div>
