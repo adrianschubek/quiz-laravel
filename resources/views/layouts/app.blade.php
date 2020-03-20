@@ -40,33 +40,52 @@
 
             <div class="navbar-end">
                 {{-- Suche--}}
-                <div class="flex centerflex">
-                    <form action="{{ route('quiz.search') }}" class="m-r-sm field has-addons"
-                          onsubmit="button.disabled = true;button.classList.add('is-loading')"
-                          x-data="{ query: '', type: '' }">
-                        <div class="control">
-                            <input class="input m-r-sm has-background-white-ter noborder noboxshadow" type="search"
-                                   name="query"
-                                   placeholder="Suche..."
-                                   autocomplete="off"
-                                   x-model="query"
-                            >
+                <div class="flex centerflex" x-data="{query: ''}">
+                    {{--                    <form action="{{ route('quiz.search') }}" class="m-r-sm field has-addons"--}}
+                    {{--                          onsubmit="button.disabled = true;button.classList.add('is-loading')"--}}
+                    {{--                          x-data="{ query: '', type: '' }" x-ref="sform">--}}
+                    <div class="control">
+                        <input class="input m-r-sm has-background-white-ter noborder noboxshadow" type="search"
+                               name="query"
+                               placeholder="Suche..."
+                               autocomplete="off"
+                               x-model="query"
+                        >
+                        {{--                        <input type="hidden" name="type" :value="type">--}}
+                    </div>
+                    <template x-if="query">
+                        <div class="dropdown-menu" style="left: initial; display: block; padding-top: 0px">
+                            <div class="dropdown-content">
+                                <form action="{{ route('quiz.search') }}" x-ref="title">
+                                    <input type="hidden" name="query" :value="query">
+                                    <input type="hidden" name="type" value="title">
+                                    <a @click="$refs.title.submit()" class="dropdown-item">
+                                        Suche '<span x-text="query"></span>' in Titel
+                                    </a>
+                                </form>
+                                <form action="{{ route('quiz.search') }}" x-ref="description">
+                                    <input type="hidden" name="query" :value="query">
+                                    <input type="hidden" name="type" value="description">
+                                    <a @click="$refs.description.submit()" class="dropdown-item">
+                                        Suche '<span x-text="query"></span>' in Beschreibung
+                                    </a>
+                                </form>
+                                <form action="{{ route('quiz.search') }}" x-ref="user">
+                                    <input type="hidden" name="query" :value="query">
+                                    <input type="hidden" name="type" value="user">
+                                    <a @click="$refs.user.submit()" class="dropdown-item">
+                                        Suche Quizze von '<span x-text="query"></span>'
+                                    </a>
+                                </form>
+                            </div>
                         </div>
-{{--                        <template x-if="query">--}}
-{{--                            <div class="dropdown-menu" style="left: initial; display: block; padding-top: 0px">--}}
-{{--                                <div class="dropdown-content">--}}
-{{--                                    <a class="dropdown-item" href='{{ route('quiz.search') }}?title=""'>--}}
-{{--                                        Suche "<span x-text="query"></span>" in Titel--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </template>--}}
-                        <div class="control">
-                            <button type="submit" class="button is-link " name="button">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </form>
+                    </template>
+                    {{--                        <div class="control">--}}
+                    {{--                            <button type="submit" class="button is-link " name="button">--}}
+                    {{--                                <i class="fas fa-search"></i>--}}
+                    {{--                            </button>--}}
+                    {{--                        </div>--}}
+                    {{--                    </form>--}}
                 </div>
                 @guest
                     <div class="buttons" x-data="{ open: false, page: 1 }">
