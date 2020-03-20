@@ -63,7 +63,7 @@ window.jdenticon = require('./jdenticon');
 let Turbolinks = require("turbolinks");
 Turbolinks.start();
 
-Turbolinks.setProgressBarDelay(50);
+Turbolinks.setProgressBarDelay(200);
 
 document.addEventListener('turbolinks:load', () => {
     // Login Profilbild

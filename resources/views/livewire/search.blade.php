@@ -6,9 +6,9 @@
             <span class="icon is-small is-left">
                 <i class="fas fa-search"></i>
             </span>
-            <div class="tags has-addons m-t-sm ">
-                <span class="tag is-medium is-dark">{{ $quizzes->count() ?: "Keine" }} Quizze</span>
-                <span class="tag is-medium is-white">in {{ number_format(microtime(true) - LARAVEL_START, 3, ',', '.') }} Sekunden gefunden</span>
+            <div class="tags has-addons m-t-sm">
+                <span class="tag is-medium_ is-dark">{{ $quizzes->count() ?: "Keine" }} Quizze</span>
+                <span class="tag is-medium_ is-white">in {{ number_format(microtime(true) - LARAVEL_START, 3, ',', '.') }} Sekunden gefunden</span>
             </div>
         </div>
         <div class="select is-large">

@@ -44,7 +44,10 @@
                     {{--                    <form action="{{ route('quiz.search') }}" class="m-r-sm field has-addons"--}}
                     {{--                          onsubmit="button.disabled = true;button.classList.add('is-loading')"--}}
                     {{--                          x-data="{ query: '', type: '' }" x-ref="sform">--}}
-                    <div class="control">
+                    <div class="control has-icons-left ">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-search"></i>
+                        </span>
                         <input class="input m-r-sm has-background-white-ter noborder noboxshadow" type="search"
                                name="query"
                                placeholder="Suche..."
