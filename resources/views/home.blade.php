@@ -13,7 +13,7 @@
                                 Hallo {{ auth()->user()->name }}
                             @endauth
                             @guest
-                                Neue Quizze
+                                Hallo <i class="fas fa-user-secret"></i>
                             @endguest
                         </h1>
                     </div>

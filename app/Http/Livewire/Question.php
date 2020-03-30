@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright (c) 2020. Adrian Schubek
+ * https://adriansoftware.de
+ */
 
 namespace App\Http\Livewire;
 
@@ -7,11 +11,11 @@ use Livewire\Component;
 
 class Question extends Component
 {
-    public int $position;
-    public array $answers;
-    public int $max;
-    public array $results;
-    public int $quizId;
+    public $position;
+    public $answers;
+    public $max;
+    public $results;
+    public $quizId;
 
     public function mount(Quiz $quiz)
     {

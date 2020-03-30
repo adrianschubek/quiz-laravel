@@ -36,6 +36,15 @@
                 </article>
             @endforelse
             @include('layouts.quiz.questions.create')
+            <a class="button is-link is-fullwidth m-t-md shrink-sm"
+               @if($quiz->isPrivate())
+               disabled="disabled"
+               @else
+               href="{{ route("quiz.show", [$quiz->id, $quiz->getSlug()]) }}"
+                @endif
+            >
+                <i class="fas fa-paper-plane m-r-sm"></i> Quiz spielen
+            </a>
         </div>
         <div class="column is-3">
         </div>

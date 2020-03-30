@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright (c) 2020. Adrian Schubek
+ * https://adriansoftware.de
+ */
 
 namespace App\Http\Livewire;
 
@@ -8,8 +12,8 @@ use Livewire\Component;
 
 class Search extends Component
 {
-    public ?string $query;
-    public string $type;
+    public $query;
+    public $type;
     protected $updatesQueryString = ["query", "type"];
 
     public function mount()

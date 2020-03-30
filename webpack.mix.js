@@ -1,4 +1,10 @@
+/*
+ * Copyright (c) 2020. Adrian Schubek
+ * https://adriansoftware.de
+ */
+
 const mix = require('laravel-mix');
+require('laravel-mix-bundle-analyzer');
 
 require('laravel-mix-purgecss');
 
@@ -12,11 +18,12 @@ require('laravel-mix-purgecss');
  | file for the application as well as bundling up all the JS files.
  |
  */
-
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 if (mix.inProduction()) {
   mix
    .version()
    .purgeCss();
+} else {
+    // mix.bundleAnalyzer();
 }

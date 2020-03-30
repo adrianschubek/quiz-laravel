@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright (c) 2020. Adrian Schubek
+ * https://adriansoftware.de
+ */
 
 namespace App\Http\Controllers\Comments;
 
@@ -27,6 +31,7 @@ class CommentController extends Controller
             ->with(["user", "quiz"])
             ->withCount('likes')
             ->paginate(15);
+
         return view('comments.index', compact('comments'));
     }
 

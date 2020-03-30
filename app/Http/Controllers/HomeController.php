@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright (c) 2020. Adrian Schubek
+ * https://adriansoftware.de
+ */
 
 namespace App\Http\Controllers;
 
@@ -21,7 +25,6 @@ class HomeController extends Controller
             default:
                 $builder->latest();
         }
-
         return view('home', ['quizzes' => $builder->paginate()]);
     }
 }

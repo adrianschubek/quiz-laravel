@@ -15,11 +15,12 @@
 
     <div class="columns is-marginless is-centered">
         <div class="column is-5">
-            <div class="card animated shake">
+            <div class="card">
                 <div class="accent has-background-dark rounded-top"></div>
 
                 <div class="card-content shadow">
-                    <form class="login-form" method="POST" action="{{ route('login') }}" onsubmit="button.disabled = true;button.classList.add('is-loading')">
+                    <form class="login-form" method="POST" action="{{ route('login') }}"
+                          onsubmit="button.disabled = true;button.classList.add('is-loading')">
                         @csrf
 
                         <div class="columns">
@@ -82,7 +83,8 @@
                                     <div class="field-body">
                                         <div class="field is-grouped">
                                             <div class="control">
-                                                <button type="submit" class="button is-dark" name="button">Anmelden</button>
+                                                <button type="submit" class="button is-dark" name="button">Anmelden
+                                                </button>
                                             </div>
 
                                             <div class="control ">

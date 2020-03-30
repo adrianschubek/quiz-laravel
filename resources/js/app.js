@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2020. Adrian Schubek
+ * https://adriansoftware.de
+ */
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -83,3 +88,11 @@ document.addEventListener('livewire:load', () => {
         Alpine.start()
     })
 });
+
+// document.addEventListener("turbolinks:before-visit", () => {
+//     console.log("Visit start")
+// });
+//
+// document.addEventListener("turbolinks:render", () => {
+//     console.log("Visit end (render)")
+// });

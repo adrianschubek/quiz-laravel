@@ -1,6 +1,11 @@
 <?php
+/**
+ * Copyright (c) 2020. Adrian Schubek
+ * https://adriansoftware.de
+ */
 
 use App\Http\Controllers\Comments\CommentController;
+use App\Http\Controllers\FallbackRouteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Likes\LikeCommentController;
 use App\Http\Controllers\Likes\LikeQuizController;
@@ -37,9 +42,10 @@ Route::resource('/quiz/{quiz}/comments', CommentController::class)->only(['store
 Route::get('/quiz/{quiz}/{slug}/comments', [CommentController::class, 'show'])->name('comments.show');
 Route::post('/quiz/{quiz}/comments/{comment}/like', LikeCommentController::class)->name('comments.like');
 
-Route::resource('/profiles', ProfileController::class)->except(['index', 'create', 'store']);
+Route::resource('/profiles', ProfileController::class)->except(['index', 'create', 'store', 'show']);
 Route::get('/users', [ProfileController::class, 'index'])->name('profiles.index');
 Route::get('/users/{profile}/{slug?}', [ProfileController::class, 'show'])->name('profiles.show');
 
 Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications');
 
+Route::fallback(FallbackRouteController::class);

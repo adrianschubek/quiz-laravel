@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright (c) 2020. Adrian Schubek
+ * https://adriansoftware.de
+ */
 
 namespace App\Http\Controllers\Quizzes;
 
@@ -37,7 +41,9 @@ class QuizController extends Controller
 
     public function show(Quiz $quiz)
     {
-        if (!isset($quiz->user)) return abort(404);
+        if (!isset($quiz->user) || $quiz->isPrivate()) {
+            return abort(404);
+        }
         return view('quiz.show', compact('quiz'));
     }
 

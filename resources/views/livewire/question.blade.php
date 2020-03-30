@@ -1,5 +1,5 @@
 <div class="box m-b-md">
-    @if($this->position + 1 === $this->max)
+    @if($position + 1 === $max)
         <div wire:loading style="width: 100%">
             <div class="notification has-background-white has-text-centered" style="align-content: center">
                 <i class="fas fa-circle-notch fa-spin fa-3x m-r-sm"></i>
@@ -40,19 +40,19 @@
         </div>
     @endif
     <div wire:loading.class="is-hidden">
-        @if($this->position === $this->max)
+        @if($position === $max)
             <p class="subtitle">Ergebnis <span class="tag is-light is-info is-medium">
-                {{ ($this->results['correct'] / $this->max) * 100 }}%
+                {{ ($results['correct'] / $max) * 100 }}%
                 </span>
             </p>
             <p>
                 Du hast
                 <span class="tag is-light is-medium">
                     <span class="m-r-sm">
-                        {{ $this->results['correct'] }}
+                        {{ $results['correct'] }}
                     </span>von
                     <span class="has-text-weight-bold m-l-sm">
-                        {{ $this->max }}
+                        {{ $max }}
                     </span>
                 </span>
                 Fragen
@@ -64,13 +64,13 @@
                     </button>
                 </template>
                 <template x-if="erg">
-                    @foreach($this->results["questions"] as $q)
-                        @if(($q->correct + 1) === ($this->results["user"][$loop->index] + 1))
+                    @foreach($results["questions"] as $q)
+                        @if(($q->correct + 1) === ($results["user"][$loop->index] + 1))
                             <div class="box noboxshadow">
                                 <b>{{ $loop->index + 1 }}. {{$q->title}}</b><br>
                                 <span class="tag is-success is-light">Deine Antwort <span
                                         class="fas fa-check m-l-sm"></span></span>
-                                {{ $q["answer_" . ($this->results["user"][$loop->index] + 1)] }}
+                                {{ $q["answer_" . ($results["user"][$loop->index] + 1)] }}
                             </div>
                         @else
                             <div class="box noboxshadow">
@@ -81,7 +81,7 @@
                                 <hr>
                                 <span class="tag is-danger is-light">Deine Antwort <span
                                         class="fas fa-times m-l-sm"></span></span>
-                                {{ $q["answer_" . ($this->results["user"][$loop->index] + 1)] }}
+                                {{ $q["answer_" . ($results["user"][$loop->index] + 1)] }}
                             </div>
                         @endif
                     @endforeach
@@ -90,7 +90,7 @@
             </div>
 
         @else
-            <p class="has-text-weight-light">Frage {{ $this->position + 1 }} von {{ $this->max }}</p>
+            <p class="has-text-weight-light">Frage {{ $position + 1 }} von {{ $max }}</p>
             <p class="subtitle">{{ $this->question['title'] }}</p>
 
             <div class="control">

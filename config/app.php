@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright (c) 2020. Adrian Schubek
+ * https://adriansoftware.de
+ */
 
 return [
 
@@ -14,6 +18,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'description' => 'Erstelle ganz einfach deine eigenen Quizze und teile sie mit einer riesigen Community',
 
     /*
     |--------------------------------------------------------------------------

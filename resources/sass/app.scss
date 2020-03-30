@@ -1,7 +1,39 @@
+/*!
+ * Copyright (c) 2020. Adrian Schubek
+ * https://adriansoftware.de
+ */
+
 .turbolinks-progress-bar {
     height: 5px;
     background-color: dodgerblue;
 }
+
+// Ladeanim.
+//.loader-wrapper {
+//    position: absolute;
+//    top: 0;
+//    left: 0;
+//    height: 100%;
+//    width: 100%;
+//    background: #fff;
+//    opacity: 0;
+//    z-index: 100;
+//    transition: opacity .3s;
+//    display: flex;
+//    justify-content: center;
+//    align-items: center;
+//    border-radius: 6px;
+//
+//    .loader-x {
+//        height: 80px;
+//        width: 80px;
+//    }
+//
+//    &.is-active {
+//        opacity: 1;
+//        z-index: 101;
+//    }
+//}
 
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);

@@ -62,16 +62,19 @@
                             </p>
                             <ul class="menu-list">
                                 <li><a @click="open = 'name'"
-                                       x-bind:class="{ 'is-active': open === 'name' }">Benutzername
+                                       x-bind:class="{ 'is-active': open === 'name' }"><i
+                                            class="fas fa-user-edit m-r-sm"></i>Benutzername
                                         ändern</a></li>
                                 <li><a @click="open = 'email'"
-                                       x-bind:class="{ 'is-active': open === 'email' }">Email
+                                       x-bind:class="{ 'is-active': open === 'email' }"><i
+                                            class="fas fa-envelope m-r-sm"></i>Email
                                         ändern</a></li>
                                 <li><a @click="open = 'pw'"
-                                       x-bind:class="{ 'is-active': open === 'pw' }">Passwort
+                                       x-bind:class="{ 'is-active': open === 'pw' }"><i class="fas fa-key m-r-sm"></i>Passwort
                                         ändern</a></li>
                                 <li><a class="has-text-grey-light" @click="open = 'acc'"
-                                       x-bind:class="{ 'is-active': open === 'acc' }">Account löschen</a></li>
+                                       x-bind:class="{ 'is-active': open === 'acc' }"><i
+                                            class="fas fa-user-alt-slash m-r-sm"></i>Account löschen</a></li>
                             </ul>
                         </aside>
                     </div>
