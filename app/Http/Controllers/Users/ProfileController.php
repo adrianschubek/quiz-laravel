@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright (c) 2020. Adrian Schubek
+ * https://adriansoftware.de
+ */
 
 namespace App\Http\Controllers\Users;
 
@@ -9,7 +13,6 @@ use App\Support\Traits\FormatsNumbers;
 use App\User;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Hash;
-use function request;
 
 class ProfileController extends Controller
 {

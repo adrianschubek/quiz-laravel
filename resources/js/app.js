@@ -83,16 +83,19 @@ document.addEventListener('turbolinks:load', () => {
     window.jdenticon();
 });
 
-document.addEventListener('livewire:load', () => {
-    window.livewire.hook('afterDomUpdate', () => {
-        Alpine.start()
-    })
-});
-
-// document.addEventListener("turbolinks:before-visit", () => {
-//     console.log("Visit start")
+// document.addEventListener('livewire:load', () => {
+//     window.livewire.hook('afterDomUpdate', () => {
+//         Alpine.start()
+//     })
+// });
+// let NProgress = require("nprogress/nprogress");
+// document.addEventListener("turbolinks:click", () => {
+//     NProgress.start();
+//     console.log("start")
 // });
 //
 // document.addEventListener("turbolinks:render", () => {
-//     console.log("Visit end (render)")
+//     NProgress.done();
+//     NProgress.remove();
+//     console.log("end")
 // });

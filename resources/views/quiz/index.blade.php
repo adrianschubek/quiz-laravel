@@ -23,7 +23,7 @@
                         <a href="{{ route('quiz.create') }}" class="button is-success"><i class="fa fa-plus"></i></a>
                     </div>
                 </div>
-                @forelse($quizzes = $user->quizzes()->with('user')->latest()->paginate(5) as $quiz)
+                @forelse($quizzes as $quiz)
                     @include('layouts.quiz.edit', $quiz)
                 @empty
                     <div class="box has-text-centered noborder noboxshadow has-background-white-ter">

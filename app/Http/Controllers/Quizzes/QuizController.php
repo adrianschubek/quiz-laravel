@@ -22,7 +22,8 @@ class QuizController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('quiz.index', compact('user'));
+        $quizzes = $user->quizzes()->with('user')->latest()->paginate(5);
+        return view('quiz.index', compact('user', 'quizzes'));
     }
 
     public function create()

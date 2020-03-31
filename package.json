@@ -32,6 +32,7 @@
         "animate.css": "^3.7.2",
         "bulma-divider": "^0.2.0",
         "bulma-tooltip": "^2.0.2",
+        "nprogress": "^0.2.0",
         "observable-membrane": "^0.26.1",
         "placeholder-loading": "^0.2.5",
         "trianglify": "^2.0.0",

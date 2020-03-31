@@ -1,5 +1,4 @@
-<a class="box shrink-sm"
-   href="{{ route('quiz.show', [$quiz, $quiz->getSlug()]) }}">
+<a class="box shrink-sm" href="{{ route('quiz.show', [$quiz, $quiz->getSlug()]) }}">
     <p class="subtitle m-b-none">{{ $quiz->title }}</p>
     <div class="level m-b-sm">
         <div class="level-left">
