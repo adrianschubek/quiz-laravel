@@ -1,8 +1,18 @@
 {
     "name": "adrianschubek/quiz",
     "type": "project",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../adrianschubek/laravel-admin",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "require": {
         "php": "^7.4",
+        "adrianschubek/admin": "dev-master",
         "fideloper/proxy": "^4.0",
         "genealabs/laravel-model-caching": ">=0.7",
         "laravel/framework": "^7.0",
