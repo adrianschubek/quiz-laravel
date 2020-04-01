@@ -58,37 +58,31 @@
                 Fragen
                 richtig beantwortet.
             </p>
-            <div class="m-t-sm" x-data="{erg: true}">
-{{--                <template x-if="!erg">--}}
-{{--                    <button class="button is-light is-fullwidth" @click="erg = !erg">Mehr anzeigen--}}
-{{--                    </button>--}}
-{{--                </template>--}}
-{{--                <template x-if="erg">--}}
-                    @foreach($results["questions"] as $q)
-                        @if(($q->correct + 1) === ($results["user"][$loop->index] + 1))
-                            <div class="box noboxshadow">
-                                <b>{{ $loop->index + 1 }}. {{$q->title}}</b><br>
-                                <span class="tag is-success is-light">Deine Antwort <span
-                                        class="fas fa-check m-l-sm"></span></span>
-                                {{ $q["answer_" . ($results["user"][$loop->index] + 1)] }}
-                            </div>
-                        @else
-                            <div class="box noboxshadow">
-                                <b>{{ $loop->index + 1 }}. {{$q->title}}</b><br>
-                                <span class="tag is-success is-light">Richtige Antwort <span
-                                        class="fas fa-check m-l-sm"></span></span>
-                                {{ $q["answer_" . ($q->correct + 1)] }}
-                                <hr>
-                                <span class="tag is-danger is-light">Deine Antwort <span
-                                        class="fas fa-times m-l-sm"></span></span>
-                                {{ $q["answer_" . ($results["user"][$loop->index] + 1)] }}
-                            </div>
-                        @endif
-                    @endforeach
-
-{{--                </template>--}}
+            <div class="m-t-sm">
+                @foreach($results["questions"] as $q)
+                    @if(($q->correct + 1) === ($results["user"][$loop->index] + 1))
+                        {{-- Die Benutzer Antwort war korrekt für diese Frage!--}}
+                        <div class="box noboxshadow">
+                            <b>{{ $loop->index + 1 }}. {{$q->title}}</b><br>
+                            <span class="tag is-success is-light">Deine Antwort <span
+                                    class="fas fa-check m-l-sm"></span></span>
+                            {{ $q["answer_" . ($results["user"][$loop->index])] }}
+                        </div>
+                    @else
+                        {{-- Antwort vom Benutzer falsch. Zeige richtige + Benutzer Antwort --}}
+                        <div class="box noboxshadow">
+                            <b>{{ $loop->index + 1 }}. {{$q->title}}</b><br>
+                            <span class="tag is-success is-light">Richtige Antwort <span
+                                    class="fas fa-check m-l-sm"></span></span>
+                            {{ $q["answer_" . ($q->correct)] }}
+                            <hr>
+                            <span class="tag is-danger is-light">Deine Antwort <span
+                                    class="fas fa-times m-l-sm"></span></span>
+                            {{ $q["answer_" . ($results["user"][$loop->index])] }}
+                        </div>
+                    @endif
+                @endforeach
             </div>
-
         @else
             <p class="has-text-weight-light">Frage {{ $position + 1 }} von {{ $max }}</p>
             <p class="subtitle">{{ $this->question['title'] }}</p>
