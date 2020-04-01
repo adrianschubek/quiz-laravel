@@ -63,10 +63,6 @@ class Question extends Component
         $wrongAnswers = $correctAnswers->diffAssoc($userAnswers);
 
         $this->results['correct'] = $this->max - $wrongAnswers->count();
-//        $this->results['answers'] = [
-//            "user" => $userAnswers,
-//            "correct" => $wrongAnswers
-//        ];
         $this->results['user'] = $userAnswers;
         $this->results['questions'] = $questions;
 

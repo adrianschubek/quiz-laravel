@@ -35,26 +35,26 @@
                     <template x-if="query">
                         <div class="dropdown-menu" style="left: initial; display: block; padding-top: 0px">
                             <div class="dropdown-content">
-                                <form action="{{ route('quiz.search') }}" x-ref="title">
+                                <form action="{{ route('quiz.search') }}">
                                     <input type="hidden" name="query" :value="query">
                                     <input type="hidden" name="type" value="title">
-                                    <a @click="$refs.title.submit()" class="dropdown-item">
+                                    <button class="dropdown-item button is-white">
                                         Suche '<span x-text="query"></span>' in Titel
-                                    </a>
+                                    </button>
                                 </form>
-                                <form action="{{ route('quiz.search') }}" x-ref="description">
+                                <form action="{{ route('quiz.search') }}">
                                     <input type="hidden" name="query" :value="query">
                                     <input type="hidden" name="type" value="description">
-                                    <a @click="$refs.description.submit()" class="dropdown-item">
+                                    <button class="dropdown-item button is-white">
                                         Suche '<span x-text="query"></span>' in Beschreibung
-                                    </a>
+                                    </button>
                                 </form>
-                                <form action="{{ route('quiz.search') }}" x-ref="user">
+                                <form action="{{ route('quiz.search') }}">
                                     <input type="hidden" name="query" :value="query">
                                     <input type="hidden" name="type" value="user">
-                                    <a @click="$refs.user.submit()" class="dropdown-item">
+                                    <button class="dropdown-item button is-white">
                                         Suche Quizze von '<span x-text="query"></span>'
-                                    </a>
+                                    </button>
                                 </form>
                             </div>
                         </div>

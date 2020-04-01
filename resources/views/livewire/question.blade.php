@@ -58,12 +58,12 @@
                 Fragen
                 richtig beantwortet.
             </p>
-            <div class="m-t-sm" x-data="{erg: false}">
-                <template x-if="!erg">
-                    <button class="button is-light is-fullwidth" @click="erg = !erg">Mehr anzeigen
-                    </button>
-                </template>
-                <template x-if="erg">
+            <div class="m-t-sm" x-data="{erg: true}">
+{{--                <template x-if="!erg">--}}
+{{--                    <button class="button is-light is-fullwidth" @click="erg = !erg">Mehr anzeigen--}}
+{{--                    </button>--}}
+{{--                </template>--}}
+{{--                <template x-if="erg">--}}
                     @foreach($results["questions"] as $q)
                         @if(($q->correct + 1) === ($results["user"][$loop->index] + 1))
                             <div class="box noboxshadow">
@@ -86,7 +86,7 @@
                         @endif
                     @endforeach
 
-                </template>
+{{--                </template>--}}
             </div>
 
         @else
@@ -94,22 +94,22 @@
             <p class="subtitle">{{ $this->question['title'] }}</p>
 
             <div class="control">
-                <a class="box noboxshadow has-background-white-ter shrink-sm quizbtn m-b-sm" wire:click="addAnswer(0)">
+                <a class="box noboxshadow has-background-white-ter shrink-sm quizbtn m-b-sm" wire:click="addAnswer(1)">
                     {{ $this->question['answer_1'] }}
                 </a>
                 @if(isset($this->question['answer_2']))
                     <a class="box noboxshadow has-background-white-ter shrink-sm quizbtn m-b-sm"
-                       wire:click="addAnswer(1)">
+                       wire:click="addAnswer(2)">
                         {{ $this->question['answer_2'] }}
                     </a>
                     @if(isset($this->question['answer_3']))
                         <a class="box noboxshadow has-background-white-ter shrink-sm quizbtn m-b-sm"
-                           wire:click="addAnswer(2)">
+                           wire:click="addAnswer(3)">
                             {{ $this->question['answer_3'] }}
                         </a>
                         @if(isset($this->question['answer_4']))
                             <a class="box noboxshadow has-background-white-ter shrink-sm quizbtn m-b-sm"
-                               wire:click="addAnswer(3)">
+                               wire:click="addAnswer(4)">
                                 {{ $this->question['answer_4'] }}
                             </a>
                         @endif
