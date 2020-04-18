@@ -5,14 +5,13 @@
  */
 
 return [
-
-    "enabled" => env("ADRIAN_ADMIN_ENABLED", false),
+    "enabled" => env("ADRIAN_ADMIN_ENABLED", true),
 
     // Url Prefix
     "prefix" => "admin",
 
     // light / dark
-    "theme" => "light",
+    "theme" => "dark",
 
     "auth" => [
         "user" => [
