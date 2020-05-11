@@ -5,7 +5,7 @@
  */
 
 return [
-    "enabled" => env("ADRIAN_ADMIN_ENABLED", true),
+    "enabled" => env("ADRIAN_ADMIN_ENABLED", false),
 
     // Url Prefix
     "prefix" => "admin",
