@@ -1,11 +1,4 @@
 <?php return array (
-  'adrianschubek/admin' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'adrianschubek\\Admin\\AdminServiceProvider',
-    ),
-  ),
   'beyondcode/laravel-er-diagram-generator' => 
   array (
     'providers' => 

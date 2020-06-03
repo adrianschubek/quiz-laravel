@@ -2,7 +2,7 @@
      style="border-top-color: #3f51b5;border-top-width: thick;border-top-style: solid;" x-data="{ navopen: false }">
     <div class="container">
         <div class="navbar-brand">
-            <a href="{{ url('/') }}" class="navbar-item">{{ config('app.name') }}</a>
+            <a href="<?php echo e(url('/')); ?>" class="navbar-item"><?php echo e(config('app.name')); ?></a>
 
             <div class="navbar-burger burger" data-target="navMenu" @click="navopen = !navopen">
                 <span></span>
@@ -15,11 +15,11 @@
             <div class="navbar-start"></div>
 
             <div class="navbar-end">
-                {{-- Suche--}}
+                
                 <div class="flex centerflex" x-data="{query: ''}">
-                    {{--                    <form action="{{ route('quiz.search') }}" class="m-r-sm field has-addons"--}}
-                    {{--                          onsubmit="button.disabled = true;button.classList.add('is-loading')"--}}
-                    {{--                          x-data="{ query: '', type: '' }" x-ref="sform">--}}
+                    
+                    
+                    
                     <div class="control has-icons-left ">
                         <span class="icon is-small is-left">
                             <i class="fas fa-search"></i>
@@ -30,26 +30,26 @@
                                autocomplete="off"
                                x-model="query"
                         >
-                        {{--                        <input type="hidden" name="type" :value="type">--}}
+                        
                     </div>
                     <template x-if="query">
                         <div class="dropdown-menu" style="left: initial; display: block; padding-top: 0px">
                             <div class="dropdown-content">
-                                <form action="{{ route('quiz.search') }}">
+                                <form action="<?php echo e(route('quiz.search')); ?>">
                                     <input type="hidden" name="query" :value="query">
                                     <input type="hidden" name="type" value="title">
                                     <button class="dropdown-item button is-white">
                                         Suche '<span x-text="query"></span>' in Titel
                                     </button>
                                 </form>
-                                <form action="{{ route('quiz.search') }}">
+                                <form action="<?php echo e(route('quiz.search')); ?>">
                                     <input type="hidden" name="query" :value="query">
                                     <input type="hidden" name="type" value="description">
                                     <button class="dropdown-item button is-white">
                                         Suche '<span x-text="query"></span>' in Beschreibung
                                     </button>
                                 </form>
-                                <form action="{{ route('quiz.search') }}">
+                                <form action="<?php echo e(route('quiz.search')); ?>">
                                     <input type="hidden" name="query" :value="query">
                                     <input type="hidden" name="type" value="user">
                                     <button class="dropdown-item button is-white">
@@ -59,15 +59,15 @@
                             </div>
                         </div>
                     </template>
-                    {{--                        <div class="control">--}}
-                    {{--                            <button type="submit" class="button is-link " name="button">--}}
-                    {{--                                <i class="fas fa-search"></i>--}}
-                    {{--                            </button>--}}
-                    {{--                        </div>--}}
-                    {{--                    </form>--}}
+                    
+                    
+                    
+                    
+                    
+                    
                 </div>
-                @guest
-                    @if(!request()->route()->named(["login", "register"]))
+                <?php if(auth()->guard()->guest()): ?>
+                    <?php if(!request()->route()->named(["login", "register"])): ?>
                         <div class="buttons" x-data="{ open: false, page: 1 }">
                             <button class="navbar-item button is-white" @click="open = true;page = 1">Anmelden</button>
                             <div class="modal" :class="{ 'is-active': open && page === 1 }">
@@ -78,11 +78,11 @@
                                             <ul>
                                                 <li class="is-active"><a>Anmelden</a></li>
                                                 <li>
-                                                    <a @click="window.location='{{ route("register") }}'">Registrieren</a>
+                                                    <a @click="window.location='<?php echo e(route("register")); ?>'">Registrieren</a>
                                                 </li>
                                             </ul>
                                         </div>
-                                        @include('layouts.forms.login')
+                                        <?php echo $__env->make('layouts.forms.login', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                     </div>
                                 </div>
                                 <button class="modal-close is-large" aria-label="close" @click="open = false"></button>
@@ -97,50 +97,66 @@
                                                 <li class="is-active"><a>Registrieren</a></li>
                                             </ul>
                                         </div>
-                                        @include('layouts.forms.register')
+                                        <?php echo $__env->make('layouts.forms.register', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                     </div>
                                 </div>
                                 <button class="modal-close is-large" aria-label="close" @click="open = false"></button>
                             </div>
                         </div>
-                    @endif
+                    <?php endif; ?>
             </div>
-            @else
-                <livewire:notifications/>
+            <?php else: ?>
+                <?php
+if (! isset($_instance)) {
+    $dom = \Livewire\Livewire::mount('notifications', [])->dom;
+} elseif ($_instance->childHasBeenRendered('eNrVrof')) {
+    $componentId = $_instance->getRenderedChildComponentId('eNrVrof');
+    $componentTag = $_instance->getRenderedChildComponentTagName('eNrVrof');
+    $dom = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('eNrVrof');
+} else {
+    $response = \Livewire\Livewire::mount('notifications', []);
+    $dom = $response->dom;
+    $_instance->logRenderedChild('eNrVrof', $response->id, \Livewire\Livewire::getRootElementTagName($dom));
+}
+echo $dom;
+?>
                 <div class="navbar-item has-dropdown is-hoverable" id="nav-user-dropdown" data-turbolinks-permanent>
                     <a class="navbar-link"
-                       href="{{ route('profiles.show', [auth()->user()->id, auth()->user()->name]) }}">
+                       href="<?php echo e(route('profiles.show', [auth()->user()->id, auth()->user()->name])); ?>">
                         <canvas width="40" height="40"
-                                data-jdenticon-value="{{ auth()->user()->name }}"></canvas>
-                        {{ auth()->user()->name }}
+                                data-jdenticon-value="<?php echo e(auth()->user()->name); ?>"></canvas>
+                        <?php echo e(auth()->user()->name); ?>
+
                     </a>
                     <div class="navbar-dropdown">
-                        @auth
-                            <a class="navbar-item" href="{{ route('quiz.index') }}">
+                        <?php if(auth()->guard()->check()): ?>
+                            <a class="navbar-item" href="<?php echo e(route('quiz.index')); ?>">
                                 <i class="fas fa-layer-group m-r-sm"></i> Meine Quizze
                             </a>
-                        @endauth
-                        <a class="navbar-item" href="{{ route('comments.index') }}">
+                        <?php endif; ?>
+                        <a class="navbar-item" href="<?php echo e(route('comments.index')); ?>">
                             <i class="fas fa-comments m-r-sm"></i> Meine Kommentare
                         </a>
-                        <a class="navbar-item" href="{{ route('likes.index') }}">
+                        <a class="navbar-item" href="<?php echo e(route('likes.index')); ?>">
                             <i class="fas fa-heart m-r-sm"></i> Lieblingsquizze
                         </a>
-                        <a class="navbar-item" href="{{ route('profiles.edit', auth()->user()->id) }}">
+                        <a class="navbar-item" href="<?php echo e(route('profiles.edit', auth()->user()->id)); ?>">
                             <i class="fas fa-cogs m-r-sm"></i> Einstellungen
                         </a>
                         <hr class="dropdown-divider">
-                        <a class="navbar-item" href="{{ route('logout') }}"
+                        <a class="navbar-item" href="<?php echo e(route('logout')); ?>"
                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                             <i class="fas fa-sign-out-alt m-r-sm"></i> Abmelden
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"
                               style="display: none;">
-                            @csrf
+                            <?php echo csrf_field(); ?>
                         </form>
                     </div>
                 </div>
-            @endguest
+            <?php endif; ?>
         </div>
     </div>
 </nav>
+<?php /**PATH D:\laragon\www\quiz\resources\views/layouts/navbar.blade.php ENDPATH**/ ?>
