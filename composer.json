@@ -8,7 +8,7 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": ">=2.0",
         "laravel/ui": "^2.0",
-        "livewire/livewire": "^1.0"
+        "livewire/livewire": "^2.1"
     },
     "require-dev": {
         "beyondcode/laravel-er-diagram-generator": "^1.4",
