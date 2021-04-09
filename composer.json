@@ -1,20 +1,21 @@
 {
     "name": "adrianschubek/quiz",
+    "description": "Quiz Projekt",
     "type": "project",
     "require": {
-        "php": "^7.4",
-        "fideloper/proxy": "^4.0",
-        "genealabs/laravel-model-caching": ">=0.7",
-        "laravel/framework": "^7.0",
+        "php": "^8",
+        "fideloper/proxy": "^4",
+        "genealabs/laravel-model-caching": "*",
+        "laravel/framework": "^8.36",
+        "laravel/octane": "^0.1.1",
         "laravel/tinker": ">=2.0",
-        "laravel/ui": "^2.0",
-        "livewire/livewire": "^2.3"
+        "laravel/ui": "^3.2",
+        "livewire/livewire": "^2"
     },
     "require-dev": {
-        "beyondcode/laravel-er-diagram-generator": "^1.4",
         "facade/ignition": "^2.0",
         "fzaninotto/faker": "^1.4",
-        "laravel/telescope": "^3.2",
+        "laravel/sail": "^1.4",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^5.3",
         "phpunit/phpunit": "^8.5"
