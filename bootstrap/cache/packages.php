@@ -1,11 +1,4 @@
 <?php return array (
-  'beyondcode/laravel-er-diagram-generator' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'BeyondCode\\ErdGenerator\\ErdGeneratorServiceProvider',
-    ),
-  ),
   'facade/ignition' => 
   array (
     'providers' => 
@@ -29,6 +22,24 @@
     'providers' => 
     array (
       0 => 'GeneaLabs\\LaravelModelCaching\\Providers\\Service',
+    ),
+  ),
+  'laravel/octane' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Octane\\OctaneServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Octane' => 'Laravel\\Octane\\Facades\\Octane',
+    ),
+  ),
+  'laravel/sail' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Sail\\SailServiceProvider',
     ),
   ),
   'laravel/tinker' => 
