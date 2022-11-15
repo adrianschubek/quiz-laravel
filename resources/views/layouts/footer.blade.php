@@ -8,8 +8,8 @@
     <div class="has-text-centered has-text-grey-light">
         <p>
             <strong class="has-text-grey-light is-family-code">Quiz</strong> programmiert von <i>Adrian Schubek</i>
-            &copy; 2020.
-            <small>Laravel 7 + PHP 7.4</small>
+            &copy; 2020 - {{ date("Y") }}.
+            <small>Laravel 8 + PHP 8</small>
         </p>
     </div>
 </footer>
