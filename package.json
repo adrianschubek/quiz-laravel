@@ -35,7 +35,7 @@
         "nprogress": "^0.2.0",
         "observable-membrane": "^0.26.1",
         "placeholder-loading": "^0.2.5",
-        "trianglify": "^2.0.0",
+        "trianglify": "^4.1.1",
         "turbolinks": "^5.2.0"
     }
 }
