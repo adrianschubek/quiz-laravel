@@ -2,4 +2,4 @@
 
 Dieses Projekt entstand im Rahmen meiner _Besonderen Lernleistung_ (BLL) Abitur 2020.
 
-### [Paper](https://github.com/adrianschubek/quiz-laravel/blob/master/paper.pdf)
+## [Paper](https://github.com/adrianschubek/quiz-laravel/blob/master/paper.pdf)
