@@ -34,7 +34,7 @@
         "bulma-tooltip": "^2.0.2",
         "nprogress": "^0.2.0",
         "observable-membrane": "^0.26.1",
-        "placeholder-loading": "^0.2.5",
+        "placeholder-loading": "^0.6.0",
         "trianglify": "^4.1.1",
         "turbolinks": "^5.2.0"
     }
